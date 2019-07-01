@@ -94,7 +94,13 @@ public class MenuActivity extends AppCompatActivity
             //fragment = new OpcionesFragment();
         } else if (id == R.id.nav_buscador) {*/
 
-        } else if (id == R.id.nav_volveralmacen) {
+        } else if (id == R.id.nav_registrarDireccion) {
+
+            Intent intent = new Intent(MenuActivity.this, DireccionActivity.class);
+            //intent.putExtra("item", result);
+            System.out.print("intent  " + intent);
+            startActivity(intent);
+
             //fragment = new VolverAlmacenFragment();
             //Intent newActivity = new Intent(this,RegresarAlmacenActivity.class);
             //startActivity(newActivity);

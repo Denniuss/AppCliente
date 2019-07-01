@@ -10,9 +10,9 @@
         android:title="Distribuciones" />
 
         <item
-            android:id="@+id/nav_volveralmacen"
+            android:id="@+id/nav_registrarDireccion"
             android:icon="@android:drawable/ic_dialog_info"
-            android:title="Retornar al almacén" />
+            android:title="Registrar dirección" />
         <!--        <item
             android:id="@+id/nav_habilidades"
             android:title="Habilidades" />

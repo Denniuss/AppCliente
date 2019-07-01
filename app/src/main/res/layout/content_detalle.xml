@@ -23,58 +23,148 @@
             android:layout_margin="10dp"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:src="@drawable/face01"
-                android:layout_height="200dp"
-                android:id="@+id/imagen"/>
-
-            <LinearLayout
+             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="Cliente"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:id="@+id/cliente"/>
+
+                 <TextView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:gravity="center_horizontal"
+                     android:text="Editar Dirección"
+                     android:textStyle="bold"
+                     android:textSize="20dp"/>
+
+                 <EditText
+                     android:id="@+id/nombreDireccion"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:hint=""
+                     android:inputType="textMultiLine" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:paddingTop="3dp"
-                    android:text="Dirección"
-                    android:id="@+id/direccion"/>
+                    android:text="Dirección"/>
+
+                 <EditText
+                     android:id="@+id/direccion"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:hint=""
+                     android:inputType="textMultiLine" />
+
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:paddingTop="3dp"
-                    android:text="Distrito"
-                    android:id="@+id/distrito"/>
+                    android:text="Departamento"/>
+
+                 <EditText
+                     android:id="@+id/departamento"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:hint=""
+                     android:inputType="textMultiLine" />
+
+                 <EditText
+                     android:id="@+id/iddepartamento"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:hint=""
+                     android:inputType="textMultiLine" />
+
+
+                 <Spinner
+                     android:id="@+id/spinnerDep"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"/>
+
+
+                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="3dp"
+                    android:text="Provincia"/>
+
+                 <TextView
+                     android:layout_marginBottom="16dp"
+                     android:layout_marginRight="8dp"
+                     android:id="@+id/idprovincia"
+                     android:layout_gravity="right"
+                     android:text=""
+                     android:textStyle="italic"
+                     android:textSize="16sp"
+                     android:visibility="visible"
+                     android:typeface="serif"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content" />
+
+                 <Spinner
+                     android:id="@+id/spinnerProv"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"/>
+
+                 <EditText
+                     android:id="@+id/provincia"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:hint=""
+                     android:inputType="textMultiLine" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:paddingTop="3dp"
-                    android:text="Estado"
-                    android:id="@+id/estado"/>
+                    android:text="Distrito"/>
 
-                <TextView
+                 <EditText
+                     android:id="@+id/distrito"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:hint=""
+                     android:inputType="textMultiLine" />
+
+                 <TextView
+                     android:layout_marginBottom="16dp"
+                     android:layout_marginRight="8dp"
+                     android:id="@+id/iddistrito"
+                     android:layout_gravity="right"
+                     android:text=""
+                     android:textStyle="italic"
+                     android:textSize="16sp"
+                     android:visibility="visible"
+                     android:typeface="serif"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content" />
+
+                 <Spinner
+                     android:id="@+id/spinnerDistr"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"/>
+
+                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:paddingTop="0dp"
-                    android:text="Idpedido"
-                    android:id="@+id/idpedido"
+                    android:text="IdDireccionDelivery"
+                    android:id="@+id/idDireccionDelivery"
                     android:visibility="invisible"/>
 
                 <LinearLayout
@@ -111,6 +201,7 @@
 
 
             </LinearLayout>
+
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

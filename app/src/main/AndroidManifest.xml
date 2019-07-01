@@ -67,6 +67,18 @@
             android:name=".MenuActivity"
             android:label="Menu"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <!--<activity
+            android:name=".DireccionActivity"
+            android:label="Direcciones"
+            android:theme="@style/AppTheme.NoActionBar" />-->
+
+        <activity android:name=".DireccionActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
+        </activity>
+
         <!--<activity
             android:name=".PerfilActivity"
             android:label="Perfil" />!-->

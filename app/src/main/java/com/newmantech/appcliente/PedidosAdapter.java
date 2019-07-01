@@ -79,6 +79,8 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.PedidoVi
                 //bundle.putString("curImagen", items.get(i).getImagenurl());
                 bundle.putString("curCliente", items.get(i).getCliente());
                 bundle.putString("curDireccion", items.get(i).getDireccion());
+
+                bundle.putString("curDireccion", items.get(i).getDireccion());
                 bundle.putString("curDistrito", items.get(i).getDistrito());
                 bundle.putString("curEstado", items.get(i).getEstado());
                 bundle.putInt("curIdpedido", items.get(i).getIdPedido());
