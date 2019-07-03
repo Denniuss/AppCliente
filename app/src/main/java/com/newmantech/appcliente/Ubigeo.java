@@ -93,6 +93,7 @@ public class Ubigeo {
 
     @Override
     public String toString() {
-        return nombreUbigeo;
+        //return "D:"+codigoDepartamento + "|P:"+codigoProvincia + "|D:"+codigoDistrito + "|U:"+ idUbigeo + "|N:" + nombreUbigeo;
+        return codigoDepartamento;
     }
 }

@@ -85,7 +85,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
                 //bundle.putString("curLatitud", items.get(i).getLatitud());
                 //bundle.putString("curLongitud", items.get(i).getLongitud());
 
-                Intent iconIntent = new Intent(view.getContext(), DetalleActivity.class);
+                Intent iconIntent = new Intent(view.getContext(), DetalleDireccionActivity.class);
                 iconIntent.putExtras(bundle);
                 view.getContext().startActivity(iconIntent);
             }

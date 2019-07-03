@@ -16,7 +16,9 @@ import android.widget.Toast;
 import com.newmantech.appcliente.utils.Utilitario;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,7 +26,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class DetalleActivity extends AppCompatActivity {
+public class DetalleDireccionActivity extends AppCompatActivity {
     //public ImageView imagen;
     //public TextView cliente;
     public Spinner spinnerDepartamento;
@@ -49,6 +51,11 @@ public class DetalleActivity extends AppCompatActivity {
     List<Ubigeo> listaProvinciaUbigeo = new ArrayList<>();
     List<Ubigeo> listaDistritoUbigeo = new ArrayList<>();
 
+    Map<String,Ubigeo> departamentoMap = new HashMap<>();
+    Map<String,Ubigeo> provinciaMap = new HashMap<>();
+    Map<String,Ubigeo> distitoMap = new HashMap<>();
+
+
     Retrofit retrofit = new Retrofit.Builder().baseUrl(Utilitario.baseUrlServio).addConverterFactory(GsonConverterFactory.create()).build();
     DireccionService direccionService = retrofit.create(DireccionService.class);
 
@@ -56,7 +63,7 @@ public class DetalleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalle);
+        setContentView(R.layout.activity_direccion_detalle);
 
 /*
         currentFragment = new DetallePedidoFragment();
@@ -94,9 +101,8 @@ public class DetalleActivity extends AppCompatActivity {
         Log.i("curidDepartamento", "body: " + getIntent().getExtras().getInt("curidDepartamento"));
 
         iddepartamento.setText(getIntent().getExtras().getInt("curidDepartamento")+"");
-        //idprovincia.setText(getIntent().getExtras().getInt("curidProvincia"));
-        //iddistrito.setText(getIntent().getExtras().getInt("curidDistrito"));
-
+        idprovincia.setText(getIntent().getExtras().getInt("curidProvincia")+"");
+        iddistrito.setText(getIntent().getExtras().getInt("curidDistrito")+"");
 
         Call<List<Ubigeo>> lista = direccionService.getListadoDepartamento();
 
@@ -114,6 +120,14 @@ public class DetalleActivity extends AppCompatActivity {
                     listaDepartamentoUbigeo.add(temp);
                     listaDepartamentoUbigeo.addAll(response.body());
 
+                    for(Ubigeo x: listaDepartamentoUbigeo) {
+                        Log.i("onResponse chamado", "body: " + x);
+                        if(!departamentoMap.containsKey(x.getCodigoDepartamento())){
+                            departamentoMap.put(x.getCodigoDepartamento(),x);
+                        }
+                    }
+
+
                     Log.i("SIZE ", "onResponse: listaDepartamentoUbigeo " + listaDepartamentoUbigeo.size());
                     cargarComboDepartamento();
                 }
@@ -125,9 +139,6 @@ public class DetalleActivity extends AppCompatActivity {
                 Log.e("onFaillure chamado ubig", t.getMessage());
             }
         });
-
-
-
 
 
         /*bundle.putLong("curIdDireccionDelivery", items.get(i).getIdDireccionDelivery());
@@ -230,8 +241,16 @@ public class DetalleActivity extends AppCompatActivity {
 
             }
         });
-        spinnerDepartamento.setSelection(Integer.parseInt(iddepartamento.getText()+""));
 
+        //Integer posicionDep = Integer.parseInt( departamentoMap.get(iddepartamento).getNombreUbigeo()+"");
+
+        ArrayAdapter adapter = (ArrayAdapter) spinnerDepartamento.getAdapter();
+        Log.i("SET ", "onResponse: adapter " + adapter);
+        Log.i("SET ", "onResponse: iddepartamento " + iddepartamento.getText());
+        //Log.i("SET2 ", "onResponse: ubigeo " + departamentoMap.get(iddepartamento.getText()).getNombreUbigeo());
+        //Integer posicionDep = adapter.getPosition(departamentoMap.get(iddepartamento.getText()).getNombreUbigeo());
+        //Log.i("SET3 ", "onResponse: adapter " + posicionDep);
+        //spinnerDepartamento.setSelection(posicionDep);
     }
 
     public void cargarComboProvincia() {
@@ -297,7 +316,28 @@ public class DetalleActivity extends AppCompatActivity {
 
             }
         });
+
+
+        Log.i("onResponse ", "idprovincia " + idprovincia.getText());
+
+        //spinnerProvincia.setSelection(Integer.parseInt(idprovincia.getText()+""));
+        spinnerProvincia.setSelection(getIndex(spinnerProvincia, "Lima"));
     }
+    private int getIndex(Spinner spinner, String myString){
+        Log.i("onResponse ", "getIndex " );
+
+        int index = 0;
+
+        for (int i=0;i<spinner.getCount();i++){
+            Log.i("onResponse ", "getItemAtPosition " + spinner.getItemAtPosition(i));
+            Log.i("onResponse ", "getSelectedItemId " + spinner.getSelectedItemId());
+            if (spinner.getItemAtPosition(i).equals(myString)){
+                index = i;
+            }
+        }
+        return index;
+    }
+
 
     public void cargarComboDistrito() {
         Log.i("onResponse ", "ArrayAdapter: ");
@@ -324,6 +364,8 @@ public class DetalleActivity extends AppCompatActivity {
 
             }
         });
+
+        //spinnerDistrito.setSelection(Integer.parseInt(iddistrito.getText()+""));
     }
 
 

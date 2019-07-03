@@ -92,7 +92,7 @@ public class DireccionAdapter extends RecyclerView.Adapter<DireccionAdapter.Dire
                 bundle.putInt("curidDistrito", items.get(i).getIdUbigeoDistrito());
 
 
-                Intent iconIntent = new Intent(view.getContext(), DetalleActivity.class);
+                Intent iconIntent = new Intent(view.getContext(), DetalleDireccionActivity.class);
                 iconIntent.putExtras(bundle);
                 view.getContext().startActivity(iconIntent);
             }
