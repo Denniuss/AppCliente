@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 public interface ProductoService {
 
     @GET("producto/listadoProducto")
-    Call<List<Producto>> getListadoCatalogoProducto();
+    Call<List<CatalogoProducto>> getListadoCatalogoProducto();
 
     @POST("pedido/actualizarEstadoPedido")
     Call<Integer> finalizarPedido(@Body PedidoPost pedido);

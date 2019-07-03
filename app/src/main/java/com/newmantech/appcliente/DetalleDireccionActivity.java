@@ -121,7 +121,7 @@ public class DetalleDireccionActivity extends AppCompatActivity {
                     listaDepartamentoUbigeo.addAll(response.body());
 
                     for(Ubigeo x: listaDepartamentoUbigeo) {
-                        Log.i("onResponse chamado", "body: " + x);
+                        Log.i("onResponse chamado", "body: " + x.getCodigoDepartamento() +"|"+x.getNombreUbigeo());
                         if(!departamentoMap.containsKey(x.getCodigoDepartamento())){
                             departamentoMap.put(x.getCodigoDepartamento(),x);
                         }
@@ -247,9 +247,13 @@ public class DetalleDireccionActivity extends AppCompatActivity {
         ArrayAdapter adapter = (ArrayAdapter) spinnerDepartamento.getAdapter();
         Log.i("SET ", "onResponse: adapter " + adapter);
         Log.i("SET ", "onResponse: iddepartamento " + iddepartamento.getText());
-        //Log.i("SET2 ", "onResponse: ubigeo " + departamentoMap.get(iddepartamento.getText()).getNombreUbigeo());
-        //Integer posicionDep = adapter.getPosition(departamentoMap.get(iddepartamento.getText()).getNombreUbigeo());
-        //Log.i("SET3 ", "onResponse: adapter " + posicionDep);
+        Log.i("SET2 ", "onResponse: MAP " + departamentoMap);
+        Log.i("SET3 ", "onResponse: MAP2 " + departamentoMap.get(iddepartamento.getText()+""));
+
+        Log.i("SET2 ", "onResponse: ubigeo " + departamentoMap.get(iddepartamento.getText()+"").getNombreUbigeo());
+        Integer posicionDep = adapter.getPosition(departamentoMap.get(iddepartamento.getText()+"").getNombreUbigeo());
+        Log.i("SET3 ", "onResponse: adapter " + posicionDep);
+        //spinnerDepartamento.position
         //spinnerDepartamento.setSelection(posicionDep);
     }
 

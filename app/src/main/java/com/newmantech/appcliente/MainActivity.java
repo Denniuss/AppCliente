@@ -19,13 +19,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-    private List<Producto> items = new ArrayList();
+    private List<CatalogoProducto> items = new ArrayList();
     private RecyclerView recycler;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager lManager;
     private Context contexto = this;
 
-    List<Producto> listaDistribucion = new ArrayList<>();
+    List<CatalogoProducto> listaDistribucion = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,64 +36,6 @@ public class MainActivity extends AppCompatActivity {
         //registrarIncidencia();
     }
 
-    private static void registrarIncidencia(){
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(Utilitario.baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        ProductoService distribucionService = retrofit.create(ProductoService.class);
-        PedidoPost pedidoTemP = new PedidoPost();
-        pedidoTemP.setIdPedido(11);
-        pedidoTemP.setObservacion("Pedido con incidencia Android");
-
-        Call<Integer> resultado = distribucionService.registrarIncidencia(pedidoTemP);
-        resultado.enqueue(new Callback<Integer>() {
-            @Override
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                Log.i("registrarIncidencia ", "onResponse: "+response.code());
-                Log.i("Incidencia message", "onResponse: "+response.message());
-
-                if(response.isSuccessful()) {
-                    Log.i("INCIDENCIA", "onResponse: " + response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
-                Log.e("onFaillure chamado ", t.getMessage());
-            }
-        });
-    }
-
-    private static void finalizarPedido(){
-       Retrofit retrofit = new Retrofit.Builder().baseUrl(Utilitario.baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        ProductoService distribucionService = retrofit.create(ProductoService.class);
-        PedidoPost pedidoTemP = new PedidoPost();
-        pedidoTemP.setIdPedido(11);
-        pedidoTemP.setObservacion("Pedido exitoso Android");
-
-        Call<Integer> resultado = distribucionService.finalizarPedido(pedidoTemP);
-        resultado.enqueue(new Callback<Integer>() {
-            @Override
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                Log.i("finalizarPedido ", "onResponse: "+response.code());
-                Log.i("finalizarPedido message", "onResponse: "+response.message());
-
-                if(response.isSuccessful()) {
-                    Log.i("FINALIZA_PEDIDO", "onResponse: " + response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
-                Log.e("onFaillure chamado ", t.getMessage());
-            }
-        });
-    }
-
     private void FillPedidos(){
        Retrofit retrofit = new Retrofit.Builder().baseUrl(Utilitario.baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -101,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
         ProductoService productoService = retrofit.create(ProductoService.class);
 
-        Call<List<Producto>> lista = productoService.getListadoCatalogoProducto();
-        lista.enqueue(new Callback<List<Producto>>() {
+        Call<List<CatalogoProducto>> lista = productoService.getListadoCatalogoProducto();
+        lista.enqueue(new Callback<List<CatalogoProducto>>() {
             @Override
-            public void onResponse(Call<List<Producto>> call, Response<List<Producto>> response) {
+            public void onResponse(Call<List<CatalogoProducto>> call, Response<List<CatalogoProducto>> response) {
                 Log.i("onResponse chamado", "onResponse: ");
 
                 Log.i("onResponse chamado", "onResponse: " + response.isSuccessful());
@@ -114,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
                     listaDistribucion = response.body();
 
-                    for(Producto dis : listaDistribucion ){
-                        Log.i("CLIENTE  ", "onResponse: " + dis.getCodigoProducto()+"-"+dis.getCodigoNetSuite());
+                    for(CatalogoProducto dis : listaDistribucion ){
+                        //Log.i("CLIENTE  ", "onResponse: " + dis.getCodigoProducto()+"-"+dis.getCodigoNetSuite());
 
-                        items.add(new Producto());
+                        items.add(new CatalogoProducto());
                     }
                     /*
                     items.add(new Pedido(1,R.drawable.face01, "Marlon Leandro", "Av. Chimu 412 Urb. Zarate", "SJL", "Aniversario","Pendiente","-12.02456","-77.00057",""));
@@ -138,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     lManager = new LinearLayoutManager(contexto);
                     recycler.setLayoutManager(lManager);
 
-                    adapter = new ProductoAdapter(items);
+                    adapter = new CatalogoProductoAdapter(items);
                     recycler.setAdapter(adapter);
 
                 }
@@ -146,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Producto>> call, Throwable t) {
+            public void onFailure(Call<List<CatalogoProducto>> call, Throwable t) {
                 Log.e("onFaillure chamado ", t.getMessage());
             }
         });

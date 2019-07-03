@@ -7,13 +7,23 @@
     <item
         android:icon="@android:drawable/ic_dialog_email"
         android:id="@+id/nav_bandeja"
-        android:title="Distribuciones" />
+        android:title="Productos" />
 
         <item
             android:id="@+id/nav_registrarDireccion"
             android:icon="@android:drawable/ic_dialog_info"
             android:title="Registrar dirección" />
-        <!--        <item
+
+        <item
+            android:id="@+id/nav_carritoCompra"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="Carrito de Compras" />
+
+        <!--<item
+            android:id="@+id/nav_direcciones"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="Direcciones de entrega" />
+                <item
             android:id="@+id/nav_habilidades"
             android:title="Habilidades" />
         <item

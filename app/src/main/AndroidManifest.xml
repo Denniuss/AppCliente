@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.newmantech.appcliente">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,14 +16,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ComfirmaCompraActivity"></activity>
+        <activity android:name=".CarritoCompraActivity" />
+        <activity
+            android:name=".DetalleProducto"
+            android:label="@string/title_activity_detalle_producto"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ListadoProductosNActivity"
+            android:label="@string/title_activity_listado_productos_n"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
-        <!--<activity
+        <!--
+<activity
             android:name=".RegresarAlmacenActivity"
-            android:label="@string/title_activity_regresar_almacen"></activity>> -->
+            android:label="@string/title_activity_regresar_almacen"></activity>>
+        -->
         <activity android:name=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -30,10 +43,18 @@
 
         <uses-library
             android:name="org.apache.http.legacy"
-            android:required="false"/>
+            android:required="false" />
+        <uses-library android:name="com.google.android.maps" />
 
-        <uses-library
-            android:name="com.google.android.maps"/>
+        <activity
+            android:name=".DetalleActivity"
+            android:label="@string/title_activity_bio"
+            android:parentActivityName=".Pre_LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Pre_LoginActivity" />
+        </activity>
 
         <activity
             android:name=".DetalleDireccionActivity"
@@ -60,9 +81,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<activity
+        <!--
+<activity
             android:name=".AtenderPedidoMapsActivity"
-            android:label="@string/title_activity_atender_pedido_maps" />!-->
+            android:label="@string/title_activity_atender_pedido_maps" />!
+        -->
         <activity
             android:name=".MenuActivity"
             android:label="Menu"
@@ -80,13 +103,13 @@
         </activity>
 
         <!--<activity
+            <activity
             android:name=".PerfilActivity"
-            android:label="Perfil" />!-->
-
+            android:label="Perfil" />!
+        -->
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

@@ -82,7 +82,7 @@ public class MenuActivity extends AppCompatActivity
 
         if (id == R.id.nav_bandeja) {
 
-            Intent intent = new Intent(MenuActivity.this, MainActivity.class);
+            Intent intent = new Intent(MenuActivity.this, ListadoProductosNActivity.class);
             //intent.putExtra("item", result);
             System.out.print("intent  " + intent);
             startActivity(intent);
@@ -101,6 +101,11 @@ public class MenuActivity extends AppCompatActivity
             System.out.print("intent  " + intent);
             startActivity(intent);
 
+        } else if (id == R.id.nav_carritoCompra) {
+            //fragment = new VolverAlmacenFragment();
+            Intent newActivity = new Intent(this,CarritoCompraActivity.class);
+            startActivity(newActivity);
+            //} else if (id == R.id.nav_direcciones) {
             //fragment = new VolverAlmacenFragment();
             //Intent newActivity = new Intent(this,RegresarAlmacenActivity.class);
             //startActivity(newActivity);
