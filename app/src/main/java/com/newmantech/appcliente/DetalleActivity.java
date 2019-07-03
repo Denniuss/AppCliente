@@ -9,20 +9,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.newmantech.appcliente.utils.Utilitario;
+import com.squareup.picasso.Picasso;
 
 public class DetalleActivity extends AppCompatActivity {
-    public ImageView imagen;
-    public TextView cliente;
-    public TextView direccion;
-    public TextView distrito;
-    public TextView estado;
-    public TextView latitud;
-    public TextView longitud;
-    public TextView idpedido;
-    public Button btnMapa;
+    public ImageView foto;
+    public TextView marca;
+    public TextView nombre;
+    public TextView preciocompra;
+    public TextView porcentajedescuento;
+    public TextView preciocatalogo;
+    public Button btnDetalles;
+    public Button btnCarrito;
+    public Button btnComprar;
+
 
     Fragment currentFragment;
     @Override
@@ -42,89 +42,74 @@ public class DetalleActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        cliente = (TextView) findViewById(R.id.cliente);
-        direccion = (TextView) findViewById(R.id.direccion);
-        distrito = (TextView) findViewById(R.id.distrito);
-        estado = (TextView) findViewById(R.id.estado);
-        imagen = (ImageView) findViewById(R.id.imagen);
-        idpedido = (TextView) findViewById(R.id.idpedido);
-        latitud = (TextView) findViewById(R.id.latitud);
-        longitud = (TextView) findViewById(R.id.longitud);
-        btnMapa = (Button) findViewById(R.id.btnMapa);
+
+        foto = (ImageView) findViewById(R.id.foto);
+        marca = (TextView) findViewById(R.id.marca);
+        nombre = (TextView) findViewById(R.id.nombre);
+        preciocompra = (TextView) findViewById(R.id.preciocompra);
+        porcentajedescuento = (TextView) findViewById(R.id.porcentajedescuento);
+        //idpedido = (TextView) findViewById(R.id.idpedido);
+        preciocatalogo = (TextView) findViewById(R.id.preciocatalogo);
+        btnDetalles = (Button) findViewById(R.id.btnDetalles);
+        btnCarrito = (Button) findViewById(R.id.btnCarrito);
+        btnComprar = (Button) findViewById(R.id.btnComprar);
 
 
-        cliente.setText(getIntent().getExtras().getString("curCliente"));
-        direccion.setText("Direccion: " + getIntent().getExtras().getString("curDireccion"));
-        distrito.setText("Distrito: " + getIntent().getExtras().getString("curDistrito"));
-        estado.setText("Estado: " + getIntent().getExtras().getString("curEstado"));
-        imagen.setImageResource(getIntent().getExtras().getInt("curImagen"));
-        idpedido.setText(String.valueOf(getIntent().getExtras().getInt("curIdpedido")));
-        latitud.setText(getIntent().getExtras().getString("curLatitud"));
-        longitud.setText(getIntent().getExtras().getString("curLongitud"));
+        marca.setText(getIntent().getExtras().getString("curMarca"));
+        nombre.setText(getIntent().getExtras().getString("curNombre"));
+        preciocompra.setText("Precio Ant. : S/ " + getIntent().getExtras().getString("curPrecioCompra"));
+        porcentajedescuento.setText("Descuento : -" + getIntent().getExtras().getString("curPorcentajeDescuento"));
 
-        btnMapa.setOnClickListener(new View.OnClickListener(){
+        //idpedido.setText(String.valueOf(getIntent().getExtras().getInt("curIdpedido")));
+        preciocatalogo.setText("Precio : S/ " + getIntent().getExtras().getString("curPrecioCatalogo"));
+
+        Picasso.with(foto.getContext())
+                .load(getIntent().getExtras().getString("curFoto")).into(foto);
+
+        btnDetalles.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
-                MostrarMapa();
+                MostrarDetalles();
             }
         });
 
-        //Picasso.with(imagen.getContext())
-          //      .load(getIntent().getExtras().getString("curImagen")).into(imagen);
-    }
-
-    private void MostrarMapa(){
-        if(latitud.getText().toString().isEmpty()||longitud.getText().toString().isEmpty()){
-            /*Toast.makeText(this,getString(R.string.geo_entercords),Toast.LENGTH_SHORT).show();*/
-        }else{
-            String pLatitud = latitud.getText().toString();
-            String pLongitud = longitud.getText().toString();
-            String pidpedido = idpedido.getText().toString();
-
-
-            if(!Utilitario.isNumeric(pLatitud)&&!Utilitario.isNumeric(pLongitud)){
-                Toast.makeText(this,"Ingrese valores numericos",Toast.LENGTH_SHORT).show();
-            }else{
-
-                double nLatitud = Double.parseDouble(pLatitud);
-                double nLongitud= Double.parseDouble(pLongitud);
-                String nidpedido = pidpedido;
-
-                Bundle bundle = new Bundle();
-                bundle.putDouble("nLatitud",nLatitud);
-                bundle.putDouble("nLongitud",nLongitud);
-                bundle.putString("nidpedido",nidpedido);
-                /*Intent newActivity = new Intent(this,AtenderPedidoMapsActivity.class);
-                newActivity.putExtras(bundle);
-                this.startActivity(newActivity);*/
+        btnCarrito.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                MostrarCarrito();
             }
-        }
+        });
+
+
+        btnComprar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                MostrarCompra();
+            }
+        });
+
+
+
     }
 
-/*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+    private void MostrarCarrito(){
+        //Bundle bundle = new Bundle();
+       // bundle.putDouble("n",nLatitud);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId())
-        {
-            case R.id.menu_detalle:
-                currentFragment = new DetallePedidoFragment();
-                break;
-            case R.id.menu_maps:
-                currentFragment = new PedidoMapFragment();
-                break;
-        }
-        changeFragment(currentFragment);
-        return super.onOptionsItemSelected(item);
+        Intent newActivity = new Intent(this,CarritoCompraActivity.class);
+        //newActivity.putExtras(bundle);
+        this.startActivity(newActivity);
     }
-     private  void changeFragment(Fragment fragment){
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container,fragment).commit();
-     }
-     */
+    private void MostrarCompra(){
+
+        Intent newActivity = new Intent(this,ComfirmaCompraActivity.class);
+        //newActivity.putExtras(bundle);
+        this.startActivity(newActivity);
+    }
+    private void MostrarDetalles(){
+        Intent intent = new Intent(this, DetalleProducto.class);
+        //intent.putExtra("item", result);
+        System.out.print("intent  " + intent);
+        startActivity(intent);
+    }
 }
