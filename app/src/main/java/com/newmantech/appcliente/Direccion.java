@@ -7,6 +7,10 @@ import java.util.Date;
 
 public class Direccion {
 
+    @SerializedName("establecerDireccion")
+    @Expose
+    private Boolean establecerDireccion;
+
     @SerializedName("idDireccionDelivery")
     @Expose
     private Long idDireccionDelivery;
@@ -159,17 +163,21 @@ public class Direccion {
     @Expose
     private Integer diasEntrega;
 
-    @SerializedName("idUbigeoDistrito")
+    @SerializedName("codigoDepartamento")
     @Expose
-    private Integer idUbigeoDistrito;
+    private String codigoDepartamento;
 
-    @SerializedName("idUbigeoProvincia")
+    @SerializedName("codigoProvincia")
     @Expose
-    private Integer idUbigeoProvincia;
+    private String codigoProvincia;
 
-    @SerializedName("idUbigeoDepartamento")
+    @SerializedName("codigoDistrito")
     @Expose
-    private Integer idUbigeoDepartamento;
+    private String codigoDistrito;
+
+    @SerializedName("idUbigeo")
+    @Expose
+    private Integer idUbigeo;
 
     @SerializedName("esFechaProgramada")
     @Expose
@@ -477,30 +485,6 @@ public class Direccion {
         this.diasEntrega = diasEntrega;
     }
 
-    public Integer getIdUbigeoDistrito() {
-        return idUbigeoDistrito;
-    }
-
-    public void setIdUbigeoDistrito(Integer idUbigeoDistrito) {
-        this.idUbigeoDistrito = idUbigeoDistrito;
-    }
-
-    public Integer getIdUbigeoProvincia() {
-        return idUbigeoProvincia;
-    }
-
-    public void setIdUbigeoProvincia(Integer idUbigeoProvincia) {
-        this.idUbigeoProvincia = idUbigeoProvincia;
-    }
-
-    public Integer getIdUbigeoDepartamento() {
-        return idUbigeoDepartamento;
-    }
-
-    public void setIdUbigeoDepartamento(Integer idUbigeoDepartamento) {
-        this.idUbigeoDepartamento = idUbigeoDepartamento;
-    }
-
     public Boolean getEsFechaProgramada() {
         return esFechaProgramada;
     }
@@ -515,5 +499,59 @@ public class Direccion {
 
     public void setFechaEntregaF(String fechaEntregaF) {
         this.fechaEntregaF = fechaEntregaF;
+    }
+
+    public void setCodigoDepartamento(String codigoDepartamento) {
+        this.codigoDepartamento = codigoDepartamento;
+    }
+
+    public String getCodigoProvincia() {
+        return codigoProvincia;
+    }
+
+    public void setCodigoProvincia(String codigoProvincia) {
+        this.codigoProvincia = codigoProvincia;
+    }
+
+    public String getCodigoDistrito() {
+        return codigoDistrito;
+    }
+
+    public void setCodigoDistrito(String codigoDistrito) {
+        this.codigoDistrito = codigoDistrito;
+    }
+
+    public String getCodigoDepartamento() {
+        return codigoDepartamento;
+    }
+
+    public Integer getIdUbigeo() {
+        return idUbigeo;
+    }
+
+    public void setIdUbigeo(Integer idUbigeo) {
+        this.idUbigeo = idUbigeo;
+    }
+
+    public Boolean getEstablecerDireccion() {
+        return establecerDireccion;
+    }
+
+    public void setEstablecerDireccion(Boolean establecerDireccion) {
+        this.establecerDireccion = establecerDireccion;
+    }
+
+    @Override
+    public String toString() {
+        return "Direccion{" +
+                "establecerDireccion=" + establecerDireccion +
+                ", idDireccionDelivery=" + idDireccionDelivery +
+                ", direccion='" + direccion + '\'' +
+                ", nombreContacto='" + nombreContacto + '\'' +
+                ", telefonoContacto='" + telefonoContacto + '\'' +
+                ", referenciaDireccion='" + referenciaDireccion + '\'' +
+                ", nombreDireccion='" + nombreDireccion + '\'' +
+                ", idUbigeo=" + idUbigeo +
+                '}';
     }
 }

@@ -1,5 +1,6 @@
 package com.newmantech.appcliente;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,8 +46,15 @@ public class DetalleDireccionActivity extends AppCompatActivity {
 
     public TextView direccion;
     public TextView nombreDireccion;
+
+
+    public TextView nombreContacto;
+    public TextView telefonoContacto;
+    public TextView referencia;
+    public CheckBox establecerDireccionCheck;
+
     public TextView iddirecciondelivery;
-    public Button btnMapa;
+    public Button btnGuardarDireccion;
 
     List<Ubigeo> listaDepartamentoUbigeo = new ArrayList<>();
     List<Ubigeo> listaProvinciaUbigeo = new ArrayList<>();
@@ -86,23 +95,37 @@ public class DetalleDireccionActivity extends AppCompatActivity {
         distrito = (TextView) findViewById(R.id.distrito);
         direccion = (TextView) findViewById(R.id.direccion);
         nombreDireccion = (TextView) findViewById(R.id.nombreDireccion);
-        btnMapa = (Button) findViewById(R.id.btnMapa);
+        btnGuardarDireccion = (Button) findViewById(R.id.btnGuardarDireccion);
 
         iddepartamento = (TextView) findViewById(R.id.iddepartamento);
         idprovincia = (TextView) findViewById(R.id.idprovincia);
         iddistrito = (TextView) findViewById(R.id.iddistrito);
 
+        nombreContacto = (TextView) findViewById(R.id.nombreContacto);
+        telefonoContacto = (TextView) findViewById(R.id.telefonoContacto);
+        referencia = (TextView) findViewById(R.id.referencia);
+        establecerDireccionCheck = (CheckBox) findViewById(R.id.establecerDireccionCheck);
+
+        nombreContacto.setText( getIntent().getExtras().getString("curNombreContacto"));
+        telefonoContacto.setText( getIntent().getExtras().getString("curTelefonoContacto"));
+        referencia.setText( getIntent().getExtras().getString("curReferencia"));
+        establecerDireccionCheck.setChecked( getIntent().getExtras().getBoolean("curEstablecerDireccion"));
+
         nombreDireccion.setText( getIntent().getExtras().getString("curNombreDireccion"));
-        departamento.setText(getIntent().getExtras().getString("curDepartamento"));
-        provincia.setText(getIntent().getExtras().getString("curProvincia"));
-        distrito.setText(getIntent().getExtras().getString("curDistrito"));
+        //departamento.setText(getIntent().getExtras().getString("curDepartamento"));
+        //provincia.setText(getIntent().getExtras().getString("curProvincia"));
+        //distrito.setText(getIntent().getExtras().getString("curDistrito"));
         direccion.setText(getIntent().getExtras().getString("curDireccion"));
 
-        Log.i("curidDepartamento", "body: " + getIntent().getExtras().getInt("curidDepartamento"));
+        Log.i("curidDepartamento", "body: " + getIntent().getExtras().getString("curidDepartamento"));
 
-        iddepartamento.setText(getIntent().getExtras().getInt("curidDepartamento")+"");
-        idprovincia.setText(getIntent().getExtras().getInt("curidProvincia")+"");
-        iddistrito.setText(getIntent().getExtras().getInt("curidDistrito")+"");
+        iddepartamento.setText(getIntent().getExtras().getString("curidDepartamento")+"");
+        idprovincia.setText(getIntent().getExtras().getString("curidProvincia")+"");
+        iddistrito.setText(getIntent().getExtras().getString("curidDistrito")+"");
+
+        iddirecciondelivery.setText(getIntent().getExtras().getLong("curidDireccionDelivery")+"");
+
+        Log.i("curidDireccionDelivery", "body: " + getIntent().getExtras().getLong("curidDireccionDelivery")+"");
 
         Call<List<Ubigeo>> lista = direccionService.getListadoDepartamento();
 
@@ -120,6 +143,9 @@ public class DetalleDireccionActivity extends AppCompatActivity {
                     listaDepartamentoUbigeo.add(temp);
                     listaDepartamentoUbigeo.addAll(response.body());
 
+                    departamentoMap = new HashMap<>();
+                    provinciaMap = new HashMap<>();
+                    distitoMap = new HashMap<>();
                     for(Ubigeo x: listaDepartamentoUbigeo) {
                         Log.i("onResponse chamado", "body: " + x.getCodigoDepartamento() +"|"+x.getNombreUbigeo());
                         if(!departamentoMap.containsKey(x.getCodigoDepartamento())){
@@ -158,7 +184,7 @@ public class DetalleDireccionActivity extends AppCompatActivity {
         //latitud.setText(getIntent().getExtras().getString("curLatitud"));
         //longitud.setText(getIntent().getExtras().getString("curLongitud"));
 
-        btnMapa.setOnClickListener(new View.OnClickListener(){
+        btnGuardarDireccion.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
                 MostrarMapa();
@@ -222,6 +248,16 @@ public class DetalleDireccionActivity extends AppCompatActivity {
                                 listaProvinciaUbigeo.add(temp);
                                 listaProvinciaUbigeo.addAll(response.body());
 
+                                provinciaMap = new HashMap<>();
+                                distitoMap = new HashMap<>();
+
+                                for(Ubigeo x: listaProvinciaUbigeo) {
+                                    Log.i("onResponse chamado", "body: " + x.getCodigoDepartamento() +"|"+x.getNombreUbigeo());
+                                    if(!provinciaMap.containsKey(x.getCodigoProvincia())){
+                                        provinciaMap.put(x.getCodigoProvincia(),x);
+                                    }
+                                }
+
                                 Log.i("SIZE ", "onResponse: listaProvinciaUbigeo " + listaProvinciaUbigeo.size());
                                 cargarComboProvincia();
                             }
@@ -253,9 +289,28 @@ public class DetalleDireccionActivity extends AppCompatActivity {
         Log.i("SET2 ", "onResponse: ubigeo " + departamentoMap.get(iddepartamento.getText()+"").getNombreUbigeo());
         Integer posicionDep = adapter.getPosition(departamentoMap.get(iddepartamento.getText()+"").getNombreUbigeo());
         Log.i("SET3 ", "onResponse: adapter " + posicionDep);
+
+        spinnerDepartamento.setSelection(obtenerPosicionItem(spinnerDepartamento,departamentoMap.get(iddepartamento.getText()+"").getNombreUbigeo()));
         //spinnerDepartamento.position
         //spinnerDepartamento.setSelection(posicionDep);
     }
+
+    public static int obtenerPosicionItem(Spinner spinner, String fruta) {
+        //Creamos la variable posicion y lo inicializamos en 0
+        int posicion = 0;
+        //Recorre el spinner en busca del ítem que coincida con el parametro `String fruta`
+        //que lo pasaremos posteriormente
+        for (int i = 0; i < spinner.getCount(); i++) {
+            //Almacena la posición del ítem que coincida con la búsqueda
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(fruta)) {
+                posicion = i;
+            }
+        }
+        //Devuelve un valor entero (si encontro una coincidencia devuelve la
+        // posición 0 o N, de lo contrario devuelve 0 = posición inicial)
+        return posicion;
+    }
+
 
     public void cargarComboProvincia() {
         Log.i("onResponse ", "ArrayAdapter: ");
@@ -299,6 +354,14 @@ public class DetalleDireccionActivity extends AppCompatActivity {
                                 listaDistritoUbigeo .add(temp);
                                 listaDistritoUbigeo .addAll(response.body());
 
+                                distitoMap = new HashMap<>();
+                                for(Ubigeo x: listaDistritoUbigeo) {
+                                    Log.i("onResponse chamado", "listaDistritoUbigeo body: " +"|"+x.getIdUbigeo() + x.getCodigoDistrito() +"|"+x.getNombreUbigeo());
+                                    if(!distitoMap.containsKey(x.getCodigoDistrito()+"")){
+                                        distitoMap.put(x.getCodigoDistrito()+"",x);
+                                    }
+                                }
+
                                 Log.i("SIZE ", "onResponse: listaDistritoUbigeo " + listaDistritoUbigeo.size());
                                 cargarComboDistrito();
                             }
@@ -322,10 +385,14 @@ public class DetalleDireccionActivity extends AppCompatActivity {
         });
 
 
-        Log.i("onResponse ", "idprovincia " + idprovincia.getText());
+        Log.i("onResponse ", "idprovincia select" + idprovincia.getText());
+        Log.i("onResponse ", "idprovincia provinciaMap" + provinciaMap);
 
         //spinnerProvincia.setSelection(Integer.parseInt(idprovincia.getText()+""));
-        spinnerProvincia.setSelection(getIndex(spinnerProvincia, "Lima"));
+        //spinnerProvincia.setSelection(getIndex(spinnerProvincia, "Lima"));
+
+        spinnerProvincia.setSelection(obtenerPosicionItem(spinnerProvincia,provinciaMap.get(idprovincia.getText()+"").getNombreUbigeo()));
+
     }
     private int getIndex(Spinner spinner, String myString){
         Log.i("onResponse ", "getIndex " );
@@ -358,10 +425,13 @@ public class DetalleDireccionActivity extends AppCompatActivity {
                 //Ubigeo ubigeo = (Ubigeo) parent.getSelectedItem();
                 //displayUbigeoData(ubigeo);
                 //Toast.makeText(this,list1.get(position)+"",Toast.LENGTH_SHORT).show();
-                Integer ids = listaDistritoUbigeo.get(position).getIdUbigeo();
+                String idDistrito = listaDistritoUbigeo.get(position).getCodigoDistrito();
                 String desc = listaDistritoUbigeo.get(position).getNombreUbigeo();
                 //Toast.makeText(this,desc,Toast.LENGTH_SHORT).show();
-                Log.e("Log", "id " + ids + " desc " + desc);
+                Log.e("Log", "id " + idDistrito + " desc " + desc);
+                //iddistrito.setText(idDistrito+"");
+                Log.e("Log", "onItemSelected idDistrito " + idDistrito );
+                iddistrito.setText(idDistrito);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -369,7 +439,10 @@ public class DetalleDireccionActivity extends AppCompatActivity {
             }
         });
 
-        //spinnerDistrito.setSelection(Integer.parseInt(iddistrito.getText()+""));
+        Log.i("onResponse ", "iddistrito select " + iddistrito.getText());
+        Log.i("onResponse ", "iddistrito distitoMap" + distitoMap);
+
+        spinnerDistrito.setSelection(obtenerPosicionItem(spinnerDistrito,distitoMap.get(iddistrito.getText()+"").getNombreUbigeo()));
     }
 
 
@@ -387,6 +460,65 @@ public class DetalleDireccionActivity extends AppCompatActivity {
     }
 
     private void MostrarMapa(){
+
+        //Agregar Guardado de finalizacion de Atencion
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Utilitario.baseUrlServio)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        DireccionService direccionService = retrofit.create(DireccionService.class);
+        Direccion direccionTemp = new Direccion();
+        direccionTemp.setDireccion(direccion.getText().toString());
+        direccionTemp.setNombreDireccion(nombreDireccion.getText().toString());
+        direccionTemp.setIdDireccionDelivery((Long.valueOf(iddirecciondelivery.getText()+"")));
+
+        direccionTemp.setNombreContacto(nombreContacto.getText().toString());
+        direccionTemp.setTelefonoContacto(telefonoContacto.getText().toString());
+        direccionTemp.setReferenciaDireccion(referencia.getText().toString());
+        direccionTemp.setEstablecerDireccion(establecerDireccionCheck.isChecked());
+
+        Log.i("onResponse ", "actualizado referencia " + referencia.getText().toString());
+        Log.i("onResponse ", "actualizado iddistrito " + iddistrito.getText().toString());
+
+
+        Ubigeo ubigeoTemp =  distitoMap.get(iddistrito.getText()+"");
+        Log.i("onResponse ", "Guardar Direccion ubigeoTemp " + ubigeoTemp);
+        if(null!=ubigeoTemp) {
+            Log.i("onResponse ", "Guardar Direccion ubigeoTemp existe");
+            Integer idUbigeo = ubigeoTemp.getIdUbigeo();
+            Log.i("onResponse ", "Guardar Direccion ubigeoTemp idUbigeo " + idUbigeo);
+            direccionTemp.setIdUbigeo(idUbigeo);
+        }
+        Cliente cliente = new Cliente();
+        cliente.setIdCliente(3339);
+        cliente.setDireccionDelivery(direccionTemp);
+
+        Log.i("onResponse ", "Guardar Direccion " + direccionTemp);
+
+        Call<Integer> resultado = direccionService.registrarDireccion(cliente);
+
+        resultado.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                Log.i("registrarDireccion ", "onResponse: "+response.code());
+                Log.i("Direccion message", "onResponse: "+response.message());
+
+                if(response.isSuccessful()) {
+                    Log.i("Direccion", "onResponse: " + response.body());
+
+                    finish();
+                    Intent intent = new Intent(DetalleDireccionActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                Log.e("onFaillure Direccion", t.getMessage());
+            }
+        });
+
+
 
     }
 

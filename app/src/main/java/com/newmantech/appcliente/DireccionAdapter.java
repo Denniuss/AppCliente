@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +67,8 @@ public class DireccionAdapter extends RecyclerView.Adapter<DireccionAdapter.Dire
         //Picasso.with(viewHolder.imagen.getContext())
                // .load(items.get(i).getImagenurl()).into(viewHolder.imagen);
 
+        Log.i("onResponse Adapter", "Response ubigeo: " + items.get(i));
+
         viewHolder.nombreDireccion.setText(items.get(i).getNombreDireccion());
         viewHolder.direccion.setText(items.get(i).getDireccion());
         //viewHolder.direccion.setText("Dirección: " + items.get(i).getDireccion());
@@ -87,10 +90,17 @@ public class DireccionAdapter extends RecyclerView.Adapter<DireccionAdapter.Dire
                 bundle.putString("curDistrito", items.get(i).getDistrito());
                 bundle.putString("curDireccion", items.get(i).getDireccion());
 
-                bundle.putInt("curidDepartamento", items.get(i).getIdUbigeoDepartamento());
-                bundle.putInt("curidProvincia", items.get(i).getIdUbigeoProvincia());
-                bundle.putInt("curidDistrito", items.get(i).getIdUbigeoDistrito());
+                bundle.putString("curReferencia", items.get(i).getReferenciaDireccion());
+                bundle.putString("curTelefonoContacto", items.get(i).getTelefonoContacto());
+                bundle.putString("curNombreContacto", items.get(i).getNombreContacto());
+                bundle.putBoolean("curEstablecerDireccion", items.get(i).getEstablecerDireccion());
 
+                bundle.putString("curidDepartamento", items.get(i).getCodigoDepartamento());
+                bundle.putString("curidProvincia", items.get(i).getCodigoProvincia());
+                bundle.putString("curidDistrito", items.get(i).getCodigoDistrito());
+                Log.i("onResponse Adapter", "Response idDireccionDelivery: " + items.get(i).getIdDireccionDelivery());
+
+                bundle.putLong("curidDireccionDelivery", items.get(i).getIdDireccionDelivery());
 
                 Intent iconIntent = new Intent(view.getContext(), DetalleDireccionActivity.class);
                 iconIntent.putExtras(bundle);

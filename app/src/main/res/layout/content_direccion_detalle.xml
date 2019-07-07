@@ -17,6 +17,11 @@
         app:cardCornerRadius="4dp"
         android:id="@+id/pedidoCardView">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,6 +34,32 @@
                 android:layout_margin="10dp"
                 android:orientation="vertical">
 
+                 <EditText
+                     android:id="@+id/iddepartamento"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:hint=""
+                     android:visibility="gone"
+                     android:inputType="textMultiLine" />
+
+                 <EditText
+                     android:id="@+id/idprovincia"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:hint=""
+                     android:visibility="gone"
+                     android:inputType="textMultiLine" />
+
+                 <EditText
+                     android:id="@+id/iddistrito"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:hint=""
+                     android:visibility="gone"
+                     android:inputType="textMultiLine" />
 
                  <TextView
                      android:layout_width="match_parent"
@@ -61,30 +92,28 @@
                      android:hint=""
                      android:inputType="textMultiLine" />
 
+                 <TextView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:gravity="center_horizontal"
+                     android:paddingTop="3dp"
+                     android:text="Referencia"/>
+
+                 <EditText
+                     android:id="@+id/referencia"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:hint=""
+                     android:inputType="textMultiLine" />
+
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:paddingTop="3dp"
-                    android:text="Departamento"/>
-
-                 <EditText
-                     android:id="@+id/departamento"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_gravity="center"
-                     android:hint=""
-                     android:inputType="textMultiLine" />
-
-                 <EditText
-                     android:id="@+id/iddepartamento"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_gravity="center"
-                     android:hint=""
-                     android:inputType="textMultiLine" />
-
+                    android:text="Departamentoo"/>
 
                  <Spinner
                      android:id="@+id/spinnerDep"
@@ -99,30 +128,10 @@
                     android:paddingTop="3dp"
                     android:text="Provincia"/>
 
-                 <TextView
-                     android:layout_marginBottom="16dp"
-                     android:layout_marginRight="8dp"
-                     android:id="@+id/idprovincia"
-                     android:layout_gravity="right"
-                     android:text=""
-                     android:textStyle="italic"
-                     android:textSize="16sp"
-                     android:typeface="serif"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content" />
-
                  <Spinner
                      android:id="@+id/spinnerProv"
                      android:layout_width="match_parent"
                      android:layout_height="wrap_content"/>
-
-                 <EditText
-                     android:id="@+id/provincia"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_gravity="center"
-                     android:hint=""
-                     android:inputType="textMultiLine" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -131,8 +140,22 @@
                     android:paddingTop="3dp"
                     android:text="Distrito"/>
 
+                 <Spinner
+                     android:id="@+id/spinnerDistr"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"/>
+
+
+
+                 <TextView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:gravity="center_horizontal"
+                     android:paddingTop="3dp"
+                     android:text="Contacto"/>
+
                  <EditText
-                     android:id="@+id/distrito"
+                     android:id="@+id/nombreContacto"
                      android:layout_width="match_parent"
                      android:layout_height="wrap_content"
                      android:layout_gravity="center"
@@ -140,29 +163,40 @@
                      android:inputType="textMultiLine" />
 
                  <TextView
-                     android:layout_marginBottom="16dp"
-                     android:layout_marginRight="8dp"
-                     android:id="@+id/iddistrito"
-                     android:layout_gravity="right"
-                     android:text=""
-                     android:textStyle="italic"
-                     android:textSize="16sp"
-                     android:visibility="visible"
-                     android:typeface="serif"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content" />
-
-                 <Spinner
-                     android:id="@+id/spinnerDistr"
                      android:layout_width="match_parent"
-                     android:layout_height="wrap_content"/>
+                     android:layout_height="wrap_content"
+                     android:gravity="center_horizontal"
+                     android:paddingTop="3dp"
+                     android:text="Teléfono"/>
+
+                 <EditText
+                     android:id="@+id/telefonoContacto"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:hint=""
+                     android:inputType="textMultiLine" />
+
+                 <CheckBox
+                     android:id="@+id/establecerDireccionCheck"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_centerHorizontal="true"
+                     android:layout_centerVertical="true"
+                     android:text="Establecer como dirección predeterminada" />
+
+                 <Button
+                     android:id="@+id/btnGuardarDireccion"
+                     android:layout_width="130dp"
+                     android:layout_height="68dp"
+                     android:layout_margin="7dp"
+                     android:text="@string/geo_btnMapa" />
 
                  <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:paddingTop="0dp"
-                    android:text="IdDireccionDelivery"
                     android:id="@+id/idDireccionDelivery"
                     android:visibility="invisible"/>
 
@@ -173,12 +207,6 @@
                     android:orientation="horizontal"
                     android:gravity="center_horizontal">
 
-                    <Button
-                        android:id="@+id/btnMapa"
-                        android:layout_width="130dp"
-                        android:layout_height="68dp"
-                        android:layout_margin="7dp"
-                        android:text="@string/geo_btnMapa" />
 
                 </LinearLayout>
 
@@ -202,6 +230,8 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        </ScrollView>
 
     </android.support.v7.widget.CardView>
 
