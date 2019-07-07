@@ -36,4 +36,11 @@
     <string name="title_activity_listado_productos_n">ListadoProductosNActivity</string>
     <string name="title_activity_detalle_producto">DetalleProducto</string>
 
+
+    <string name="add_carrito_ok">Los productos se agregaron al carrito, continue comprando</string>
+
+    <string name="sub_total">Sub total:</string>
+    <string name="continue_shopping">Continue comprando</string>
+    <string name="checkout">Pagar</string>
+
 </resources>

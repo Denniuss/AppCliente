@@ -77,72 +77,112 @@
                     android:paddingTop="3dp"
                     android:text="PrecioCatalogo" />
 
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="165dp"
-                android:layout_margin="5dp"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-
-                <EditText
-                    android:id="@+id/editcantidad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number" />
-
                 <Button
                     android:id="@+id/btnDetalles"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:drawableLeft="@drawable/ic_zoom_in"
                     android:drawablePadding="8dp"
                     android:text="Detalles del Producto"
                     android:textColor="@android:color/white"
                     app:backgroundTint="#0C7CC7" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingTop="5dp">
-
-                    <Button
-                        android:id="@+id/btnCarrito"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:backgroundTint="#0C7CC7"
-                        android:drawableLeft="@drawable/truck"
-                        android:drawablePadding="8dp"
-                        android:text="Carrito"
-                        android:textColor="@android:color/white" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/thumb_up_b"
-                        android:drawablePadding="8dp"
-                        android:id="@+id/btnComprar"
-                        android:textColor="@android:color/white"
-                        android:backgroundTint="#0C7CC7"
-                        android:text="Comprar"
-                        android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true" />
-
-                </LinearLayout>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="5dp"
+                android:gravity="center_horizontal">
 
+
+                <Button
+                    android:id="@+id/btn_menos"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignStart="@+id/txt_nombre"
+                    android:layout_marginBottom="31dp"
+                    android:onClick="restar"
+                    android:text="-"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="506dp" />
+
+                <TextView
+                    android:id="@+id/txt_cantidad"
+                    android:layout_width="53dp"
+                    android:layout_height="42dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toEndOf="@+id/btn_menos"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="1"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:typeface="sans"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/btn_menos" />
+
+                <Button
+                    android:id="@+id/btn_mas"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_alignTop="@id/btn_menos"
+                    android:layout_gravity="start"
+                    android:layout_toEndOf="@+id/txt_cantidad"
+                    android:onClick="agregar"
+                    android:text="+"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txt_cantidad"
+                    tools:layout_editor_absoluteX="137dp"
+                    tools:layout_editor_absoluteY="506dp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:paddingTop="5dp">
+
+                <Button
+                    android:id="@+id/btnCarrito"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="#0C7CC7"
+                    android:drawablePadding="8dp"
+                    android:text="Agregar Carrito"
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/btnComprar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="#0C7CC7"
+                    android:drawablePadding="8dp"
+                    android:text="Comprar"
+                    android:textColor="@android:color/white" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/my_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/cart" />
+            </LinearLayout>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

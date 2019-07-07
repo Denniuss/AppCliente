@@ -2,7 +2,8 @@ package com.newmantech.appcliente;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -23,9 +25,9 @@ public class DetalleActivity extends AppCompatActivity {
     public Button btnDetalles;
     public Button btnCarrito;
     public Button btnComprar;
+    private TextView cant;
+    private FloatingActionButton my_cart;
 
-
-    Fragment currentFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +57,8 @@ public class DetalleActivity extends AppCompatActivity {
         btnCarrito = (Button) findViewById(R.id.btnCarrito);
         btnComprar = (Button) findViewById(R.id.btnComprar);
 
-        Log.i("URL ", "DetalleActivity curMarca: " + getIntent().getExtras().getString("curMarca"));
+        cant = findViewById(R.id.txt_cantidad);
+        my_cart = (FloatingActionButton) findViewById(R.id.my_cart);
 
         marca.setText(getIntent().getExtras().getString("curMarca")+"");
         nombre.setText(getIntent().getExtras().getString("curNombre")+"");
@@ -90,17 +93,48 @@ public class DetalleActivity extends AppCompatActivity {
             }
         });
 
-
+       my_cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newActivity = new Intent(DetalleActivity.this,CarritoCompraActivity.class);
+                DetalleActivity.this.startActivity(newActivity);
+                Snackbar.make(view, "Tocaste el Carrito", Snackbar.LENGTH_LONG).show();
+            }
+        });
 
     }
+
+    public void agregar(View view){
+        //Obtiene el valor del TextView
+        String valor = cant.getText().toString();
+        //Se convierte  Integer
+        int aux = Integer.parseInt(valor);
+        //Se define el valor de una suma de + 1 en el TextView
+        cant.setText(""+(aux+1));
+    }//Fin agregar()
+
+    public void restar(View view){
+        //Obtiene el valor del TextView
+        String valor = cant.getText().toString();
+        //Se convierte  Integer
+        int aux = Integer.parseInt(valor);
+        //Se define el valor de una resta de - 1 en el TextView, y en el caso de que el valor
+        //sea igual a 1, se mantiene
+        if (aux == 1){
+            cant.setText(""+1);
+        }else {
+            cant.setText("" + (aux - 1));
+        }//Fin If
+    }//Fin restar()
 
     private void MostrarCarrito(){
         //Bundle bundle = new Bundle();
        // bundle.putDouble("n",nLatitud);
 
-        Intent newActivity = new Intent(this,CarritoCompraActivity.class);
+        //Intent newActivity = new Intent(this,CarritoCompraActivity.class);
         //newActivity.putExtras(bundle);
-        this.startActivity(newActivity);
+        //this.startActivity(newActivity);
+        Toast.makeText(DetalleActivity.this, getString(R.string.add_carrito_ok), Toast.LENGTH_LONG).show();
     }
     private void MostrarCompra(){
 
