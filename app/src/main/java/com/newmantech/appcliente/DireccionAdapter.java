@@ -22,6 +22,7 @@ public class DireccionAdapter extends RecyclerView.Adapter<DireccionAdapter.Dire
         public CardView DireccionCardView;
         public ImageView imagen;
         public TextView nombreDireccion;
+        public TextView nombreContacto;
         public TextView direccion;
 
         public TextView departamento;
@@ -34,6 +35,7 @@ public class DireccionAdapter extends RecyclerView.Adapter<DireccionAdapter.Dire
             DireccionCardView = (CardView) v.findViewById(R.id.distrito_card);
             //imagen = (ImageView) v.findViewById(R.id.imagen);
             nombreDireccion = (TextView) v.findViewById(R.id.nombreDireccion);
+            nombreContacto = (TextView) v.findViewById(R.id.nombreContacto);
             direccion = (TextView) v.findViewById(R.id.direccion);
             departamento = (TextView) v.findViewById(R.id.departamento);
             provincia = (TextView) v.findViewById(R.id.provincia);
@@ -70,6 +72,7 @@ public class DireccionAdapter extends RecyclerView.Adapter<DireccionAdapter.Dire
         Log.i("onResponse Adapter", "Response ubigeo: " + items.get(i));
 
         viewHolder.nombreDireccion.setText(items.get(i).getNombreDireccion());
+        viewHolder.nombreContacto.setText(items.get(i).getNombreContacto());
         viewHolder.direccion.setText(items.get(i).getDireccion());
         //viewHolder.direccion.setText("Dirección: " + items.get(i).getDireccion());
         viewHolder.distrito.setText("Distrito: " + String.valueOf(items.get(i).getDistrito()));

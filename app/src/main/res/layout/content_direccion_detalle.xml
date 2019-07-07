@@ -69,6 +69,13 @@
                      android:textStyle="bold"
                      android:textSize="20dp"/>
 
+                 <TextView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:gravity="center_horizontal"
+                     android:paddingTop="3dp"
+                     android:text="Nombre dirección a guardar"/>
+
                  <EditText
                      android:id="@+id/nombreDireccion"
                      android:layout_width="match_parent"

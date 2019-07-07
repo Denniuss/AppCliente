@@ -106,6 +106,11 @@ public class DetalleDireccionActivity extends AppCompatActivity {
         referencia = (TextView) findViewById(R.id.referencia);
         establecerDireccionCheck = (CheckBox) findViewById(R.id.establecerDireccionCheck);
 
+
+        iddirecciondelivery.setText(getIntent().getExtras().getLong("curidDireccionDelivery")+"");
+
+        Log.i("curidDireccionDelivery", "body: " + getIntent().getExtras().getLong("curidDireccionDelivery")+"");
+
         nombreContacto.setText( getIntent().getExtras().getString("curNombreContacto"));
         telefonoContacto.setText( getIntent().getExtras().getString("curTelefonoContacto"));
         referencia.setText( getIntent().getExtras().getString("curReferencia"));
@@ -123,9 +128,6 @@ public class DetalleDireccionActivity extends AppCompatActivity {
         idprovincia.setText(getIntent().getExtras().getString("curidProvincia")+"");
         iddistrito.setText(getIntent().getExtras().getString("curidDistrito")+"");
 
-        iddirecciondelivery.setText(getIntent().getExtras().getLong("curidDireccionDelivery")+"");
-
-        Log.i("curidDireccionDelivery", "body: " + getIntent().getExtras().getLong("curidDireccionDelivery")+"");
 
         Call<List<Ubigeo>> lista = direccionService.getListadoDepartamento();
 
@@ -286,11 +288,17 @@ public class DetalleDireccionActivity extends AppCompatActivity {
         Log.i("SET2 ", "onResponse: MAP " + departamentoMap);
         Log.i("SET3 ", "onResponse: MAP2 " + departamentoMap.get(iddepartamento.getText()+""));
 
-        Log.i("SET2 ", "onResponse: ubigeo " + departamentoMap.get(iddepartamento.getText()+"").getNombreUbigeo());
-        Integer posicionDep = adapter.getPosition(departamentoMap.get(iddepartamento.getText()+"").getNombreUbigeo());
-        Log.i("SET3 ", "onResponse: adapter " + posicionDep);
+        //Log.i("SET2 ", "onResponse: ubigeo " + departamentoMap.get(iddepartamento.getText()+"").getNombreUbigeo());
+        //Integer posicionDep = adapter.getPosition(departamentoMap.get(iddepartamento.getText()+"").getNombreUbigeo());
+        //Log.i("SET3 ", "onResponse: adapter " + posicionDep);
 
-        spinnerDepartamento.setSelection(obtenerPosicionItem(spinnerDepartamento,departamentoMap.get(iddepartamento.getText()+"").getNombreUbigeo()));
+        if(departamentoMap!=null) {
+            Ubigeo existeDepartamento = departamentoMap.get(iddepartamento.getText()+"");
+            Log.i("DetalleDireccionAct", "onResponse: existeDepartamento " + existeDepartamento);
+            if(existeDepartamento!=null) {
+                spinnerDepartamento.setSelection(obtenerPosicionItem(spinnerDepartamento,existeDepartamento.getNombreUbigeo()));
+            }
+        }
         //spinnerDepartamento.position
         //spinnerDepartamento.setSelection(posicionDep);
     }
@@ -391,7 +399,14 @@ public class DetalleDireccionActivity extends AppCompatActivity {
         //spinnerProvincia.setSelection(Integer.parseInt(idprovincia.getText()+""));
         //spinnerProvincia.setSelection(getIndex(spinnerProvincia, "Lima"));
 
-        spinnerProvincia.setSelection(obtenerPosicionItem(spinnerProvincia,provinciaMap.get(idprovincia.getText()+"").getNombreUbigeo()));
+        if(provinciaMap!=null) {
+            Ubigeo existeProvincia = provinciaMap.get(idprovincia.getText()+"");
+            Log.i("DetalleDireccionAct", "onResponse: existeProvincia " + existeProvincia);
+            if(existeProvincia!=null) {
+                spinnerProvincia.setSelection(obtenerPosicionItem(spinnerProvincia,existeProvincia.getNombreUbigeo()));
+            }
+        }
+        //.setSelection(obtenerPosicionItem(spinnerProvincia,provinciaMap.get(idprovincia.getText()+"").getNombreUbigeo()));
 
     }
     private int getIndex(Spinner spinner, String myString){
@@ -442,7 +457,16 @@ public class DetalleDireccionActivity extends AppCompatActivity {
         Log.i("onResponse ", "iddistrito select " + iddistrito.getText());
         Log.i("onResponse ", "iddistrito distitoMap" + distitoMap);
 
-        spinnerDistrito.setSelection(obtenerPosicionItem(spinnerDistrito,distitoMap.get(iddistrito.getText()+"").getNombreUbigeo()));
+
+        if(distitoMap!=null) {
+            Ubigeo existeDistrito = distitoMap.get(iddistrito.getText()+"");
+            Log.i("DetalleDireccionAct", "onResponse: existeDistrito " + existeDistrito);
+            if(existeDistrito!=null) {
+                spinnerDistrito.setSelection(obtenerPosicionItem(spinnerDistrito,existeDistrito.getNombreUbigeo()));
+            }
+        }
+        //spinnerDistrito.setSelection(obtenerPosicionItem(spinnerDistrito,distitoMap.get(iddistrito.getText()+"").getNombreUbigeo()));
+
     }
 
 
@@ -495,11 +519,11 @@ public class DetalleDireccionActivity extends AppCompatActivity {
 
         Log.i("onResponse ", "Guardar Direccion " + direccionTemp);
 
-        Call<Integer> resultado = direccionService.registrarDireccion(cliente);
+        Call<BResult> resultado = direccionService.registrarDireccion(cliente);
 
-        resultado.enqueue(new Callback<Integer>() {
+        resultado.enqueue(new Callback<BResult>() {
             @Override
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
+            public void onResponse(Call<BResult> call, Response<BResult> response) {
                 Log.i("registrarDireccion ", "onResponse: "+response.code());
                 Log.i("Direccion message", "onResponse: "+response.message());
 
@@ -507,14 +531,33 @@ public class DetalleDireccionActivity extends AppCompatActivity {
                     Log.i("Direccion", "onResponse: " + response.body());
 
                     finish();
-                    Intent intent = new Intent(DetalleDireccionActivity.this, MainActivity.class);
-                    startActivity(intent);
+
+                    BResult respuesta = response.body();
+
+                    if(respuesta!=null) {
+                        Intent intent = new Intent(DetalleDireccionActivity.this, DireccionActivity.class);
+                        startActivity(intent);
+                        if(respuesta.getCodigo()>0){
+                            Toast.makeText(getApplicationContext(),
+                                    "Se guardo la dirección correctamente", Toast.LENGTH_SHORT).show();
+                        } else {
+                            //Toast.makeText(this,,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),
+                                    "Error al guardar la dirección vuelva a intentar", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+
+                    /*Intent iconIntent = new Intent(view.getContext(), DetalleDireccionActivity.class);
+                    iconIntent.putExtras(bundle);
+                    view.getContext().startActivity(iconIntent);*/
+
                 }
             }
 
             @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
-                Log.e("onFaillure Direccion", t.getMessage());
+            public void onFailure(Call<BResult> call, Throwable t) {
+                Log.e("onFaillure guardarDireccion", t.getMessage());
             }
         });
 

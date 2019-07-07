@@ -26,7 +26,7 @@ public interface DireccionService {
                                           @Path("codigoDistrito") String codigoDistrito);
 
     @POST("cliente/direccionDelivery/actualizar")
-    Call<Integer> registrarDireccion(@Body Cliente cliente);
+    Call<BResult> registrarDireccion(@Body Cliente cliente);
 
 
     //@POST("pedido/actualizarEstadoPedido")

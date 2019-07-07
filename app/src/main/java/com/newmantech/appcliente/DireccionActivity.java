@@ -1,11 +1,15 @@
 package com.newmantech.appcliente;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.newmantech.appcliente.utils.Utilitario;
 
@@ -25,15 +29,60 @@ public class DireccionActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager lManager;
     private Context contexto = this;
 
+    private FloatingActionButton botonFlotanteDireccion;
+
     List<Direccion> listaDirecciones = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_direccion);
         FillDirecciones();
-        //finalizarPedido();
-        //registrarIncidencia();
+
+        botonFlotanteDireccion = (FloatingActionButton) findViewById(R.id.botonFlotanteDireccion);
+
+        botonFlotanteDireccion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Intent newActivity = new Intent(DetalleActivity.this,CarritoCompraActivity.class);
+                //DetalleActivity.this.startActivity(newActivity);
+                //Snackbar.make(view, "Tocaste el Carrito", Snackbar.LENGTH_LONG).show();
+                //Intent intent = new Intent(DetalleDireccionActivity.this, MainActivity.class);
+                //startActivity(intent);
+
+                //Log.i("DireccionActivity", "getContext: "+view.getContext());
+                //Intent iconIntent = new Intent(view.getContext(), DetalleDireccionActivity.class);
+                //startActivity(iconIntent);
+
+
+                Bundle bundle = new Bundle();
+                //bundle.putInt("curImagen", items.get(i).getImagen());
+                //bundle.putString("curImagen", items.get(i).getImagenurl());
+                bundle.putLong("curIdDireccionDelivery", 0);
+                bundle.putString("curNombreDireccion", "");
+                bundle.putString("curDepartamento", "");
+                bundle.putString("curProvincia", "");
+                bundle.putString("curDistrito", "");
+                bundle.putString("curDireccion", "");
+
+                bundle.putString("curReferencia", "");
+                bundle.putString("curTelefonoContacto", "");
+                bundle.putString("curNombreContacto", "");
+                bundle.putBoolean("curEstablecerDireccion", false);
+
+                bundle.putString("curidDepartamento", "");
+                bundle.putString("curidProvincia", "");
+                bundle.putString("curidDistrito", "");
+
+                bundle.putLong("curidDireccionDelivery", 0);
+
+                Intent iconIntent = new Intent(view.getContext(), DetalleDireccionActivity.class);
+                iconIntent.putExtras(bundle);
+                view.getContext().startActivity(iconIntent);
+
+            }
+        });
     }
 
     private static void registrarIncidencia(){
