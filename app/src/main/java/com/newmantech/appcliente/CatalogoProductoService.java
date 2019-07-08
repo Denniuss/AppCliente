@@ -8,12 +8,12 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
-public interface DireccionService {
+public interface CatalogoProductoService {
 
-    @GET("venta/direccionDelivery/listar/direccion/3339")
-    Call<List<Direccion>> getListadoDireccionesXCliente();
+    @GET("producto/listarMalla/0/20")
+    Call<List<CatalogoProducto>> getlistadoCatalogoProducto();
 
-    @GET("ubigeo/listarUbigeo/01/00/00/00/2")
+    /*@GET("ubigeo/listarUbigeo/01/00/00/00/2")
     Call<List<Ubigeo>> getListadoDepartamento();
 
     @GET("ubigeo/listarUbigeo/01/{codigoDepartamento}/{codigoProvincia}/00/3")
@@ -26,7 +26,7 @@ public interface DireccionService {
                                           @Path("codigoDistrito") String codigoDistrito);
 
     @POST("cliente/direccionDelivery/actualizar")
-    Call<BResult> registrarDireccion(@Body Cliente cliente);
+    Call<BResult> registrarDireccion(@Body Cliente cliente);*/
 
 
     //@POST("pedido/actualizarEstadoPedido")

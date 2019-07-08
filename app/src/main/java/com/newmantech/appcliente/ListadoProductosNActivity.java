@@ -6,9 +6,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+
+import com.newmantech.appcliente.utils.Utilitario;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ListadoProductosNActivity extends AppCompatActivity {
     private List<CatalogoProducto> items = new ArrayList();
@@ -41,16 +50,16 @@ public class ListadoProductosNActivity extends AppCompatActivity {
     }
 
     private void FillProductos(){
-/*        Retrofit retrofit = new Retrofit.Builder().baseUrl(Utilitario.baseUrl)
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Utilitario.baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        ProductoService ProductoService = retrofit.create(ProductoService.class);
+        CatalogoProductoService ProductoService = retrofit.create(CatalogoProductoService.class);
 
-        Call<List<CatalogoProducto>> lista = ProductoService.getListadoCatalogoProducto();
-        lista.enqueue(new Callback<List<Catalogo>>() {
+        Call<List<CatalogoProducto>> lista = ProductoService.getlistadoCatalogoProducto();
+        lista.enqueue(new Callback<List<CatalogoProducto>>() {
             @Override
-            public void onResponse(Call<List<Catalogo>> call, Response<List<Catalogo>> response) {
+            public void onResponse(Call<List<CatalogoProducto>> call, Response<List<CatalogoProducto>> response) {
                 Log.i("onResponse chamado", "onResponse: ");
 
                 if(response.isSuccessful()) {
@@ -59,19 +68,26 @@ public class ListadoProductosNActivity extends AppCompatActivity {
 
                     listaCatalogo = response.body();
 
-                    for(Catalogo dis : listaCatalogo ){
-                        Log.i("CatalogoProducto  ", "onResponse: " + dis.getCliente()+"-"+dis.getIdPedido());
+                    //.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","https://i.linio.com/p/940faec658e586eec1bb289889e78a2e-product.jpg",37.00,99.00,"-28%"));
+
+                    for(CatalogoProducto dis : listaCatalogo ){
+                        Log.i("CatalogoProducto  ", "onResponse: " + dis.getNombre()+"-"+dis.getDescripcion());
 
                         //items.add(new Pedido(dis.getIdPedido(), R.drawable.face01, dis.getCliente(), dis.getDireccion(), dis.getDistrito(), dis.getDescripcion(),dis.getEstado(),dis.getLatitud(),dis.getLongitud(),""));
                     }
 
-                    items.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","Imagen",37.00,99.00,"-28%"));
-                    items.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","Imagen",37.00,99.00,"-28%"));
-                    items.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","Imagen",37.00,99.00,"-28%"));
-                    items.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","Imagen",37.00,99.00,"-28%"));
-                    items.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","Imagen",37.00,99.00,"-28%"));
+                    items.addAll(listaCatalogo);
+                    //listaCatalogo.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","https://i.linio.com/p/940faec658e586eec1bb289889e78a2e-product.jpg",37.00,99.00,"-28%"))
 
+                    /*
+                    items.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","Imagen",37.00,99.00,"-28%"));
+                    items.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","Imagen",37.00,99.00,"-28%"));
+                    items.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","Imagen",37.00,99.00,"-28%"));
+                    items.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","Imagen",37.00,99.00,"-28%"));
+                    items.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","Imagen",37.00,99.00,"-28%"));
+                    */
 
+                    /*
                     // Obtener el Recycler
                     recycler = (RecyclerView) findViewById(R.id.recicladorProductosN);
                     recycler.setHasFixedSize(true);
@@ -81,18 +97,18 @@ public class ListadoProductosNActivity extends AppCompatActivity {
                     recycler.setLayoutManager(lManager);
 
                     adapter = new PedidosAdapter(items);
-                    recycler.setAdapter(adapter);
+                    recycler.setAdapter(adapter);*/
 
                 }
 
             }
 
             @Override
-            public void onFailure(Call<List<Catalogo>> call, Throwable t) {
+            public void onFailure(Call<List<CatalogoProducto>> call, Throwable t) {
                 Log.e("onFaillure chamado ", t.getMessage());
             }
         });
-*/
+
 
 
 /*
@@ -104,6 +120,7 @@ public class ListadoProductosNActivity extends AppCompatActivity {
 */
 
 
+        //listado de prueba ok
         items.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","https://i.linio.com/p/940faec658e586eec1bb289889e78a2e-product.jpg",37.00,99.00,"-28%"));
         items.add(new CatalogoProducto(2,"Pisco La Botija","","Tabernero","Vigente","https://i.linio.com/p/0f6f58efe48abf6cb6d5d7a2ae9ab200-product.jpg",37.00,99.00,"-28%"));
         items.add(new CatalogoProducto(3,"Pisco Demonio de los Andes","","Tacama","Vigente","https://i.linio.com/p/4a2ebcba614aaab74e43a0a3a07a6cf5-product.jpg",37.00,99.00,"-28%"));

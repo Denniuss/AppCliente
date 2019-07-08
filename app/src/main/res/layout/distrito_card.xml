@@ -15,51 +15,64 @@
         android:orientation="horizontal">
 
 
-    <LinearLayout
-        android:layout_width="550dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/nombreDireccion"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="550dp"
             android:layout_height="wrap_content"
-            android:text="Nombre dirección"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            android:layout_margin="5dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/direccion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:text="Direccion" />
+            <TextView
+                android:id="@+id/nombreDireccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre dirección"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/departamento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:text="Departamento" />
+            <TextView
+                android:id="@+id/direccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:text="Direccion" />
+
+            <TextView
+                android:id="@+id/nombreContacto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:text="Cont" />
 
 
-        <TextView
-            android:id="@+id/provincia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:text="Provincia" />
+            <TextView
+                android:id="@+id/departamento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:text="Departamento"
+                android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/distrito"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:text="Distrito"
-            android:visibility="invisible"/>
+            <TextView
+                android:id="@+id/provincia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:text="Provincia"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/distrito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:text="Distrito"
+                android:visibility="gone" />
+
 
         </LinearLayout>
+
+
+
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

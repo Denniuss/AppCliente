@@ -83,7 +83,7 @@ public class CatalogoProductoAdapter extends RecyclerView.Adapter<CatalogoProduc
         viewHolder.marca.setText(items.get(i).getMarca());
         viewHolder.descripcion.setText("S/ " + items.get(i).getPrecioCompra().toString() + "   " + items.get(i).getPorcentajeDescuento());
         viewHolder.precio.setText("S/ " + items.get(i).getPrecioCatalogo().toString());
-        viewHolder.idCatalogoProducto.setText(items.get(i).getIdCatalogoProducto());
+        viewHolder.idCatalogoProducto.setText(items.get(i).getIdCatalogoProducto()+"");
 
 
         Log.i("URL ", "onResponse: " + items.get(i).getFoto());
