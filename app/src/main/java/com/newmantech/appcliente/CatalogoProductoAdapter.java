@@ -30,6 +30,7 @@ public class CatalogoProductoAdapter extends RecyclerView.Adapter<CatalogoProduc
         public TextView precio;
         public TextView marca;
         public TextView idProducto;
+        public TextView idCatalogoProducto;
 
         public ProductoViewHolder(View v) {
 
@@ -40,6 +41,7 @@ public class CatalogoProductoAdapter extends RecyclerView.Adapter<CatalogoProduc
             nombre = (TextView) v.findViewById(R.id.nombre);
             descripcion = (TextView) v.findViewById(R.id.descripcion);
             precio = (TextView) v.findViewById(R.id.precio);
+            idCatalogoProducto = (TextView) v.findViewById(R.id.idCatalogoProducto);
             //estado = (TextView) v.findViewById(R.id.estado);
             //idProducto = (TextView) v.findViewById(R.id.idpedido);
         }
@@ -81,6 +83,7 @@ public class CatalogoProductoAdapter extends RecyclerView.Adapter<CatalogoProduc
         viewHolder.marca.setText(items.get(i).getMarca());
         viewHolder.descripcion.setText("S/ " + items.get(i).getPrecioCompra().toString() + "   " + items.get(i).getPorcentajeDescuento());
         viewHolder.precio.setText("S/ " + items.get(i).getPrecioCatalogo().toString());
+        viewHolder.idCatalogoProducto.setText(items.get(i).getIdCatalogoProducto());
 
 
         Log.i("URL ", "onResponse: " + items.get(i).getFoto());
@@ -97,6 +100,7 @@ public class CatalogoProductoAdapter extends RecyclerView.Adapter<CatalogoProduc
                 bundle.putString("curPrecioCompra", items.get(i).getPrecioCompra().toString());
                 bundle.putString("curPorcentajeDescuento", items.get(i).getPorcentajeDescuento());
                 bundle.putString("curPrecioCatalogo", items.get(i).getPrecioCatalogo().toString());
+                bundle.putInt("curIdCatalogoProducto", items.get(i).getIdCatalogoProducto());
 
                 Log.i("URL ", "CatalogoProductoAdapter curMarca: " + items.get(i).getMarca());
 

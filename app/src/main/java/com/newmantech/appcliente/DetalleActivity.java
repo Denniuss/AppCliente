@@ -6,7 +6,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,6 +26,7 @@ public class DetalleActivity extends AppCompatActivity {
     public Button btnComprar;
     private TextView cant;
     private FloatingActionButton my_cart;
+    public TextView idCatalogoProducto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,7 @@ public class DetalleActivity extends AppCompatActivity {
         btnDetalles = (Button) findViewById(R.id.btnDetalles);
         btnCarrito = (Button) findViewById(R.id.btnCarrito);
         btnComprar = (Button) findViewById(R.id.btnComprar);
+        idCatalogoProducto = (TextView) findViewById(R.id.idCatalogoProducto);
 
         cant = findViewById(R.id.txt_cantidad);
         my_cart = (FloatingActionButton) findViewById(R.id.my_cart);
@@ -67,6 +68,8 @@ public class DetalleActivity extends AppCompatActivity {
 
         //idpedido.setText(String.valueOf(getIntent().getExtras().getInt("curIdpedido")));
         preciocatalogo.setText("Precio : S/ " + getIntent().getExtras().getString("curPrecioCatalogo"));
+
+        idCatalogoProducto.setText(getIntent().getExtras().getString("curIdCatalogoProducto"));
 
         Picasso.with(foto.getContext())
                 .load(getIntent().getExtras().getString("curFoto")).into(foto);
@@ -128,6 +131,12 @@ public class DetalleActivity extends AppCompatActivity {
     }//Fin restar()
 
     private void MostrarCarrito(){
+        String cantidad = cant.getText().toString();
+        String Codigo = idCatalogoProducto.getText().toString();
+
+        //Agregar Producto al carrito del compra;
+
+
         //Bundle bundle = new Bundle();
        // bundle.putDouble("n",nLatitud);
 
