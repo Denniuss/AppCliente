@@ -189,7 +189,7 @@ public class DetalleDireccionActivity extends AppCompatActivity {
         btnGuardarDireccion.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
-                MostrarMapa();
+                procesarRegistroDireccion();
             }
         });
 
@@ -483,7 +483,7 @@ public class DetalleDireccionActivity extends AppCompatActivity {
         Toast.makeText(this,name,Toast.LENGTH_LONG).show();
     }
 
-    private void MostrarMapa(){
+    private void procesarRegistroDireccion(){
 
         //Agregar Guardado de finalizacion de Atencion
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Utilitario.baseUrlServio)

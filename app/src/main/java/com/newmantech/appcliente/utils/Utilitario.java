@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Utilitario {
 
-    public static String baseUrl = "http://192.168.1.64:8077/";
+    public static String baseUrl = "http://192.168.1.162:8075/";
 
     public static String baseUrlServio = "http://192.168.1.162:8080/ServiciosWebSaas/";
 
