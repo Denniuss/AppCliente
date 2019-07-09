@@ -11,33 +11,25 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="171dp"
         android:layout_margin="5dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="Productos Elegidos"
-            android:paddingTop="3dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <CheckBox
                 android:id="@+id/seleccion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                />
+                android:layout_centerVertical="true" />
 
             <ImageView
                 android:id="@+id/foto"
@@ -60,6 +52,14 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/marca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Marca"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:id="@+id/cantidad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -67,11 +67,27 @@
                     android:text="Cantidad" />
 
                 <TextView
-                    android:id="@+id/preciocatalogo"
+                    android:id="@+id/precio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="5dp"
                     android:text="Precio Unitario" />
+
+                <TextView
+                    android:id="@+id/idCatalogoProducto"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
+                    android:paddingTop="5dp"
+                    android:text="idCatalogoProducto"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/idcliente"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
+                    android:paddingTop="5dp"
+                    android:text="idcliente"
+                    android:visibility="invisible" />
 
                 <Button
                     android:id="@+id/btnDetalles"
