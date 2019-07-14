@@ -87,6 +87,21 @@ public class ListadoProductosNActivity extends AppCompatActivity {
                     items.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","Imagen",37.00,99.00,"-28%"));
                     */
 
+                    //listado de prueba ok
+                    /*items.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","https://i.linio.com/p/940faec658e586eec1bb289889e78a2e-product.jpg",37.00,99.00,"-28%"));
+                    items.add(new CatalogoProducto(2,"Pisco La Botija","","Tabernero","Vigente","https://i.linio.com/p/0f6f58efe48abf6cb6d5d7a2ae9ab200-product.jpg",37.00,99.00,"-28%"));
+                    items.add(new CatalogoProducto(3,"Pisco Demonio de los Andes","","Tacama","Vigente","https://i.linio.com/p/4a2ebcba614aaab74e43a0a3a07a6cf5-product.jpg",37.00,99.00,"-28%"));
+                    items.add(new CatalogoProducto(4,"Pisco Tres Generaciones 192Acholado","","Tres Generaciones","Vigente","https://i.linio.com/p/739031b2bfe811c11557813af97f2562-product.jpg",37.00,99.00,"-28%"));
+                    items.add(new CatalogoProducto(5,"Pisco Porton","","Pisco Porton","Vigente","https://i.linio.com/p/7d119d0a78732017bfd7b928c25f9c6a-product.jpg",37.00,99.00,"-28%"));
+                    */
+
+                    Log.i("CatalogoProducto  ", "onResponse:items size " + items.size());
+
+                    recycler.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
+                    //FillProductos();
+                    adapter = new CatalogoProductoAdapter(items);
+                    recycler.setAdapter(adapter);
+
                     /*
                     // Obtener el Recycler
                     recycler = (RecyclerView) findViewById(R.id.recicladorProductosN);
@@ -118,14 +133,6 @@ public class ListadoProductosNActivity extends AppCompatActivity {
         items.add(new CatalogoProducto(4,"Pisco Tres Generaciones Acholado","","Tabernero","Vigente","Imagen",37.00,99.00,"-28%"));
         items.add(new CatalogoProducto(5,"Pisco Porton","","Tabernero","Vigente","Imagen",37.00,99.00,"-28%"));
 */
-
-
-        //listado de prueba ok
-        items.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","https://i.linio.com/p/940faec658e586eec1bb289889e78a2e-product.jpg",37.00,99.00,"-28%"));
-        items.add(new CatalogoProducto(2,"Pisco La Botija","","Tabernero","Vigente","https://i.linio.com/p/0f6f58efe48abf6cb6d5d7a2ae9ab200-product.jpg",37.00,99.00,"-28%"));
-        items.add(new CatalogoProducto(3,"Pisco Demonio de los Andes","","Tacama","Vigente","https://i.linio.com/p/4a2ebcba614aaab74e43a0a3a07a6cf5-product.jpg",37.00,99.00,"-28%"));
-        items.add(new CatalogoProducto(4,"Pisco Tres Generaciones Acholado","","Tres Generaciones","Vigente","https://i.linio.com/p/739031b2bfe811c11557813af97f2562-product.jpg",37.00,99.00,"-28%"));
-        items.add(new CatalogoProducto(5,"Pisco Porton","","Pisco Porton","Vigente","https://i.linio.com/p/7d119d0a78732017bfd7b928c25f9c6a-product.jpg",37.00,99.00,"-28%"));
 
 
 

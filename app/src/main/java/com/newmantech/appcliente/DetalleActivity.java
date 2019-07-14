@@ -1,18 +1,51 @@
 package com.newmantech.appcliente;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.webkit.CookieSyncManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.newmantech.appcliente.utils.Utilitario;
 import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.net.CookieHandler;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.Cookie;
+import okhttp3.CookieJar;
+import okhttp3.HttpUrl;
+import okhttp3.Interceptor;
+import okhttp3.JavaNetCookieJar;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DetalleActivity extends AppCompatActivity {
     public ImageView foto;
@@ -27,6 +60,7 @@ public class DetalleActivity extends AppCompatActivity {
     private TextView cant;
     private FloatingActionButton my_cart;
     public TextView idCatalogoProducto;
+    public TextView keyItemCanje;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +91,7 @@ public class DetalleActivity extends AppCompatActivity {
         btnCarrito = (Button) findViewById(R.id.btnCarrito);
         btnComprar = (Button) findViewById(R.id.btnComprar);
         idCatalogoProducto = (TextView) findViewById(R.id.idCatalogoProducto);
+        keyItemCanje = (TextView) findViewById(R.id.keyItemCanje);
 
         cant = findViewById(R.id.txt_cantidad);
         my_cart = (FloatingActionButton) findViewById(R.id.my_cart);
@@ -70,6 +105,7 @@ public class DetalleActivity extends AppCompatActivity {
         preciocatalogo.setText("Precio : S/ " + getIntent().getExtras().getString("curPrecioCatalogo"));
 
         idCatalogoProducto.setText(getIntent().getExtras().getString("curIdCatalogoProducto"));
+        keyItemCanje.setText(getIntent().getExtras().getString("curkeyItemCanje"));
 
         Picasso.with(foto.getContext())
                 .load(getIntent().getExtras().getString("curFoto")).into(foto);
@@ -131,11 +167,18 @@ public class DetalleActivity extends AppCompatActivity {
     }//Fin restar()
 
     private void MostrarCarrito(){
-        String cantidad = cant.getText().toString();
+        Integer cantidad = 0;
+        if(null!=cant.getText()) {
+            cantidad = Integer.parseInt(cant.getText().toString());
+        }
+
         String Codigo = idCatalogoProducto.getText().toString();
+        String key = keyItemCanje.getText().toString();
 
         //Agregar Producto al carrito del compra;
 
+        Log.i("DetalleActivity", "body: cantidad " + cantidad);
+        Log.i("DetalleActivity", "body: key " + key);
 
         //Bundle bundle = new Bundle();
        // bundle.putDouble("n",nLatitud);
@@ -143,8 +186,158 @@ public class DetalleActivity extends AppCompatActivity {
         //Intent newActivity = new Intent(this,CarritoCompraActivity.class);
         //newActivity.putExtras(bundle);
         //this.startActivity(newActivity);
+
+        //OkHttpClient okHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
+        //HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        //interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        //OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
+
+        //HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        //interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        //OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
+        //OkHttpClient session = RetrofitCached.getCacheEnabledRetrofit(getBaseContext());
+
+
+        //cookieManager = AppController.getCookieManager();
+        //client.setCookieHandler(cookieManager);
+        //client.setFollowRedirects(true);
+        //client.setFollowRedirects(true);
+        //toSyncCookies();
+        //request = request.newBuilder().header("Cache-Control", "public, max-age=" + 60).build();
+
+        CookieManager cookieManager = new CookieManager();
+        CookieHandler.setDefault(cookieManager);
+        cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
+
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        CookieHandler cookieHandler = new CookieManager(new PersistentCookieStore(getApplicationContext()), CookiePolicy.ACCEPT_ALL);
+
+        //CookieHandler cookieHandler = new CookieManager();
+        OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor)
+                .cookieJar(new JavaNetCookieJar(cookieHandler))
+                //.cookieJar(new JavaNetCookieJar(cookieManager))
+                //.cookieJar(new CookieStore())
+                /*.addInterceptor(new Interceptor() {
+                    @Override
+                    public okhttp3.Response intercept(Chain chain) throws IOException {
+                        final Request original = chain.request();
+
+                        final Request authorized = original.newBuilder()
+                                .addHeader("Cookie", "cookie-name=cookie-value")
+                                .build();
+
+                        return chain.proceed(authorized);
+                    }
+                })*/
+                //.connectTimeout(100, TimeUnit.SECONDS)
+                //.writeTimeout(100, TimeUnit.SECONDS)
+                //.readTimeout(300, TimeUnit.SECONDS)
+                //.addInterceptor(interceptor)
+                /*.cookieJar(new CookieJar() {
+                    private final HashMap<Object,List> cookieStore = new HashMap<>();
+
+                    @Override
+                    public void saveFromResponse(HttpUrl url, List cookies) {
+                        cookieStore.put(url, cookies);
+                    }
+
+                    @Override
+                    public List loadForRequest(HttpUrl url) {
+                        List cookies =  cookieStore.get(url);
+                        return cookies != null ? cookies : new ArrayList();
+                    }
+                })*/
+                //.addNetworkInterceptor(new CacheInterceptor())
+                .build();
+        //client.newBuilder()
+        Log.i("DetalleActivity", "body: client " + client.toString());
+
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Utilitario.baseUrlSWeb)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ProductoService productoService = retrofit.create(ProductoService.class);
+
+        Call<BResult> lista = productoService.agregarCarritoCompras(key,cantidad);
+        lista.enqueue(new Callback<BResult>() {
+            @Override
+            public void onResponse(Call<BResult> call, Response<BResult> response) {
+                Log.e("DetalleActivity ", "onResponse " + response.isSuccessful());
+
+                if(response.isSuccessful()) {
+
+
+                    Log.i("Direccion", "onResponse: " + response.body());
+
+                    finish();
+
+                    BResult respuesta = response.body();
+
+                    if(respuesta!=null) {
+                        //Intent intent = new Intent(DetalleActivity.this, DireccionActivity.class);
+                        //startActivity(intent);
+                        if(respuesta.getEstado()==0){
+                            Toast.makeText(getApplicationContext(),
+                                    "Se guardo la dirección correctamente", Toast.LENGTH_SHORT).show();
+                        } else {
+                            //Toast.makeText(this,,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),
+                                    "Error al guardar la dirección vuelva a intentar", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+
+                    /*Intent iconIntent = new Intent(view.getContext(), DetalleDireccionActivity.class);
+                    iconIntent.putExtras(bundle);
+                    view.getContext().startActivity(iconIntent);*/
+                    /* Obtener el Recycler
+                    recycler = (RecyclerView) findViewById(R.id.reciclador);
+                    recycler.setHasFixedSize(true);
+
+                    // Usar un administrador para LinearLayout
+                    lManager = new LinearLayoutManager(contexto);
+                    recycler.setLayoutManager(lManager);
+
+                    adapter = new CatalogoProductoAdapter(items);
+                    recycler.setAdapter(adapter);
+                    */
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<BResult> call, Throwable t) {
+                Log.e("DetalleActivity ", "onFailure "+t.getMessage());
+            }
+        });
+
+
         Toast.makeText(DetalleActivity.this, getString(R.string.add_carrito_ok), Toast.LENGTH_LONG).show();
     }
+
+    private static void toSyncCookies() {
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            CookieSyncManager.getInstance().sync();
+            return;
+        }
+
+        AsyncTask.THREAD_POOL_EXECUTOR.execute(new Runnable() {
+            @Override
+            public void run() {
+                if (SysUtils.hasLollipop())
+                    android.webkit.CookieManager.getInstance().flush();
+
+            }
+        });
+    }
+
     private void MostrarCompra(){
 
         Intent newActivity = new Intent(this,ComfirmaCompraActivity.class);

@@ -101,6 +101,7 @@ public class CatalogoProductoAdapter extends RecyclerView.Adapter<CatalogoProduc
                 bundle.putString("curPorcentajeDescuento", items.get(i).getPorcentajeDescuento());
                 bundle.putString("curPrecioCatalogo", items.get(i).getPrecioCatalogo().toString());
                 bundle.putInt("curIdCatalogoProducto", items.get(i).getIdCatalogoProducto());
+                bundle.putString("curkeyItemCanje", items.get(i).getKeyItemCanje());
 
                 Log.i("URL ", "CatalogoProductoAdapter curMarca: " + items.get(i).getMarca());
 

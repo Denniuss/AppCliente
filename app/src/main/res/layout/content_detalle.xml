@@ -70,6 +70,15 @@
                     android:text="PorcentajeDescuento" />
 
                 <TextView
+                    android:id="@+id/keyItemCanje"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="3dp"
+                    android:text=""
+                    android:visibility="gone"/>
+
+                <TextView
                     android:id="@+id/preciocatalogo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

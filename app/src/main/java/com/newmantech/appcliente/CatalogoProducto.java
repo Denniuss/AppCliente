@@ -14,6 +14,7 @@ public class CatalogoProducto {
     private Double precioCatalogo;
     private String porcentajeDescuento;
     private boolean esOferta;
+    private String keyItemCanje;
 
     public CatalogoProducto() {
     }
@@ -49,4 +50,20 @@ public class CatalogoProducto {
     public void setPrecioCatalogo(Double precioCatalogo){ this.precioCatalogo = precioCatalogo;}
     public String getPorcentajeDescuento(){ return porcentajeDescuento;}
     public void setPorcentajeDescuento(String porcentajeDescuento){ this.porcentajeDescuento = porcentajeDescuento;}
+
+    public boolean isEsOferta() {
+        return esOferta;
+    }
+
+    public void setEsOferta(boolean esOferta) {
+        this.esOferta = esOferta;
+    }
+
+    public String getKeyItemCanje() {
+        return keyItemCanje;
+    }
+
+    public void setKeyItemCanje(String keyItemCanje) {
+        this.keyItemCanje = keyItemCanje;
+    }
 }
