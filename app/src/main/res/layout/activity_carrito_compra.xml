@@ -18,7 +18,8 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="Productos Elegidos"
-        android:paddingTop="3dp"/>
+        android:paddingTop="3dp"
+        android:textStyle="bold"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,13 +42,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="bottom"
-        android:layout_weight="1">
+        android:layout_weight="0">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/sub_total"
@@ -65,25 +67,25 @@
 
             <Button
                 android:id="@+id/btnComprar"
-                android:layout_width="205dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
+                android:backgroundTint="#0C7CC7"
                 android:drawablePadding="8dp"
                 android:text="@string/continue_shopping"
-                android:textColor="@android:color/white"
-                android:backgroundTint="#0C7CC7" />
+                android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/btnPagar"
-                android:layout_width="205dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
+                android:backgroundTint="#0C7CC7"
                 android:drawablePadding="8dp"
                 android:text="@string/checkout"
-                android:textColor="@android:color/white"
-                android:backgroundTint="#0C7CC7" />
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
 

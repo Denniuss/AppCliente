@@ -31,6 +31,7 @@ public class CatalogoProductoAdapter extends RecyclerView.Adapter<CatalogoProduc
         public TextView marca;
         public TextView idProducto;
         public TextView idCatalogoProducto;
+        float v1,v4,v5,v2,v3,v6;
 
         public ProductoViewHolder(View v) {
 
@@ -111,5 +112,7 @@ public class CatalogoProductoAdapter extends RecyclerView.Adapter<CatalogoProduc
         });
 
     }
+
+
 
 }

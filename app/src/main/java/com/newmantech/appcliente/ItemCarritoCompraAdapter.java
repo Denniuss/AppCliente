@@ -7,17 +7,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemCarritoCompraAdapter extends RecyclerView.Adapter<ItemCarritoCompraAdapter.ItemViewHolder> {
 
     private List<ItemCarritoCompra> items;
     private Context context;
+    private AdapterView.OnItemClickListener mlistener;
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
         public CardView ItemCarritoCompraCardView;
@@ -28,20 +31,28 @@ public class ItemCarritoCompraAdapter extends RecyclerView.Adapter<ItemCarritoCo
         public TextView cantidad;
         public TextView idCatalogoProducto;
         public TextView idcliente;
+        public ImageView btnremove;
+        public TextView subtotalitem;
+        private ArrayList<String> chores;
+
 
         public ItemViewHolder(View v) {
 
             super(v);
+            //cv = (CardView)itemView.findViewById(R.id.);
             ItemCarritoCompraCardView = (CardView) v.findViewById(R.id.itemc_card);
             foto = (ImageView) v.findViewById(R.id.foto);
             nombre = (TextView) v.findViewById(R.id.nombre);
             marca = (TextView) v.findViewById(R.id.marca);
             cantidad = (TextView) v.findViewById(R.id.cantidad);
             precio = (TextView) v.findViewById(R.id.precio);
+            subtotalitem = (TextView) v.findViewById(R.id.subtotalitem);
             idCatalogoProducto = (TextView) v.findViewById(R.id.idCatalogoProducto);
             idcliente = (TextView) v.findViewById(R.id.idcliente);
+            btnremove =  (ImageView) v.findViewById(R.id.btnremove);
             //estado = (TextView) v.findViewById(R.id.estado);
             //idProducto = (TextView) v.findViewById(R.id.idpedido);
+
         }
 
     }
@@ -59,17 +70,28 @@ public class ItemCarritoCompraAdapter extends RecyclerView.Adapter<ItemCarritoCo
         return this.items;
     }
 
+    public interface OnItenClickListener {
+        void onItemClick(int position);
+    }
+
     @Override
-    public ItemCarritoCompraAdapter.ItemViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ItemViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.grid_carrito_item, viewGroup, false);
-        return new ItemCarritoCompraAdapter.ItemViewHolder(v);
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        ItemViewHolder pvh = new ItemViewHolder(v);
+        return pvh;
     }
 
 
     @Override
-    public void onBindViewHolder(ItemCarritoCompraAdapter.ItemViewHolder viewHolder, final int i) {
-
+    public void onBindViewHolder(final ItemCarritoCompraAdapter.ItemViewHolder viewHolder, final int i) {
+        //viewHolder.choreName.setText(this.chores.get(position));
 /*        Glide.with(viewHolder.foto.getContext())
                 .load(items.get(i).getFoto())
                 .centerCrop()
@@ -78,19 +100,25 @@ public class ItemCarritoCompraAdapter extends RecyclerView.Adapter<ItemCarritoCo
                 .load(items.get(i).getFoto()).into(viewHolder.foto);
 
         viewHolder.nombre.setText(items.get(i).getNombre());
-        viewHolder.marca.setText(items.get(i).getMarca());
-        viewHolder.precio.setText("S/ " + items.get(i).getPrecio().toString());
-        viewHolder.cantidad.setText(items.get(i).getCantidad().toString());
+        viewHolder.marca.setText("Marca: " +items.get(i).getMarca());
+        viewHolder.precio.setText("Precio Unidad: S/ " + items.get(i).getPrecio().toString());
+        viewHolder.cantidad.setText("Cantidad: " + items.get(i).getCantidad().toString());
+        viewHolder.subtotalitem.setText("Subtotal: S/ " + (items.get(i).getCantidad() * items.get(i).getPrecio()));
         viewHolder.idCatalogoProducto.setText(items.get(i).getIdCatalogoProducto()+"");
 
 
         Log.i("URL ", "onResponse: " + items.get(i).getFoto());
         Log.i("View ", "onResponse: " + viewHolder.foto.getContext());
 
-/*        viewHolder.ItemCarritoCompraCardView.setOnClickListener(new View.OnClickListener() {
+        viewHolder.btnremove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
+/*                int position = Integer.parseInt(position);
+                ItemCarritoCompraAdapter adapter = new ItemCarritoCompraAdapter(items);
+                items.remove(position);
+                adapter.notifyDataSetChanged();*/
+
+/*                Bundle bundle = new Bundle();
                 bundle.putString("curFoto", items.get(i).getFoto());
                 bundle.putString("curCantidad", items.get(i).getCantidad().toString());
                 bundle.putString("curMarca", items.get(i).getMarca());
@@ -102,10 +130,15 @@ public class ItemCarritoCompraAdapter extends RecyclerView.Adapter<ItemCarritoCo
 
                 Intent iconIntent = new Intent(view.getContext(), CarritoCompraActivity.class);
                 iconIntent.putExtras(bundle);
-                view.getContext().startActivity(iconIntent);
+                view.getContext().startActivity(iconIntent);*/
             }
-        });*/
+        });
 
     }
 
+    public void removeAt(int position) {
+        this.items.remove(position);
+        notifyItemRemoved(position);
+        notifyDataSetChanged();
+    }
 }
