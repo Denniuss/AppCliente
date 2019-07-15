@@ -1,12 +1,16 @@
 package com.newmantech.appcliente;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.newmantech.appcliente.utils.Utilitario;
 
@@ -25,6 +29,7 @@ public class ListadoProductosNActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager lManager;
     private Context contexto = this;
+    private FloatingActionButton my_cart;
 
 
     List<CatalogoProducto> listaCatalogo= new ArrayList<>();
@@ -41,12 +46,20 @@ public class ListadoProductosNActivity extends AppCompatActivity {
         lManager = new LinearLayoutManager(this);
         //recycler.setLayoutManager(lManager);
 
+        my_cart = (FloatingActionButton) findViewById(R.id.my_cart);
 
         recycler.setLayoutManager(new GridLayoutManager(this,2));
         FillProductos();
         adapter = new CatalogoProductoAdapter(items);
         recycler.setAdapter(adapter);
-
+        my_cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newActivity = new Intent(ListadoProductosNActivity.this,CarritoCompraActivity.class);
+                ListadoProductosNActivity.this.startActivity(newActivity);
+                Snackbar.make(view, "Tocaste el Carrito", Snackbar.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void FillProductos(){

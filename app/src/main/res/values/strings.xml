@@ -43,4 +43,8 @@
     <string name="continue_shopping">Continue comprando</string>
     <string name="checkout">Pagar</string>
 
+    <string name="pay_with_paypal">Pagar con PayPal</string>
+
+    <string name="server_error">Failed to payment information to server</string>
+    <string name="successful_payment">Payment successfully uploaded</string>
 </resources>

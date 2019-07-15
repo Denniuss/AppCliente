@@ -15,6 +15,9 @@ public class CatalogoProducto {
     private String porcentajeDescuento;
     private boolean esOferta;
     private String keyItemCanje;
+    private Integer stockDisponible;
+
+    private Producto producto;
 
     public CatalogoProducto() {
     }
@@ -65,5 +68,21 @@ public class CatalogoProducto {
 
     public void setKeyItemCanje(String keyItemCanje) {
         this.keyItemCanje = keyItemCanje;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public Integer getStockDisponible() {
+        return stockDisponible;
+    }
+
+    public void setStockDisponible(Integer stockDisponible) {
+        this.stockDisponible = stockDisponible;
     }
 }

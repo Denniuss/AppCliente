@@ -8,6 +8,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ProductoService {
 
@@ -25,6 +26,9 @@ public interface ProductoService {
     @GET("carritoProducto/agregarItem/{keyItemCanje}/{cantidad}")
     Call<BResult> agregarCarritoCompras(@Path("keyItemCanje")String keyItemCanje,
                                                        @Path("cantidad")Integer cantidad);
+
+    @GET("carritoProducto/quitar")
+    Call<BResult> eliminarCarritoCompras(@Query("codigo") Integer codigo);
 
     @GET("carritoProducto/listar")
     Call<CarritoCompra> listarCarritoCompras();

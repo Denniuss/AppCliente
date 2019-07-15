@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_alignParentStart="false"
+    android:layout_alignParentLeft="false"
+    android:layout_alignParentTop="false"
+    android:layout_alignParentEnd="false"
+    android:layout_alignParentRight="false"
+    android:layout_alignParentBottom="false"
     android:orientation="vertical"
     tools:context="com.newmantech.appcliente.ListadoProductosNActivity">
 
@@ -16,9 +22,11 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"/>
+            android:background="?attr/colorPrimary" />
 
     </android.support.design.widget.AppBarLayout>
+
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/my_cart"
@@ -27,13 +35,13 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@drawable/cart" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/reciclador_productosn"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="10dp" />
-
 
 
 </LinearLayout>

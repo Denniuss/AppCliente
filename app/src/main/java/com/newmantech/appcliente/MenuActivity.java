@@ -103,7 +103,7 @@ public class MenuActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_carritoCompra) {
             //fragment = new VolverAlmacenFragment();
-            Intent newActivity = new Intent(this,CarritoCompraActivity.class);
+            Intent newActivity = new Intent(MenuActivity.this,CarritoCompraActivity.class);
             startActivity(newActivity);
             //} else if (id == R.id.nav_direcciones) {
             //fragment = new VolverAlmacenFragment();
