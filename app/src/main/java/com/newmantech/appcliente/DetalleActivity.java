@@ -50,6 +50,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DetalleActivity extends AppCompatActivity {
     public ImageView foto;
     public TextView marca;
+    public TextView codigoNetsuite;
     public TextView nombre;
     public TextView preciocompra;
     public TextView porcentajedescuento;
@@ -93,6 +94,8 @@ public class DetalleActivity extends AppCompatActivity {
         idCatalogoProducto = (TextView) findViewById(R.id.idCatalogoProducto);
         keyItemCanje = (TextView) findViewById(R.id.keyItemCanje);
 
+        codigoNetsuite = (TextView) findViewById(R.id.codigoNetsuite);
+
         cant = findViewById(R.id.txt_cantidad);
         my_cart = (FloatingActionButton) findViewById(R.id.my_cart);
 
@@ -106,6 +109,8 @@ public class DetalleActivity extends AppCompatActivity {
 
         idCatalogoProducto.setText(getIntent().getExtras().getString("curIdCatalogoProducto"));
         keyItemCanje.setText(getIntent().getExtras().getString("curkeyItemCanje"));
+
+        codigoNetsuite.setText(getIntent().getExtras().getString("curCodigoNetsuite")+"");
 
         Picasso.with(foto.getContext())
                 .load(getIntent().getExtras().getString("curFoto")).into(foto);
@@ -347,6 +352,7 @@ public class DetalleActivity extends AppCompatActivity {
     private void MostrarDetalles(){
         Intent intent = new Intent(this, DetalleProducto.class);
         //intent.putExtra("item", result);
+        intent.putExtra("CodigoNetsuite", codigoNetsuite.getText());
         System.out.print("intent  " + intent);
         startActivity(intent);
     }

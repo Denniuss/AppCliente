@@ -33,14 +33,11 @@ public interface ProductoService {
     @GET("carritoProducto/listar")
     Call<CarritoCompra> listarCarritoCompras();
 
-
-
+    @GET("catalogo/detallePorCodigoNetsuite/{codigoNetsuite}")
+    Call<CatalogoProducto> detalleProducto(@Path("codigoNetsuite") String codigoNetsuite);
 
     @GET("carritoProducto/quitar?codigo=43122")
     Call<List<CatalogoProducto>> quitarCarritoCompras();
-
-    @GET("catalogo/detallePorCodigoNetsuite/4271")
-    Call<List<CatalogoProducto>> detalleProducto(String codigoNetsuite);
 
     @POST("pedido/actualizarEstadoPedido")
     Call<Integer> registrarIncidencia(@Body PedidoPost pedido);

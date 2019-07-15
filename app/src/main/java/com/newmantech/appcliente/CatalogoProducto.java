@@ -7,7 +7,7 @@ public class CatalogoProducto {
     private int idCatalogoProducto;
     private String nombre;
     private String descripcion;
-    private String marca;
+    private String descripcionMarca;
     private String foto;
     private String estado;
     private Double precioCompra;
@@ -19,15 +19,20 @@ public class CatalogoProducto {
 
     private Producto producto;
 
+    private String codigoNetsuite;
+
+    private String especificacionesProducto;
+    private String informacionProducto;
+
     public CatalogoProducto() {
     }
 
-    public CatalogoProducto(int idCatalogoProducto, String nombre, String descripcion, String marca, String estado, String foto, Double precioCatalogo, Double precioCompra, String porcentajeDescuento)
+    public CatalogoProducto(int idCatalogoProducto, String nombre, String descripcion, String descripcionMarca, String estado, String foto, Double precioCatalogo, Double precioCompra, String porcentajeDescuento)
     {
         this.idCatalogoProducto = idCatalogoProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.marca = marca;
+        this.descripcionMarca = descripcionMarca;
         this.estado = estado;
         this.foto = foto;
         this.precioCompra = precioCompra;
@@ -43,8 +48,15 @@ public class CatalogoProducto {
     public void setNombre(String nombre){ this.nombre = nombre;}
     public String getDescripcion(){ return descripcion; }
     public void setDescripcion(String descripcion){ this.descripcion = descripcion;}
-    public String getMarca(){ return marca; }
-    public void setMarca(String marca){ this.marca = marca;}
+
+    public String getDescripcionMarca() {
+        return descripcionMarca;
+    }
+
+    public void setDescripcionMarca(String descripcionMarca) {
+        this.descripcionMarca = descripcionMarca;
+    }
+
     public String getEstado(){ return estado; }
     public void setEstado(String estado){ this.estado = estado;}
     public Double getPrecioCompra(){ return precioCompra;}
@@ -84,5 +96,29 @@ public class CatalogoProducto {
 
     public void setStockDisponible(Integer stockDisponible) {
         this.stockDisponible = stockDisponible;
+    }
+
+    public String getCodigoNetsuite() {
+        return codigoNetsuite;
+    }
+
+    public void setCodigoNetsuite(String codigoNetsuite) {
+        this.codigoNetsuite = codigoNetsuite;
+    }
+
+    public String getEspecificacionesProducto() {
+        return especificacionesProducto;
+    }
+
+    public void setEspecificacionesProducto(String especificacionesProducto) {
+        this.especificacionesProducto = especificacionesProducto;
+    }
+
+    public String getInformacionProducto() {
+        return informacionProducto;
+    }
+
+    public void setInformacionProducto(String informacionProducto) {
+        this.informacionProducto = informacionProducto;
     }
 }

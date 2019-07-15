@@ -26,7 +26,14 @@
 
     </android.support.design.widget.AppBarLayout>
 
-
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/my_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="10dp"
+        android:visibility="gone"
+        android:src="@drawable/house" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/my_cart"

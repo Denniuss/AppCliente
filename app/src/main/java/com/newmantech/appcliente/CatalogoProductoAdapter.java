@@ -81,7 +81,7 @@ public class CatalogoProductoAdapter extends RecyclerView.Adapter<CatalogoProduc
                 .load(items.get(i).getFoto()).into(viewHolder.foto);
 
         viewHolder.nombre.setText(items.get(i).getNombre());
-        viewHolder.marca.setText(items.get(i).getMarca());
+        viewHolder.marca.setText(items.get(i).getDescripcionMarca());
         viewHolder.descripcion.setText("S/ " + items.get(i).getPrecioCompra().toString() + "   " + items.get(i).getPorcentajeDescuento());
         viewHolder.precio.setText("S/ " + items.get(i).getPrecioCatalogo().toString());
         viewHolder.idCatalogoProducto.setText(items.get(i).getIdCatalogoProducto()+"");
@@ -96,7 +96,7 @@ public class CatalogoProductoAdapter extends RecyclerView.Adapter<CatalogoProduc
                 Bundle bundle = new Bundle();
                 bundle.putString("curFoto", items.get(i).getFoto());
                 //bundle.putString("curImagen", items.get(i).getImagenurl());
-                bundle.putString("curMarca", items.get(i).getMarca());
+                bundle.putString("curMarca", items.get(i).getDescripcionMarca());
                 bundle.putString("curNombre", items.get(i).getNombre());
                 bundle.putString("curPrecioCompra", items.get(i).getPrecioCompra().toString());
                 bundle.putString("curPorcentajeDescuento", items.get(i).getPorcentajeDescuento());
@@ -106,7 +106,11 @@ public class CatalogoProductoAdapter extends RecyclerView.Adapter<CatalogoProduc
 
                 bundle.putInt("curStockDisponible", items.get(i).getStockDisponible());
 
-                Log.i("URL ", "CatalogoProductoAdapter curMarca: " + items.get(i).getMarca());
+                bundle.putString("curCodigoNetsuite", items.get(i).getCodigoNetsuite());
+
+                Log.i("URL ", "CatalogoProductoAdapter curCodigoNetsuite: " + items.get(i).getCodigoNetsuite());
+
+                Log.i("URL ", "CatalogoProductoAdapter curMarca: " + items.get(i).getDescripcionMarca());
 
                 Intent iconIntent = new Intent(view.getContext(), DetalleActivity.class);
                 iconIntent.putExtras(bundle);
