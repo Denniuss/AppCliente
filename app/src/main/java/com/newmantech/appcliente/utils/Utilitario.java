@@ -26,7 +26,7 @@ import okhttp3.OkHttpClient;
 
 public class Utilitario {
 
-    public static String IP_LOCAL = "http://192.168.1.189";
+    public static String IP_LOCAL = "http://192.168.1.192";
 
     //public static String baseUrl = IP_LOCAL+":8075/";
 
