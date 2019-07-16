@@ -36,6 +36,10 @@ public interface ProductoService {
     @GET("catalogo/detallePorCodigoNetsuite/{codigoNetsuite}")
     Call<CatalogoProducto> detalleProducto(@Path("codigoNetsuite") String codigoNetsuite);
 
+    @GET("canjeProducto/finalizar/{codigoOperacionPaypal}")
+    Call<BResult> finalizarCompraPaypal(@Path("codigoOperacionPaypal")String codigoOperacionPaypal);
+
+
     @GET("carritoProducto/quitar?codigo=43122")
     Call<List<CatalogoProducto>> quitarCarritoCompras();
 

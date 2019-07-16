@@ -21,6 +21,7 @@ import com.newmantech.appcliente.jsonEntityObjects.PaymentResponseObject;
 import com.newmantech.appcliente.jsonEntityObjects.ServerObject;
 import com.newmantech.appcliente.network.GsonRequest;
 import com.newmantech.appcliente.network.VolleySingleton;
+import com.newmantech.appcliente.utils.Utilitario;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
@@ -30,8 +31,19 @@ import com.paypal.android.sdk.payments.PaymentConfirmation;
 import org.json.JSONException;
 
 import java.math.BigDecimal;
+import java.net.CookieHandler;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
 import java.util.HashMap;
 import java.util.Map;
+
+import okhttp3.JavaNetCookieJar;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ComfirmaCompraActivity extends AppCompatActivity {
 
@@ -74,6 +86,8 @@ public class ComfirmaCompraActivity extends AppCompatActivity {
     }
 
     private void initializePayPalPayment(){
+        Log.d(TAG, "initializePayPalPayment totalCostPrice " + totalCostPrice);
+
         PayPalPayment payment = new PayPalPayment(new BigDecimal(String.valueOf(totalCostPrice)), "USD", "Piscos Personalizados", PayPalPayment.PAYMENT_INTENT_SALE);
         Intent intent = new Intent(this, PaymentActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
@@ -100,8 +114,74 @@ public class ComfirmaCompraActivity extends AppCompatActivity {
 
                         Log.d(TAG, "Log payment id and state " + paymentId + " " + paymentState);
 
+                        /*Registrar venta confirmada*/
+
+                        CookieManager cookieManager = new CookieManager();
+                        CookieHandler.setDefault(cookieManager);
+                        cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
+
+                        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+                        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+                        CookieHandler cookieHandler = new CookieManager(new PersistentCookieStore(getApplicationContext()), CookiePolicy.ACCEPT_ALL);
+
+                        OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor)
+                                .cookieJar(new JavaNetCookieJar(cookieHandler))
+                                .build();
+                        //client.newBuilder()
+                        Log.i("DetalleActivity", "body: client " + client.toString());
+
+                        Retrofit retrofit = new Retrofit.Builder().baseUrl(Utilitario.baseUrlSWeb)
+                                .client(client)
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .build();
+
+                        ProductoService productoService = retrofit.create(ProductoService.class);
+
+                        Call<BResult> lista = productoService.finalizarCompraPaypal(paymentId);
+                        lista.enqueue(new Callback<BResult>() {
+                            @Override
+                            public void onResponse(Call<BResult> call, retrofit2.Response<BResult> response) {
+                                Log.e("DetalleActivity ", "onResponse " + response.isSuccessful());
+
+                                if(response.isSuccessful()) {
+
+                                    //finish();
+
+                                    BResult respuesta = response.body();
+
+                                    if(respuesta!=null) {
+                                        //Intent intent = new Intent(DetalleActivity.this, DireccionActivity.class);
+                                        //startActivity(intent);
+                                        if(respuesta.getEstado()==0){
+                                            Toast.makeText(getApplicationContext(),
+                                                    "Se registro la venta correctamente", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            //Toast.makeText(this,,Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(),
+                                                    "Error al registrar la venta", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<BResult> call, Throwable t) {
+                                Log.e("DetalleActivity ", "onFailure "+t.getMessage());
+                            }
+                        });
+
+
+
+
+
+
                         //send to your server for verification.
-                        sendPaymentVerificationToServer(paymentId, paymentState);
+                        //sendPaymentVerificationToServer(paymentId, paymentState);
+                        Intent comprarIntent = new Intent(ComfirmaCompraActivity.this, ListadoProductosNActivity.class);
+                        startActivity(comprarIntent);
+                        Toast.makeText(ComfirmaCompraActivity.this, getString(R.string.successful_payment), Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {

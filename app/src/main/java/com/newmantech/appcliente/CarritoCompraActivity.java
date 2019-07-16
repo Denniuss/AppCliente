@@ -92,7 +92,7 @@ public class CarritoCompraActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent paymentIntent = new Intent(CarritoCompraActivity.this, ComfirmaCompraActivity.class);
-                paymentIntent.putExtra("TOTAL_PRICE", mSubTotal);
+                paymentIntent.putExtra("TOTAL_PRICE", mSubTotal/Double.valueOf(getString(R.string.tipo_cambio)));
                 startActivity(paymentIntent);
             }
         });
@@ -160,7 +160,7 @@ public class CarritoCompraActivity extends AppCompatActivity {
                                         items.add(new ItemCarritoCompra(carritoCompra.getCliente().getIdCliente(), temp.getCatalogoProducto().getIdCatalogoProducto(),temp.getCatalogoProducto().getNombre(),"",temp.getCatalogoProducto().getProducto().getDescripcionMarca(),temp.getCatalogoProducto().getProducto().getImagen1(),temp.getCatalogoProducto().getPrecioCatalogo(),temp.getCantidad()));
                                     }
 
-                                    //mSubTotal = getTotalPrice(items);
+                                    mSubTotal = carritoCompra.getImporteTotalSoles();
                                     subTotal.setText("Sub Total: S/ " + carritoCompra.getImporteTotalSoles());
 
                                     /*Toast.makeText(getApplicationContext(),
