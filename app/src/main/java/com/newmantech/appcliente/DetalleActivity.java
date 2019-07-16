@@ -27,6 +27,8 @@ public class DetalleActivity extends AppCompatActivity {
     private TextView cant;
     private FloatingActionButton my_cart;
     public TextView idCatalogoProducto;
+    private double mSubTotal = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +72,8 @@ public class DetalleActivity extends AppCompatActivity {
         preciocatalogo.setText("Precio : S/ " + getIntent().getExtras().getString("curPrecioCatalogo"));
 
         idCatalogoProducto.setText(getIntent().getExtras().getString("curIdCatalogoProducto"));
-
+        //mSubTotal =  Double.valueOf(preciocatalogo.toString());
+        //mSubTotal  //= Double.parseDouble(preciocatalogo.toString());
         Picasso.with(foto.getContext())
                 .load(getIntent().getExtras().getString("curFoto")).into(foto);
 
@@ -88,13 +91,33 @@ public class DetalleActivity extends AppCompatActivity {
             }
         });
 
+/*        Button btnComprar = (Button)findViewById(R.id.btnComprar);
+        assert btnComprar != null;
+        btnComprar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent comprarIntent = new Intent(DetalleActivity.this, ComfirmaCompraActivity.class);
+                startActivity(comprarIntent);
+            }
+        });*/
 
-        btnComprar.setOnClickListener(new View.OnClickListener(){
+        Button btnComprar = (Button)findViewById(R.id.btnComprar);
+        assert btnComprar != null;
+        btnComprar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent paymentIntent = new Intent(DetalleActivity.this, ComfirmaCompraActivity.class);
+                paymentIntent.putExtra("TOTAL_PRICE", (Double.valueOf(getIntent().getExtras().getString("curPrecioCatalogo"))*Double.valueOf(cant.getText().toString()))/Double.valueOf(getString(R.string.tipo_cambio)));
+                startActivity(paymentIntent);
+            }
+        });
+
+/*        btnComprar.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
                 MostrarCompra();
             }
-        });
+        });*/
 
        my_cart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,12 +168,14 @@ public class DetalleActivity extends AppCompatActivity {
         //this.startActivity(newActivity);
         Toast.makeText(DetalleActivity.this, getString(R.string.add_carrito_ok), Toast.LENGTH_LONG).show();
     }
-    private void MostrarCompra(){
+/*    private void MostrarCompra(){
 
         Intent newActivity = new Intent(this,ComfirmaCompraActivity.class);
         //newActivity.putExtras(bundle);
         this.startActivity(newActivity);
-    }
+
+
+    }*/
     private void MostrarDetalles(){
         Intent intent = new Intent(this, DetalleProducto.class);
         //intent.putExtra("item", result);

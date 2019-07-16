@@ -49,7 +49,7 @@ public class CarritoCompraActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent paymentIntent = new Intent(CarritoCompraActivity.this, ComfirmaCompraActivity.class);
-                paymentIntent.putExtra("TOTAL_PRICE", mSubTotal);
+                paymentIntent.putExtra("TOTAL_PRICE", mSubTotal/Double.valueOf(getString(R.string.tipo_cambio)));
                 startActivity(paymentIntent);
             }
         });

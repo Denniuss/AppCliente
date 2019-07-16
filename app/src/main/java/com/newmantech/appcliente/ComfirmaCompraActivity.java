@@ -101,7 +101,10 @@ public class ComfirmaCompraActivity extends AppCompatActivity {
                         Log.d(TAG, "Log payment id and state " + paymentId + " " + paymentState);
 
                         //send to your server for verification.
-                        sendPaymentVerificationToServer(paymentId, paymentState);
+                        //sendPaymentVerificationToServer(paymentId, paymentState);
+                        Intent comprarIntent = new Intent(ComfirmaCompraActivity.this, ListadoProductosNActivity.class);
+                        startActivity(comprarIntent);
+                        Toast.makeText(ComfirmaCompraActivity.this, getString(R.string.successful_payment), Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
