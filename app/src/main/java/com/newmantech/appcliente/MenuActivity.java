@@ -15,6 +15,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.newmantech.appcliente.fragment.CarroFragment;
+import com.newmantech.appcliente.fragment.DireccionFragment;
+import com.newmantech.appcliente.fragment.ProductoFragment;
+
 /*
 import pe.edu.upc.practicat61_javs.fragments.OpcionesFragment;
 import pe.edu.upc.practicat61_javs.model.Usuario;
@@ -22,11 +26,13 @@ import pe.edu.upc.practicat61_javs.model.Usuario;
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -42,6 +48,8 @@ public class MenuActivity extends AppCompatActivity
         TextView tvNombre = (TextView) navView.findViewById(R.id.tvNombre);
         TextView tvDescripcion = (TextView) navView.findViewById(R.id.tvDescripcion);
         LinearLayout llPerfil = (LinearLayout) navView.findViewById(R.id.llPerfil);
+
+
 
         /*
         Usuario usuario = getIntent().getParcelableExtra("item");
@@ -78,15 +86,21 @@ public class MenuActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        Fragment fragment = null;
+        FragmentManager fragmentManager = getSupportFragmentManager();
 
         if (id == R.id.nav_bandeja) {
+            toolbar.setTitle("Productos");
 
+            fragmentManager.beginTransaction()
+                    .replace(R.id.contenedor, new ProductoFragment())
+                    .commit();
+
+            /*
             Intent intent = new Intent(MenuActivity.this, ListadoProductosNActivity.class);
             //intent.putExtra("item", result);
             System.out.print("intent  " + intent);
             startActivity(intent);
-
+            */
             //fragment = new OpcionesFragment();
         /*} else if (id == R.id.nav_habilidades) {
             //fragment = new OpcionesFragment();
@@ -95,16 +109,25 @@ public class MenuActivity extends AppCompatActivity
         } else if (id == R.id.nav_buscador) {*/
 
         } else if (id == R.id.nav_registrarDireccion) {
-
+            toolbar.setTitle("Direccion");
+            fragmentManager.beginTransaction()
+                    .replace(R.id.contenedor, new DireccionFragment())
+                    .commit();
+            /*
             Intent intent = new Intent(MenuActivity.this, DireccionActivity.class);
             //intent.putExtra("item", result);
             System.out.print("intent  " + intent);
             startActivity(intent);
-
+            */
         } else if (id == R.id.nav_carritoCompra) {
+            toolbar.setTitle("Pedidos");
+
             //fragment = new VolverAlmacenFragment();
-            Intent newActivity = new Intent(MenuActivity.this,CarritoCompraActivity.class);
-            startActivity(newActivity);
+            //Intent newActivity = new Intent(MenuActivity.this,CarritoCompraActivity.class);
+            //startActivity(newActivity);
+            fragmentManager.beginTransaction()
+                    .replace(R.id.contenedor, new CarroFragment())
+                    .commit();
             //} else if (id == R.id.nav_direcciones) {
             //fragment = new VolverAlmacenFragment();
             //Intent newActivity = new Intent(this,RegresarAlmacenActivity.class);
@@ -117,12 +140,14 @@ public class MenuActivity extends AppCompatActivity
             startActivity(intent);
         }
 
+        /*
         if (fragment != null) {
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction()
                     .replace(R.id.contenedor, fragment)
                     .commit();
         }
+        */
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
