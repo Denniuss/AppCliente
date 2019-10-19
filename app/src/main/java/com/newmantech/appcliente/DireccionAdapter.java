@@ -16,6 +16,7 @@ import java.util.List;
 public class DireccionAdapter extends RecyclerView.Adapter<DireccionAdapter.DireccionViewHolder> {
 
     private List<Direccion> items;
+    private DireccionView direccionView;
 
     public static class DireccionViewHolder extends RecyclerView.ViewHolder {
 
@@ -51,6 +52,12 @@ public class DireccionAdapter extends RecyclerView.Adapter<DireccionAdapter.Dire
     public DireccionAdapter(List<Direccion> items) {
         this.items = items;
     }
+
+    public DireccionAdapter(List<Direccion> items,DireccionView direccionView) {
+        this.items = items;
+        this.direccionView = direccionView;
+    }
+
 
     public List<Direccion> getItems(){
         return this.items;
@@ -105,11 +112,16 @@ public class DireccionAdapter extends RecyclerView.Adapter<DireccionAdapter.Dire
 
                 bundle.putLong("curidDireccionDelivery", items.get(i).getIdDireccionDelivery());
 
-                Intent iconIntent = new Intent(view.getContext(), DetalleDireccionActivity.class);
-                iconIntent.putExtras(bundle);
-                view.getContext().startActivity(iconIntent);
+                //Intent iconIntent = new Intent(view.getContext(), DetalleDireccionActivity.class);
+                //iconIntent.putExtras(bundle);
+                //view.getContext().startActivity(iconIntent);
             }
         });
+    }
+
+    public interface DireccionView {
+        void iniciarDetalleDireccion(Bundle bundle);
+
     }
 
 }

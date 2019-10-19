@@ -34,7 +34,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class DireccionFragment extends Fragment {
+public class DireccionFragment extends Fragment implements DireccionAdapter.DireccionView {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private List<Direccion> items = new ArrayList();
@@ -59,7 +59,7 @@ public class DireccionFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        FillDirecciones();
+        FillDirecciones(this);
         botonFlotanteDireccion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,9 +95,15 @@ public class DireccionFragment extends Fragment {
 
                 bundle.putLong("curidDireccionDelivery", 0);
 
-                Intent iconIntent = new Intent(view.getContext(), DetalleDireccionActivity.class);
-                iconIntent.putExtras(bundle);
-                view.getContext().startActivity(iconIntent);
+                DetalleDireccionFragment fr=new DetalleDireccionFragment();
+                fr.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.contenedor,fr)
+                        .commit();
+
+                //Intent iconIntent = new Intent(view.getContext(), DetalleDireccionActivity.class);
+                //iconIntent.putExtras(bundle);
+                //view.getContext().startActivity(iconIntent);
 
             }
         });
@@ -161,7 +167,7 @@ public class DireccionFragment extends Fragment {
         });
     }
 
-    private void FillDirecciones(){
+    private void FillDirecciones(final DireccionAdapter.DireccionView view){
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Utilitario.baseUrlServio)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -212,7 +218,7 @@ public class DireccionFragment extends Fragment {
                     lManager = new LinearLayoutManager(getContext());
                     recycler.setLayoutManager(lManager);
 
-                    adapter = new DireccionAdapter(items);
+                    adapter = new DireccionAdapter(items,view);
                     recycler.setAdapter(adapter);
 
                 }
@@ -225,4 +231,13 @@ public class DireccionFragment extends Fragment {
             }
         });
 }
+
+    @Override
+    public void iniciarDetalleDireccion(Bundle bundle) {
+        DetalleDireccionFragment fr=new DetalleDireccionFragment();
+        fr.setArguments(bundle);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.contenedor,fr)
+                .commit();
+    }
 }
