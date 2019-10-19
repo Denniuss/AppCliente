@@ -1,8 +1,10 @@
 package com.newmantech.appcliente;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.newmantech.appcliente.fragment.DetalleFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -19,7 +22,7 @@ import java.util.List;
 public class CatalogoProductoAdapter extends RecyclerView.Adapter<CatalogoProductoAdapter.ProductoViewHolder> {
 
     private List<CatalogoProducto> items;
-    private Context context;
+    private CatalogoProductoView catalogoProductoView;
 
     public static class ProductoViewHolder extends RecyclerView.ViewHolder {
 
@@ -56,6 +59,11 @@ public class CatalogoProductoAdapter extends RecyclerView.Adapter<CatalogoProduc
     public CatalogoProductoAdapter(List<CatalogoProducto> items) {
         this.items = items;
 
+    }
+
+    public CatalogoProductoAdapter(List<CatalogoProducto> items,CatalogoProductoView catalogoProductoView) {
+        this.items = items;
+        this.catalogoProductoView = catalogoProductoView;
     }
 
     public List<CatalogoProducto> getItems(){
@@ -112,11 +120,18 @@ public class CatalogoProductoAdapter extends RecyclerView.Adapter<CatalogoProduc
 
                 Log.i("URL ", "CatalogoProductoAdapter curMarca: " + items.get(i).getDescripcionMarca());
 
-                Intent iconIntent = new Intent(view.getContext(), DetalleActivity.class);
-                iconIntent.putExtras(bundle);
-                view.getContext().startActivity(iconIntent);
+                catalogoProductoView.iniciarDetalle(bundle);
+
+                //Intent iconIntent = new Intent(view.getContext(), DetalleActivity.class);
+                //iconIntent.putExtras(bundle);
+                //view.getContext().startActivity(iconIntent);
             }
         });
+
+    }
+
+    public interface CatalogoProductoView {
+        void iniciarDetalle(Bundle bundle);
 
     }
 

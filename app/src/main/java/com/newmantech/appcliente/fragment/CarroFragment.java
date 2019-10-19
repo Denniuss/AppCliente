@@ -89,9 +89,17 @@ public class CarroFragment extends Fragment {
         btnPagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent paymentIntent = new Intent(getActivity(), ComfirmaCompraActivity.class);
+              /* Intent paymentIntent = new Intent(getActivity(), ComfirmaCompraActivity.class);
                 paymentIntent.putExtra("TOTAL_PRICE", mSubTotal/Double.valueOf(getString(R.string.tipo_cambio)));
-                startActivity(paymentIntent);
+                startActivity(paymentIntent);*/
+                CompraFragment fr=new CompraFragment();
+                Bundle args = new Bundle();
+                Double tipoCambio = Double.valueOf(getString(R.string.tipo_cambio));
+                args.putDouble("TOTAL_PRICE", mSubTotal/tipoCambio);
+                fr.setArguments(args);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.contenedor,fr)
+                        .commit();
             }
         });
 
