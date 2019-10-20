@@ -45,7 +45,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class CarroFragment extends Fragment {
+public class CarroFragment extends Fragment implements ItemCarritoCompraAdapter.CarroCompraView {
 
     private List<ItemCarritoCompra> items = new ArrayList();
     private RecyclerView recycler;
@@ -82,7 +82,7 @@ public class CarroFragment extends Fragment {
         // Usar un administrador para LinearLayout
         lManager = new LinearLayoutManager(getContext());
         recycler.setLayoutManager(lManager);
-        FillItemCarritoCompra();
+        FillItemCarritoCompra(this);
 
 
         assert btnPagar != null;
@@ -121,7 +121,7 @@ public class CarroFragment extends Fragment {
 
     }
 
-    private void FillItemCarritoCompra() {
+    private void FillItemCarritoCompra(final ItemCarritoCompraAdapter.CarroCompraView view) {
 
         CookieManager cookieManager = new CookieManager();
         CookieHandler.setDefault(cookieManager);
@@ -193,7 +193,7 @@ public class CarroFragment extends Fragment {
 
                     Log.i("FillCarritoCompras", "items size: " + items.size());
 
-                    adapter = new ItemCarritoCompraAdapter(items);
+                    adapter = new ItemCarritoCompraAdapter(items,view);
                     recycler.setAdapter(adapter);
 
                     /*Intent iconIntent = new Intent(view.getContext(), DetalleDireccionActivity.class);
@@ -224,5 +224,13 @@ public class CarroFragment extends Fragment {
             totalCost = totalCost + pObject.getCantidad() * pObject.getPrecio();
         }
         return totalCost;
+    }
+
+    @Override
+    public void iniciar() {
+        CarroFragment fr=new CarroFragment();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.contenedor,fr)
+                .commit();
     }
 }

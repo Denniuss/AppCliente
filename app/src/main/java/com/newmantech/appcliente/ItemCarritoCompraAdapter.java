@@ -2,6 +2,7 @@ package com.newmantech.appcliente;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.newmantech.appcliente.fragment.CarroFragment;
 import com.newmantech.appcliente.utils.Utilitario;
 import com.squareup.picasso.Picasso;
 
@@ -37,6 +39,7 @@ public class ItemCarritoCompraAdapter extends RecyclerView.Adapter<ItemCarritoCo
     private List<ItemCarritoCompra> items;
     //private Context context;
     private AdapterView.OnItemClickListener mlistener;
+    private CarroCompraView carroCompraView;
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
         public CardView ItemCarritoCompraCardView;
@@ -82,6 +85,13 @@ public class ItemCarritoCompraAdapter extends RecyclerView.Adapter<ItemCarritoCo
         this.items = items;
 
     }
+
+    public ItemCarritoCompraAdapter(List<ItemCarritoCompra> items,CarroCompraView carroCompraView) {
+        this.items = items;
+        this.carroCompraView = carroCompraView;
+
+    }
+
     public List<ItemCarritoCompra> getItems(){
         return this.items;
     }
@@ -191,13 +201,14 @@ public class ItemCarritoCompraAdapter extends RecyclerView.Adapter<ItemCarritoCo
                             adapter = new ItemCarritoCompraAdapter(items);
                             recycler.setAdapter(adapter);*/
 
-                    Intent iconIntent = new Intent(view.getContext(), CarritoCompraActivity.class);
-                    view.getContext().startActivity(iconIntent);
+                    //Intent iconIntent = new Intent(view.getContext(), CarritoCompraActivity.class);
+                    //view.getContext().startActivity(iconIntent);
 
                             //adapter = new ItemCarritoCompraAdapter(items);
                             //recycler.setAdapter(adapter);
 
                         //}
+                           carroCompraView.iniciar();
 
                     }
 
@@ -244,5 +255,10 @@ public class ItemCarritoCompraAdapter extends RecyclerView.Adapter<ItemCarritoCo
         this.items.remove(position);
         notifyItemRemoved(position);
         notifyDataSetChanged();
+    }
+
+    public interface CarroCompraView {
+        void iniciar();
+
     }
 }

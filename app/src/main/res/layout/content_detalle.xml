@@ -168,7 +168,6 @@
                     android:layout_alignTop="@id/btn_menos"
                     android:layout_gravity="start"
                     android:layout_toEndOf="@+id/txt_cantidad"
-                    android:onClick="agregar"
                     android:text="+"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"

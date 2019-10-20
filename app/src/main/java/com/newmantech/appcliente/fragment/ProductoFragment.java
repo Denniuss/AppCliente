@@ -71,10 +71,10 @@ public class ProductoFragment extends Fragment implements CatalogoProductoAdapte
 
 
         recycler.setLayoutManager(new GridLayoutManager(getContext(),2));
-        FillProductos();
+        FillProductos(this);
 
-        adapter = new CatalogoProductoAdapter(items,this);
-        recycler.setAdapter(adapter);
+        //adapter = new CatalogoProductoAdapter(items,this);
+        //recycler.setAdapter(adapter);
 
         my_cart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +97,7 @@ public class ProductoFragment extends Fragment implements CatalogoProductoAdapte
 
     }
 
-    private void FillProductos(){
+    private void FillProductos(final CatalogoProductoAdapter.CatalogoProductoView view){
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Utilitario.baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -147,8 +147,8 @@ public class ProductoFragment extends Fragment implements CatalogoProductoAdapte
 
                     recycler.setLayoutManager(new GridLayoutManager(getContext(),2));
                     //FillProductos();
-                    //adapter = new CatalogoProductoAdapter(items,this);
-                    //recycler.setAdapter(adapter);
+                    adapter = new CatalogoProductoAdapter(items,view);
+                    recycler.setAdapter(adapter);
 
                     /*
                     // Obtener el Recycler

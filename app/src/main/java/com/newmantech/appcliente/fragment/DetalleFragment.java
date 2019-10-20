@@ -58,6 +58,8 @@ public class DetalleFragment extends Fragment {
     public Button btnDetalles;
     public Button btnCarrito;
     public Button btnComprar;
+    public Button btnMas;
+    public Button btnMenos;
     private TextView cant;
     private FloatingActionButton my_cart;
     public TextView idCatalogoProducto;
@@ -80,6 +82,8 @@ public class DetalleFragment extends Fragment {
         btnDetalles = (Button) view.findViewById(R.id.btnDetalles);
         btnCarrito = (Button) view.findViewById(R.id.btnCarrito);
         btnComprar = (Button) view.findViewById(R.id.btnComprar);
+        btnMas = (Button) view.findViewById(R.id.btn_mas) ;
+        btnMenos = (Button) view.findViewById(R.id.btn_menos);
         idCatalogoProducto = (TextView) view.findViewById(R.id.idCatalogoProducto);
         keyItemCanje = (TextView) view.findViewById(R.id.keyItemCanje);
 
@@ -108,7 +112,9 @@ public class DetalleFragment extends Fragment {
             //idpedido.setText(String.valueOf(getIntent().getExtras().getInt("curIdpedido")));
             preciocatalogo.setText("Precio : S/ " + getArguments().getString("curPrecioCatalogo"));
 
-            idCatalogoProducto.setText(getArguments().getString("curIdCatalogoProducto"));
+            int idcatalogo = getArguments().getInt("curIdCatalogoProducto");
+
+            if(idcatalogo > 0) idCatalogoProducto.setText(String.valueOf(idcatalogo));
 
             keyItemCanje.setText(getArguments().getString("curkeyItemCanje"));
 
@@ -196,6 +202,20 @@ public class DetalleFragment extends Fragment {
                         .commit();
                 Snackbar.make(view, "Tocaste el Carrito", Snackbar.LENGTH_LONG).show();
 
+            }
+        });
+
+        btnMas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                agregar(v);
+            }
+        });
+
+        btnMenos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                restar(v);
             }
         });
 
@@ -334,10 +354,6 @@ public class DetalleFragment extends Fragment {
 
                     //finish();
 
-                    ProductoFragment fr=new ProductoFragment();
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.contenedor,fr)
-                            .commit();
 
                     BResult respuesta = response.body();
 
@@ -353,6 +369,11 @@ public class DetalleFragment extends Fragment {
                                     "Error al guardar la dirección vuelva a intentar", Toast.LENGTH_SHORT).show();
                         }
                     }
+
+                    ProductoFragment fr=new ProductoFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.contenedor,fr)
+                            .commit();
 
 
                     /*Intent iconIntent = new Intent(view.getContext(), DetalleDireccionActivity.class);
