@@ -196,7 +196,7 @@ public class DetalleFragment extends Fragment {
                 /*Intent newActivity = new Intent(DetalleActivity.this, CarritoCompraActivity.class);
                 getContext().startActivity(newActivity);
                  */
-                CompraFragment fr=new CompraFragment();
+                CarroFragment fr=new CarroFragment();
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.contenedor,fr)
                         .commit();
