@@ -11,9 +11,9 @@ public class Direccion {
     @Expose
     private Boolean establecerDireccion;
 
-    @SerializedName("idDireccionDelivery")
+    @SerializedName("idDireccion")
     @Expose
-    private Long idDireccionDelivery;
+    private Long idDireccion;
 
     @SerializedName("nombre")
     @Expose
@@ -189,12 +189,12 @@ public class Direccion {
     //private DeliveryDiasEntrega deliveryDiasEntrega;
 
 
-    public Long getIdDireccionDelivery() {
-        return idDireccionDelivery;
+    public Long getIdDireccion() {
+        return idDireccion;
     }
 
-    public void setIdDireccionDelivery(Long idDireccionDelivery) {
-        this.idDireccionDelivery = idDireccionDelivery;
+    public void setIdDireccion(Long idDireccion) {
+        this.idDireccion = idDireccion;
     }
 
     public String getNombre() {
@@ -545,7 +545,7 @@ public class Direccion {
     public String toString() {
         return "Direccion{" +
                 "establecerDireccion=" + establecerDireccion +
-                ", idDireccionDelivery=" + idDireccionDelivery +
+                ", idDireccion=" + idDireccion +
                 ", direccion='" + direccion + '\'' +
                 ", nombreContacto='" + nombreContacto + '\'' +
                 ", telefonoContacto='" + telefonoContacto + '\'' +

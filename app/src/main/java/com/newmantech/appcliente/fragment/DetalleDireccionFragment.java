@@ -65,7 +65,7 @@ public class DetalleDireccionFragment extends Fragment {
     public TextView referencia;
     public CheckBox establecerDireccionCheck;
 
-    public TextView iddirecciondelivery;
+    public TextView iddireccion;
     public Button btnGuardarDireccion;
 
     List<Ubigeo> listaDepartamentoUbigeo = new ArrayList<>();
@@ -90,7 +90,7 @@ public class DetalleDireccionFragment extends Fragment {
         spinnerProvincia = (Spinner) view.findViewById(R.id.spinnerProv);
         spinnerDistrito = (Spinner) view.findViewById(R.id.spinnerDistr);
 
-        iddirecciondelivery = (TextView) view.findViewById(R.id.idDireccionDelivery);
+        iddireccion = (TextView) view.findViewById(R.id.idDireccion);
         departamento = (TextView) view.findViewById(R.id.departamento);
         provincia = (TextView) view.findViewById(R.id.provincia);
         distrito = (TextView) view.findViewById(R.id.distrito);
@@ -114,9 +114,9 @@ public class DetalleDireccionFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if(getArguments() != null){
-            iddirecciondelivery.setText(getArguments().getLong("curidDireccionDelivery")+"");
+            iddireccion.setText(getArguments().getLong("curidDireccion")+"");
 
-            Log.i("curidDireccionDelivery", "body: " + getArguments().getLong("curidDireccionDelivery")+"");
+            Log.i("curidDireccion", "body: " + getArguments().getLong("curidDireccion")+"");
 
             nombreContacto.setText( getArguments().getString("curNombreContacto"));
             telefonoContacto.setText( getArguments().getString("curTelefonoContacto"));
@@ -477,7 +477,7 @@ public class DetalleDireccionFragment extends Fragment {
         Direccion direccionTemp = new Direccion();
         direccionTemp.setDireccion(direccion.getText().toString());
         direccionTemp.setNombreDireccion(nombreDireccion.getText().toString());
-        direccionTemp.setIdDireccionDelivery((Long.valueOf(iddirecciondelivery.getText()+"")));
+        direccionTemp.setIdDireccion((Long.valueOf(iddireccion.getText()+"")));
 
         direccionTemp.setNombreContacto(nombreContacto.getText().toString());
         direccionTemp.setTelefonoContacto(telefonoContacto.getText().toString());

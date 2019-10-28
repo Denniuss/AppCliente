@@ -53,7 +53,7 @@ public class DetalleDireccionActivity extends AppCompatActivity {
     public TextView referencia;
     public CheckBox establecerDireccionCheck;
 
-    public TextView iddirecciondelivery;
+    public TextView iddireccion;
     public Button btnGuardarDireccion;
 
     List<Ubigeo> listaDepartamentoUbigeo = new ArrayList<>();
@@ -89,7 +89,7 @@ public class DetalleDireccionActivity extends AppCompatActivity {
         spinnerProvincia = (Spinner) findViewById(R.id.spinnerProv);
         spinnerDistrito = (Spinner) findViewById(R.id.spinnerDistr);
 
-        iddirecciondelivery = (TextView) findViewById(R.id.idDireccionDelivery);
+        iddireccion = (TextView) findViewById(R.id.idDireccion);
         departamento = (TextView) findViewById(R.id.departamento);
         provincia = (TextView) findViewById(R.id.provincia);
         distrito = (TextView) findViewById(R.id.distrito);
@@ -107,9 +107,9 @@ public class DetalleDireccionActivity extends AppCompatActivity {
         establecerDireccionCheck = (CheckBox) findViewById(R.id.establecerDireccionCheck);
 
 
-        iddirecciondelivery.setText(getIntent().getExtras().getLong("curidDireccionDelivery")+"");
+        iddireccion.setText(getIntent().getExtras().getLong("curidDireccion")+"");
 
-        Log.i("curidDireccionDelivery", "body: " + getIntent().getExtras().getLong("curidDireccionDelivery")+"");
+        Log.i("curidDireccion", "body: " + getIntent().getExtras().getLong("curidDireccion")+"");
 
         nombreContacto.setText( getIntent().getExtras().getString("curNombreContacto"));
         telefonoContacto.setText( getIntent().getExtras().getString("curTelefonoContacto"));
@@ -169,14 +169,14 @@ public class DetalleDireccionActivity extends AppCompatActivity {
         });
 
 
-        /*bundle.putLong("curIdDireccionDelivery", items.get(i).getIdDireccionDelivery());
+        /*bundle.putLong("curIdDireccion", items.get(i).getIdDireccion());
         bundle.putString("curNombreDireccion", items.get(i).getNombreDireccion());
         bundle.putString("curDepartamento", items.get(i).getDepartamento());
         bundle.putString("curCiudad", items.get(i).getCiudad());
         bundle.putString("curDistrito", items.get(i).getDistrito());
         bundle.putString("curDireccion", items.get(i).getDireccion());*/
 
-                //cliente.setText(getIntent().getExtras().getString("curIdDireccionDelivery"));
+                //cliente.setText(getIntent().getExtras().getString("curIdDireccion"));
                 //direccion.setText("Nombre Dirección: " + getIntent().getExtras().getString("curNombreDireccion"));
 
         //distrito.setText("Distrito: " + getIntent().getExtras().getString("curDistrito"));
@@ -494,7 +494,7 @@ public class DetalleDireccionActivity extends AppCompatActivity {
         Direccion direccionTemp = new Direccion();
         direccionTemp.setDireccion(direccion.getText().toString());
         direccionTemp.setNombreDireccion(nombreDireccion.getText().toString());
-        direccionTemp.setIdDireccionDelivery((Long.valueOf(iddirecciondelivery.getText()+"")));
+        direccionTemp.setIdDireccion((Long.valueOf(iddireccion.getText()+"")));
 
         direccionTemp.setNombreContacto(nombreContacto.getText().toString());
         direccionTemp.setTelefonoContacto(telefonoContacto.getText().toString());

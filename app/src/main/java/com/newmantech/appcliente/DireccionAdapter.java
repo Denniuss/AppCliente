@@ -93,7 +93,7 @@ public class DireccionAdapter extends RecyclerView.Adapter<DireccionAdapter.Dire
                 Bundle bundle = new Bundle();
                 //bundle.putInt("curImagen", items.get(i).getImagen());
                 //bundle.putString("curImagen", items.get(i).getImagenurl());
-                bundle.putLong("curIdDireccionDelivery", items.get(i).getIdDireccionDelivery());
+                bundle.putLong("curIdDireccion", items.get(i).getIdDireccion());
                 bundle.putString("curNombreDireccion", items.get(i).getNombreDireccion());
                 bundle.putString("curDepartamento", items.get(i).getDepartamento());
                 bundle.putString("curProvincia", items.get(i).getCiudad());
@@ -108,9 +108,9 @@ public class DireccionAdapter extends RecyclerView.Adapter<DireccionAdapter.Dire
                 bundle.putString("curidDepartamento", items.get(i).getCodigoDepartamento());
                 bundle.putString("curidProvincia", items.get(i).getCodigoProvincia());
                 bundle.putString("curidDistrito", items.get(i).getCodigoDistrito());
-                Log.i("onResponse Adapter", "Response idDireccionDelivery: " + items.get(i).getIdDireccionDelivery());
+                Log.i("onResponse Adapter", "Response idDireccion: " + items.get(i).getIdDireccion());
 
-                bundle.putLong("curidDireccionDelivery", items.get(i).getIdDireccionDelivery());
+                bundle.putLong("curidDireccion", items.get(i).getIdDireccion());
 
                 direccionView.iniciarDetalleDireccion(bundle);
 

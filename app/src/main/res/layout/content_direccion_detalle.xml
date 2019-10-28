@@ -204,7 +204,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:paddingTop="0dp"
-                    android:id="@+id/idDireccionDelivery"
+                    android:id="@+id/idDireccion"
                     android:visibility="invisible"/>
 
                 <LinearLayout

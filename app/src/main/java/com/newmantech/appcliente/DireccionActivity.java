@@ -59,7 +59,7 @@ public class DireccionActivity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 //bundle.putInt("curImagen", items.get(i).getImagen());
                 //bundle.putString("curImagen", items.get(i).getImagenurl());
-                bundle.putLong("curIdDireccionDelivery", 0);
+                bundle.putLong("curIdDireccion", 0);
                 bundle.putString("curNombreDireccion", "");
                 bundle.putString("curDepartamento", "");
                 bundle.putString("curProvincia", "");
@@ -75,7 +75,7 @@ public class DireccionActivity extends AppCompatActivity {
                 bundle.putString("curidProvincia", "");
                 bundle.putString("curidDistrito", "");
 
-                bundle.putLong("curidDireccionDelivery", 0);
+                bundle.putLong("curidDireccion", 0);
 
                 Intent iconIntent = new Intent(view.getContext(), DetalleDireccionActivity.class);
                 iconIntent.putExtras(bundle);

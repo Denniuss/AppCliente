@@ -77,7 +77,7 @@ public class DireccionFragment extends Fragment implements DireccionAdapter.Dire
                 Bundle bundle = new Bundle();
                 //bundle.putInt("curImagen", items.get(i).getImagen());
                 //bundle.putString("curImagen", items.get(i).getImagenurl());
-                bundle.putLong("curIdDireccionDelivery", 0);
+                bundle.putLong("curIdDireccion", 0);
                 bundle.putString("curNombreDireccion", "");
                 bundle.putString("curDepartamento", "");
                 bundle.putString("curProvincia", "");
@@ -93,7 +93,7 @@ public class DireccionFragment extends Fragment implements DireccionAdapter.Dire
                 bundle.putString("curidProvincia", "");
                 bundle.putString("curidDistrito", "");
 
-                bundle.putLong("curidDireccionDelivery", 0);
+                bundle.putLong("curidDireccion", 0);
 
                 DetalleDireccionFragment fr=new DetalleDireccionFragment();
                 fr.setArguments(bundle);
@@ -197,7 +197,7 @@ public class DireccionFragment extends Fragment implements DireccionAdapter.Dire
                     for(Direccion dis : listaDirecciones){
                         Log.i("DIRECCION  ", "onResponse: " + dis.getNombreDireccion()+"-"+dis.getDireccion());
 
-                        //items.add(new Direccion(dis.getIdDireccionDelivery(), R.drawable.face01, dis.getNombreDireccion(), dis.getDireccion(), dis.getDepartamento(), dis.getCiudad(),dis.getDistrito(),dis.getTelefono(),dis.getDiasEntrega(),""));
+                        //items.add(new Direccion(dis.getIdDireccion(), R.drawable.face01, dis.getNombreDireccion(), dis.getDireccion(), dis.getDepartamento(), dis.getCiudad(),dis.getDistrito(),dis.getTelefono(),dis.getDiasEntrega(),""));
                         items.add(dis);
                     }
                     /*
