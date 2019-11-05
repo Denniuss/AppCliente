@@ -1,8 +1,5 @@
 package com.newmantech.appcliente.fragment;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,12 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.newmantech.appcliente.DetalleDireccionActivity;
-import com.newmantech.appcliente.Direccion;
-import com.newmantech.appcliente.DireccionAdapter;
-import com.newmantech.appcliente.DireccionService;
-import com.newmantech.appcliente.PedidoPost;
-import com.newmantech.appcliente.ProductoService;
+import com.newmantech.appcliente.model.Direccion;
+import com.newmantech.appcliente.adapter.DireccionAdapter;
+import com.newmantech.appcliente.service.DireccionService;
+import com.newmantech.appcliente.model.PedidoPost;
+import com.newmantech.appcliente.service.ProductoService;
 import com.newmantech.appcliente.R;
 import com.newmantech.appcliente.utils.Utilitario;
 
@@ -176,9 +172,8 @@ public class DireccionFragment extends Fragment implements DireccionAdapter.Dire
 
         DireccionService direccionService = retrofit.create(DireccionService.class);
 
-        Call<List<Direccion>> lista = direccionService.getListadoDireccionesXCliente();
+        Call<List<Direccion>> lista = direccionService.getListadoDireccionesXCliente(Utilitario.idCliente);
 
-        Log.i("----> url"+ direccionService.getListadoDireccionesXCliente(), "onResponse: ");
 
         Log.i("----> lista" + lista, "onResponse: ");
 

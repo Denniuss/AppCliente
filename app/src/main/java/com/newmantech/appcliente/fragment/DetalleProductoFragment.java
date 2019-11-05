@@ -1,7 +1,5 @@
 package com.newmantech.appcliente.fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.newmantech.appcliente.CatalogoProducto;
-import com.newmantech.appcliente.ProductoService;
+import com.newmantech.appcliente.model.CatalogoProducto;
+import com.newmantech.appcliente.service.ProductoService;
 import com.newmantech.appcliente.R;
 import com.newmantech.appcliente.utils.Utilitario;
 

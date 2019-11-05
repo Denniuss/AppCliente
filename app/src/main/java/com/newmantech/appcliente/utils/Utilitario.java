@@ -26,13 +26,15 @@ import okhttp3.OkHttpClient;
 
 public class Utilitario {
 
-    public static String IP_LOCAL = "http://192.168.1.140";
+    public static String IP_LOCAL = "http://192.168.1.183";
 
     //public static String baseUrl = IP_LOCAL+":8075/";
 
     //public static String baseUrlServio = IP_LOCAL+":8080/ServiciosWebSaas/";
 
     public static String baseUrl = IP_LOCAL+":8075/";
+
+    public static String baseUrlPis= IP_LOCAL+":8077/";
 
     public static String baseUrlServio = IP_LOCAL+":8080/ServiciosWebSaas/";
 
@@ -56,6 +58,8 @@ public class Utilitario {
         }
         return null;
     }
+
+    public static Integer idCliente = 3339;
 
     public static String getIP(){
         List<InetAddress> addrs;
@@ -123,4 +127,64 @@ public class Utilitario {
         DecimalFormat twoDForm = new DecimalFormat(pattern);
         return Double.valueOf(twoDForm.format(d));
     }
+
+
+    public  enum ESTADO_FLUJO_TRABAJO{
+        CREACION_FLUJO (100,"CREACION FLUJO","Se está procesando su pedido"),
+        APROBACION_FLUJO (101,"APROBACION FLUJO","Se está procesando su pedido"),
+        ABASTECIMIENTO_FLUJO (102,"ABASTECIMIENTO FLUJO","En preparación"),
+
+        PRODUCCION_FLUJO (103,"PRODUCCION FLUJO","En preparación"),
+        CONTROL_CALIDAD_FLUJO (104,"CONTROL CALIDAD FLUJO","En preparación"),
+        PRE_DISTRIBUCION_FLUJO (105,"PRE DISTRIBUCION FLUJO","Pedido programado para su distribución"),
+
+        INCIO_ENTREGA_REPROGRAMAOD (106,"INICIO ENTREGA REPROGRAMADO","Pedido re-programado para su distribución"),
+
+        INCIO_ENTREGA_FLUJO (107,"INICIO ENTREGA FLUJO","Pedido enviado"),
+        INCIDENCIA_FLUJO (108,"INCIDENCIA FLUJO","Se ha registrado una incidencia en la entrega"),
+
+        FIN_ENTREGA_FLUJO (109,"FIN ENTREGA FLUJO","Pedido entregado");
+
+        private final int codigo;
+        private final String  texto;
+        private final String keyMsg;
+
+        private ESTADO_FLUJO_TRABAJO(int codigo, String texto, String keyMsg){
+            this.codigo = codigo;
+            this.texto = texto;
+            this.keyMsg= keyMsg;
+        }
+        public int getCodigo() {
+            return codigo;
+        }
+        public String getTexto() {
+            return texto;
+        }
+        public String getKeyMsg() {
+            return keyMsg;
+        }
+
+        public static ESTADO_FLUJO_TRABAJO getEstadoWorkFlowByID(Integer id){
+            ESTADO_FLUJO_TRABAJO[] valores = ESTADO_FLUJO_TRABAJO.values();
+            for(int i=0; i<valores.length; i++){
+                if(valores[i].getCodigo() == id){
+                    return  valores[i];
+                }
+            }
+            return null;
+        }
+
+        public static String getEstadoWorkFlowKeyMsg(Integer estado){
+            String descripcion =  null;
+            for(Utilitario.ESTADO_FLUJO_TRABAJO item : Utilitario.ESTADO_FLUJO_TRABAJO.values() ){
+                if(item.getCodigo() ==estado){
+                    descripcion = item.getKeyMsg();
+                    break;
+                }
+
+            }
+            return descripcion;
+        }
+    }
+
 }

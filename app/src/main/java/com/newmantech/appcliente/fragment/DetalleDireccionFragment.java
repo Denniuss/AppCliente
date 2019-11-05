@@ -1,8 +1,5 @@
 package com.newmantech.appcliente.fragment;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,14 +16,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.newmantech.appcliente.BResult;
-import com.newmantech.appcliente.Cliente;
-import com.newmantech.appcliente.DetalleDireccionActivity;
-import com.newmantech.appcliente.Direccion;
-import com.newmantech.appcliente.DireccionActivity;
-import com.newmantech.appcliente.DireccionService;
+import com.newmantech.appcliente.model.BResult;
+import com.newmantech.appcliente.model.Cliente;
+import com.newmantech.appcliente.model.Direccion;
+import com.newmantech.appcliente.service.DireccionService;
 import com.newmantech.appcliente.R;
-import com.newmantech.appcliente.Ubigeo;
+import com.newmantech.appcliente.model.Ubigeo;
 import com.newmantech.appcliente.utils.Utilitario;
 
 import java.util.ArrayList;
@@ -497,7 +492,7 @@ public class DetalleDireccionFragment extends Fragment {
             direccionTemp.setIdUbigeo(idUbigeo);
         }
         Cliente cliente = new Cliente();
-        cliente.setIdCliente(3339);
+        cliente.setIdCliente(Utilitario.idCliente);
         cliente.setDireccionDelivery(direccionTemp);
 
         Log.i("onResponse ", "Guardar Direccion " + direccionTemp);

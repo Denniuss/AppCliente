@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".ComfirmaCompraActivity">
+    tools:context=".activity.ComfirmaCompraActivity">
 
     <Button
         android:id="@+id/pay_pal_button"

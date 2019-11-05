@@ -48,4 +48,29 @@
     <string name="server_error">Failed to payment information to server</string>
     <string name="successful_payment">Payment successfully uploaded</string>
     <string name="tipo_cambio">3.4</string>
+
+
+
+    <!-- Donate dialog -->
+    <string name="donate_dialog_title">Support me</string>
+    <string name="donate_dialog_message">If you like this library project and you are willing to support me, you can donate me via Alipay or PayPal.\n\nAlipay: fythonx\@gmail.com\nPayPal: Click PAYPAL button to open a new tab.</string>
+    <string name="doante_dialog_paypal_button">PayPal</string>
+
+    <!-- Navigation Menu -->
+    <string name="item_vertical_stepper">Vertical Stepper (Item View)</string>
+    <string name="item_vertical_stepper_adapter">Vertical Stepper (Adapter)</string>
+
+    <!-- Vertical Stepper View Sample Item -->
+    <string name="content_step_creacion_producto">Se encuentra procesandos su(s)s producto(s).</string>
+    <string name="content_step_abastecimiento">Se està ejecutando el abastecimiento.</string>
+    <string name="content_step_distribucion">Se està ejecutando la distribuciòn.</string>
+    <string name="content_step_incidencia">Se està generado un inconveniente, lo estamos resolviedo a la brevedad</string>
+    <string name="content_step_finalizar">Se ha entrado el priducto.</string>
+
+    <string name="toggle_animation_button">Toggle Animation</string>
+
+
+
+
+
 </resources>

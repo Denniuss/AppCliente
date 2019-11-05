@@ -17,14 +17,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ComfirmaCompraActivity"></activity>
-        <activity android:name=".CarritoCompraActivity" />
+        <activity android:name=".activity.ComfirmaCompraActivity"></activity>
+        <activity android:name=".activity.CarritoCompraActivity" />
         <activity
-            android:name=".DetalleProducto"
+            android:name=".activity.DetalleProducto"
             android:label="@string/title_activity_detalle_producto"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ListadoProductosNActivity"
+            android:name=".activity.ListadoProductosNActivity"
             android:label="@string/title_activity_listado_productos_n"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -40,10 +40,10 @@
             android:name=".RegresarAlmacenActivity"
             android:label="@string/title_activity_regresar_almacen"></activity>>
         -->
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MenuActivity" />
+                android:value=".activity.MenuActivity" />
 
         </activity>
 
@@ -53,33 +53,33 @@
         <uses-library android:name="com.google.android.maps" />
 
         <activity
-            android:name=".DetalleActivity"
+            android:name=".activity.DetalleActivity"
             android:label="@string/title_activity_bio"
-            android:parentActivityName=".Pre_LoginActivity"
+            android:parentActivityName=".activity.Pre_LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Pre_LoginActivity" />
+                android:value=".activity.Pre_LoginActivity" />
         </activity>
 
         <activity
-            android:name=".DetalleDireccionActivity"
+            android:name=".activity.DetalleDireccionActivity"
             android:label="@string/title_activity_bio"
-            android:parentActivityName=".Pre_LoginActivity"
+            android:parentActivityName=".activity.Pre_LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Pre_LoginActivity" />
+                android:value=".activity.Pre_LoginActivity" />
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:label="Iniciar Sesión">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
         <activity
-            android:name=".Pre_LoginActivity"
+            android:name=".activity.Pre_LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -92,7 +92,7 @@
             android:label="@string/title_activity_atender_pedido_maps" />!
         -->
         <activity
-            android:name=".MenuActivity"
+            android:name=".activity.MenuActivity"
             android:label="Menu"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -101,10 +101,10 @@
             android:label="Direcciones"
             android:theme="@style/AppTheme.NoActionBar" />-->
 
-        <activity android:name=".DireccionActivity">
+        <activity android:name=".activity.DireccionActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MenuActivity" />
+                android:value=".activity.MenuActivity" />
         </activity>
 
         <!--<activity

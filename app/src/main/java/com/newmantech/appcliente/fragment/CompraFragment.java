@@ -1,10 +1,8 @@
 package com.newmantech.appcliente.fragment;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,11 +21,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.newmantech.appcliente.BResult;
-import com.newmantech.appcliente.ComfirmaCompraActivity;
-import com.newmantech.appcliente.ListadoProductosNActivity;
-import com.newmantech.appcliente.PersistentCookieStore;
-import com.newmantech.appcliente.ProductoService;
+import com.newmantech.appcliente.model.BResult;
+import com.newmantech.appcliente.activity.ComfirmaCompraActivity;
+import com.newmantech.appcliente.utils.PersistentCookieStore;
+import com.newmantech.appcliente.service.ProductoService;
 import com.newmantech.appcliente.R;
 import com.newmantech.appcliente.jsonEntityObjects.PaymentResponseObject;
 import com.newmantech.appcliente.jsonEntityObjects.ServerObject;

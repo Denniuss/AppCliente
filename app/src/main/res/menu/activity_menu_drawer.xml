@@ -19,6 +19,11 @@
             android:icon="@android:drawable/ic_dialog_info"
             android:title="Carrito de Compras" />
 
+        <item
+            android:id="@+id/nav_seguimiento_pedido"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="Seguimiento de Pedido" />
+
         <!--<item
             android:id="@+id/nav_direcciones"
             android:icon="@android:drawable/ic_dialog_info"

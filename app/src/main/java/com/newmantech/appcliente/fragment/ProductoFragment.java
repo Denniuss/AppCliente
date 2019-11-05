@@ -1,8 +1,5 @@
 package com.newmantech.appcliente.fragment;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,13 +13,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
-import com.newmantech.appcliente.CarritoCompraActivity;
-import com.newmantech.appcliente.CatalogoProducto;
-import com.newmantech.appcliente.CatalogoProductoAdapter;
-import com.newmantech.appcliente.CatalogoProductoService;
-import com.newmantech.appcliente.ListadoProductosNActivity;
+import com.newmantech.appcliente.model.CatalogoProducto;
+import com.newmantech.appcliente.adapter.CatalogoProductoAdapter;
+import com.newmantech.appcliente.service.CatalogoProductoService;
 import com.newmantech.appcliente.R;
 import com.newmantech.appcliente.utils.Utilitario;
 
@@ -139,7 +133,7 @@ public class ProductoFragment extends Fragment implements CatalogoProductoAdapte
                     items.add(new CatalogoProducto(1,"Pisco Tabernero Quebranta","","Tabernero","Vigente","https://i.linio.com/p/940faec658e586eec1bb289889e78a2e-product.jpg",37.00,99.00,"-28%"));
                     items.add(new CatalogoProducto(2,"Pisco La Botija","","Tabernero","Vigente","https://i.linio.com/p/0f6f58efe48abf6cb6d5d7a2ae9ab200-product.jpg",37.00,99.00,"-28%"));
                     items.add(new CatalogoProducto(3,"Pisco Demonio de los Andes","","Tacama","Vigente","https://i.linio.com/p/4a2ebcba614aaab74e43a0a3a07a6cf5-product.jpg",37.00,99.00,"-28%"));
-                    items.add(new CatalogoProducto(4,"Pisco Tres Generaciones 192Acholado","","Tres Generaciones","Vigente","https://i.linio.com/p/739031b2bfe811c11557813af97f2562-product.jpg",37.00,99.00,"-28%"));
+                    items.add(new CatalogoProducto(4,"Pisco Tres Generaciones Acholado","","Tres Generaciones","Vigente","https://i.linio.com/p/739031b2bfe811c11557813af97f2562-product.jpg",37.00,99.00,"-28%"));
                     items.add(new CatalogoProducto(5,"Pisco Porton","","Pisco Porton","Vigente","https://i.linio.com/p/7d119d0a78732017bfd7b928c25f9c6a-product.jpg",37.00,99.00,"-28%"));
                     */
 

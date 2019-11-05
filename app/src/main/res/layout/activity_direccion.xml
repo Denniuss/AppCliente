@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DireccionActivity">
+    tools:context=".activity.DireccionActivity">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/botonFlotanteDireccion"

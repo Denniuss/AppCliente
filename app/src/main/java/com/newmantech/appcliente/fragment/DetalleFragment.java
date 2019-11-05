@@ -1,8 +1,5 @@
 package com.newmantech.appcliente.fragment;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,13 +18,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.newmantech.appcliente.BResult;
-import com.newmantech.appcliente.CarritoCompraActivity;
-import com.newmantech.appcliente.ComfirmaCompraActivity;
-import com.newmantech.appcliente.DetalleActivity;
-import com.newmantech.appcliente.DetalleProducto;
-import com.newmantech.appcliente.PersistentCookieStore;
-import com.newmantech.appcliente.ProductoService;
+import com.newmantech.appcliente.model.BResult;
+import com.newmantech.appcliente.utils.PersistentCookieStore;
+import com.newmantech.appcliente.service.ProductoService;
 import com.newmantech.appcliente.R;
 import com.newmantech.appcliente.SysUtils;
 import com.newmantech.appcliente.utils.Utilitario;

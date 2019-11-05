@@ -11,7 +11,7 @@
     android:layout_alignParentRight="false"
     android:layout_alignParentBottom="false"
     android:orientation="vertical"
-    tools:context="com.newmantech.appcliente.ListadoProductosNActivity">
+    tools:context="com.newmantech.appcliente.activity.ListadoProductosNActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
