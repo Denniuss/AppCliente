@@ -37,6 +37,10 @@ public class WorkFlow {
     @Expose
     private Pedido pedido;
 
+    @SerializedName("estadoParametro")
+    @Expose
+    private ParametroDetalle estadoParametro;
+
     public int getIdWorflow() {
         return idWorflow;
     }
@@ -101,6 +105,14 @@ public class WorkFlow {
         this.pedido = pedido;
     }
 
+    public ParametroDetalle getEstadoParametro() {
+        return estadoParametro;
+    }
+
+    public void setEstadoParametro(ParametroDetalle estadoParametro) {
+        this.estadoParametro = estadoParametro;
+    }
+
     @Override
     public String toString() {
         return "WorkFlow{" +
@@ -109,9 +121,10 @@ public class WorkFlow {
                 ", fase=" + fase +
                 ", estado=" + estado +
                 ", nombreEstado='" + nombreEstado + '\'' +
-                ", fecha=" + fechaFormat +
+                ", fechaFormat='" + fechaFormat + '\'' +
                 ", idUsuario=" + idUsuario +
                 ", pedido=" + pedido +
+                ", estadoParametro=" + estadoParametro +
                 '}';
     }
 }

@@ -149,6 +149,10 @@ public class SeguimientoFragment extends Fragment implements SeguimientoAdapter.
         ClienteService clienteService = retrofit.create(ClienteService.class);
         Log.i("----> FillPedidosSeg", "Inicio listarPedidosPorIdCliente: ");
         Call<List<Pedido>> lista = clienteService.listarPedidosPorIdCliente(Utilitario.idCliente);
+
+        Log.i("----> FillPedidosSeg", "Inicio listarPedidosPorIdCliente: " +
+                clienteService.listarPedidosPorIdCliente(Utilitario.idCliente));
+
         lista.enqueue(new Callback<List<Pedido>>() {
             @Override
             public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
@@ -162,7 +166,8 @@ public class SeguimientoFragment extends Fragment implements SeguimientoAdapter.
                     listaDirecciones = response.body();
 
                     for(Pedido dis : listaDirecciones){
-                        Log.i("DIRECCION  ", "onResponse: " + dis.getCantidad()+"-"+dis.getEstado());
+                        //Log.i("DIRECCION  ", "onResponse: " + dis.getCantidad()+"-"+dis.getEstado() + dis.getEstadoParametro());
+                        Log.i("dis tostring  ", "onResponse: " + dis.toString());
 
                         //items.add(new Direccion(dis.getIdDireccion(), R.drawable.face01, dis.getNombreDireccion(), dis.getDireccion(), dis.getDepartamento(), dis.getCiudad(),dis.getDistrito(),dis.getTelefono(),dis.getDiasEntrega(),""));
                         items.add(dis);
