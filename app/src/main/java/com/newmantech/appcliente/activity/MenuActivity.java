@@ -1,6 +1,7 @@
 package com.newmantech.appcliente.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import com.newmantech.appcliente.R;
 import com.newmantech.appcliente.fragment.CarroFragment;
 import com.newmantech.appcliente.fragment.DireccionFragment;
+import com.newmantech.appcliente.fragment.PedidoPersonalizadoFragment;
 import com.newmantech.appcliente.fragment.ProductoFragment;
 import com.newmantech.appcliente.fragment.SeguimientoFragment;
 
@@ -27,7 +29,8 @@ import pe.edu.upc.practicat61_javs.fragments.OpcionesFragment;
 import pe.edu.upc.practicat61_javs.model.Usuario;
 */
 public class MenuActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        PedidoPersonalizadoFragment.OnFragmentInteractionListener{
 
     Toolbar toolbar;
 
@@ -158,6 +161,12 @@ public class MenuActivity extends AppCompatActivity
             /*fragmentManager.beginTransaction()
                     .replace(R.id.contenedor, new VerticalStepperDemoFragment())
                     .commit();*/
+        }else if(id == R.id.nav_pedido_personalizado){
+            toolbar.setTitle(getString(R.string.pedidoPersona));
+
+            fragmentManager.beginTransaction()
+                    .replace(R.id.contenedor, new PedidoPersonalizadoFragment())
+                    .commit();
         }
 
         /*
@@ -172,5 +181,10 @@ public class MenuActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.PedidoPersonalizadoFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <GridView
+        android:id="@+id/gvPedidosPer"
+        android:padding="20sp"
+        android:horizontalSpacing="20sp"
+        android:numColumns="2"
+        android:verticalSpacing="20sp"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ListView
+        android:visibility="gone"
+        android:padding="20sp"
+        android:id="@+id/lvMenuPedidosPer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+
+
+</FrameLayout>

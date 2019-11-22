@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@drawable/fn_rect_primary"
+    android:padding="20sp"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:id="@+id/llContent"
+    android:layout_height="wrap_content">
+
+
+
+        <ImageView
+            android:id="@+id/ivFoto"
+            android:layout_gravity="center"
+            android:src="@mipmap/vino__"
+            android:layout_width="120sp"
+            android:layout_height="150sp" />
+                <TextView
+                    android:gravity="center"
+                    android:layout_marginTop="10sp"
+                    android:paddingBottom="5sp"
+                    android:paddingTop="5sp"
+                    android:paddingEnd="5sp"
+                    android:paddingStart="5sp"
+                    android:background="@drawable/fn_transparente"
+                    android:maxLines="3"
+                    android:fontFamily="@font/ameliabasic"
+                    android:id="@+id/tvTitiuno"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+
+</LinearLayout>
