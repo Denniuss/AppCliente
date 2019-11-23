@@ -79,6 +79,7 @@
                 android:layout_width="0sp"
                 android:text="1 unid."/>
             <TextView
+                android:id="@+id/tvPrecio1"
                 android:paddingTop="5sp"
                 android:paddingBottom="5sp"
                 android:gravity="center"
@@ -88,8 +89,9 @@
                 android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"
                 android:layout_width="0sp"
-                android:text="S/ 42.00"/>
+                />
             <TextView
+                android:id="@+id/tvPrecio2"
                 android:paddingTop="5sp"
                 android:paddingBottom="5sp"
                 android:gravity="center"
@@ -99,8 +101,9 @@
                 android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"
                 android:layout_width="0sp"
-                android:text="S/ 55.00"/>
+               />
             <TextView
+                android:id="@+id/tvPrecio3"
                 android:paddingTop="5sp"
                 android:paddingBottom="5sp"
                 android:gravity="center"
@@ -110,7 +113,7 @@
                 android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"
                 android:layout_width="0sp"
-                android:text="S/ 89.00"/>
+                />
         </TableRow>
 
 </TableLayout>

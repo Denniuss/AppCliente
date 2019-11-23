@@ -95,6 +95,7 @@
             android:layout_width="0sp"
             android:text="25 unid."/>
         <TextView
+            android:id="@+id/tvPrecio1_1"
             android:textSize="12sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
@@ -107,6 +108,7 @@
             android:layout_width="0sp"
             android:text="S/ 42.00"/>
         <TextView
+            android:id="@+id/tvPrecio2_1"
             android:textSize="12sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
@@ -119,6 +121,7 @@
             android:layout_width="0sp"
             android:text="S/ 55.00"/>
         <TextView
+            android:id="@+id/tvPrecio3_1"
             android:textSize="12sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
@@ -131,6 +134,7 @@
             android:layout_width="0sp"
             android:text="S/ 89.00"/>
         <TextView
+            android:id="@+id/tvPrecio4_1"
             android:textSize="12sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
@@ -143,6 +147,7 @@
             android:layout_width="0sp"
             android:text="S/ 89.00"/>
         <TextView
+            android:id="@+id/tvPrecio5_1"
             android:textSize="12sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
@@ -163,6 +168,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
         <TextView
+
             android:textSize="12sp"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -172,6 +178,7 @@
             android:layout_width="0sp"
             android:text="50 unid."/>
         <TextView
+            android:id="@+id/tvPrecio1_2"
             android:textSize="12sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
@@ -184,6 +191,7 @@
             android:layout_width="0sp"
             android:text="S/ 42.00"/>
         <TextView
+            android:id="@+id/tvPrecio2_2"
             android:textSize="12sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
@@ -196,6 +204,7 @@
             android:layout_width="0sp"
             android:text="S/ 55.00"/>
         <TextView
+            android:id="@+id/tvPrecio3_2"
             android:textSize="12sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
@@ -208,6 +217,7 @@
             android:layout_width="0sp"
             android:text="S/ 89.00"/>
         <TextView
+            android:id="@+id/tvPrecio4_2"
             android:textSize="12sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
@@ -220,6 +230,7 @@
             android:layout_width="0sp"
             android:text="S/ 89.00"/>
         <TextView
+            android:id="@+id/tvPrecio5_2"
             android:textSize="12sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
@@ -248,6 +259,7 @@
             android:layout_width="0sp"
             android:text="100 unid."/>
         <TextView
+            android:id="@+id/tvPrecio1_3"
             android:textSize="12sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
@@ -260,6 +272,7 @@
             android:layout_width="0sp"
             android:text="S/ 42.00"/>
         <TextView
+            android:id="@+id/tvPrecio2_3"
             android:textSize="12sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
@@ -272,6 +285,7 @@
             android:layout_width="0sp"
             android:text="S/ 55.00"/>
         <TextView
+            android:id="@+id/tvPrecio3_3"
             android:textSize="12sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
@@ -284,6 +298,7 @@
             android:layout_width="0sp"
             android:text="S/ 89.00"/>
         <TextView
+            android:id="@+id/tvPrecio4_3"
             android:textSize="12sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
@@ -296,6 +311,7 @@
             android:layout_width="0sp"
             android:text="S/ 89.00"/>
         <TextView
+            android:id="@+id/tvPrecio5_3"
             android:textSize="12sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
