@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,12 +15,19 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.newmantech.appcliente.R;
+import com.newmantech.appcliente.adapter.AdapterDetalleCarrito;
+import com.newmantech.appcliente.model.EntityDetalleCarrito;
+
+import java.util.ArrayList;
 
 public class DetalleCarritoActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    private Button btnPagar, btnElegirModelo;
+    private Button btnPagar;
     private double mSubTotal = 0;
+    private RecyclerView recycler;
+    AdapterDetalleCarrito adapterDetalleCarrito;
+    ArrayList<EntityDetalleCarrito> arrayList;
 
 
     @Override
@@ -28,7 +37,7 @@ public class DetalleCarritoActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         btnPagar = findViewById(R.id.btnPagar);
-        btnElegirModelo = findViewById(R.id.btnElegirModelo);
+        recycler = findViewById(R.id.recycler);
 
         setupUI(getWindow().getDecorView().getRootView());
         toolbar.setTitle(R.string.piscosElegidos);
@@ -44,13 +53,26 @@ public class DetalleCarritoActivity extends AppCompatActivity {
                 startActivity(paymentIntent);
             }
         });
-        btnElegirModelo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(DetalleCarritoActivity.this, ElegirModeloActivity.class);
-                startActivity(i);
-            }
-        });
+        fn_LoadRecyclerView();
+        setRecycler();
+    }
+
+    public void setRecycler(){
+        arrayList = new ArrayList<>();
+        arrayList.add(new EntityDetalleCarrito());
+        arrayList.add(new EntityDetalleCarrito());
+        arrayList.add(new EntityDetalleCarrito());
+        arrayList.add(new EntityDetalleCarrito());
+        arrayList.add(new EntityDetalleCarrito());
+        adapterDetalleCarrito = new AdapterDetalleCarrito(arrayList, this );
+        recycler.setAdapter(adapterDetalleCarrito);
+    }
+
+    public void fn_LoadRecyclerView(){
+        recycler = (RecyclerView) findViewById(R.id.recycler);
+        recycler.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recycler.setLayoutManager(layoutManager);
     }
 
     public void setupUI(View view) {

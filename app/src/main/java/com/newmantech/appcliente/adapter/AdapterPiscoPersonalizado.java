@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.newmantech.appcliente.R;
@@ -33,15 +35,22 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder v, int i) {
+    public void onBindViewHolder(final @NonNull ViewHolder v, int i) {
 
-        EntityHeader obj = arrayList.get(i);
-        ArrayList<EntityTarifarioProductoPersonalizado> aObjTari;
+        final EntityHeader obj = arrayList.get(i);
+        ArrayList<EntityTarifarioProductoPersonalizado> aObjTari = obj.getArrayList();
+        EntityTarifarioProductoPersonalizado objTari=null;
+        if(aObjTari.size()>0){
+            objTari = aObjTari.get(0);
+
+            v.tvDescripcion.setText(objTari.getDescripcion());
+            v.tvTipoPedido.setText("Pedidos " + objTari.getTipoVenta());
+        }
+
         switch (obj.getGrupo()){
             case 1:
-                aObjTari = obj.getArrayList();
+                v.tvCantidad.setText("1");
                 if(aObjTari.size()>0){
-                    EntityTarifarioProductoPersonalizado objTari = aObjTari.get(0);
                     v.tvTitulo1.setText(objTari.getVariedad());
                     for(int j=0; j<aObjTari.size(); j++){
                         objTari = aObjTari.get(j);
@@ -63,9 +72,8 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                 break;
             case 2:
             case 3:
-                aObjTari = obj.getArrayList();
+                v.tvCantidad.setText("25");
                 if(aObjTari.size()>0){
-                    EntityTarifarioProductoPersonalizado objTari = aObjTari.get(0);
                     v.tvTitulo2.setText(objTari.getVariedad());
                     for(int j=0; j<aObjTari.size(); j++){
                         objTari = aObjTari.get(j);
@@ -141,9 +149,8 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                 }
                 break;
             case 4:
-                aObjTari = obj.getArrayList();
+                v.tvCantidad.setText("25");
                 if(aObjTari.size()>0){
-                    EntityTarifarioProductoPersonalizado objTari = aObjTari.get(0);
                     v.tvTitulo3.setText(objTari.getVariedad());
                     for(int j=0; j<aObjTari.size(); j++){
                         objTari = aObjTari.get(j);
@@ -182,6 +189,31 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                 break;
         }
 
+        v.ivAgregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v_) {
+                int n = Integer.parseInt(v.tvCantidad.getText().toString());
+                if(obj.getGrupo() == 1){
+                    v.tvCantidad.setText(String.valueOf(n+1));
+                }else{
+                    v.tvCantidad.setText(String.valueOf(n+25));
+                }
+            }
+        });
+        v.ivRestar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v_) {
+                int n = Integer.parseInt(v.tvCantidad.getText().toString());
+                if(obj.getGrupo() == 1){
+                    if(n-1>=0)
+                        v.tvCantidad.setText(String.valueOf(n-1));
+                }else{
+                    if(n-25>=0)
+                        v.tvCantidad.setText(String.valueOf(n-25));
+                }
+            }
+        });
+
     }
 
     @Override
@@ -206,6 +238,9 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
         TextView tvPrecio1_3, tvPrecio2_3, tvPrecio3_3, tvPrecio4_3, tvPrecio5_3;
 
         TextView tvPrec1_1, tvPrec2_1, tvPrec1_2, tvPrec2_2, tvPrec1_3, tvPrec2_3;
+        ImageView ivFoto, ivAgregar, ivRestar;
+        TextView tvCantidad, tvDescripcion, tvTipoPedido;
+        Button btnAgregarCarrito;
 
         public ViewHolder(@NonNull View v) {
             super(v);
@@ -242,6 +277,14 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
             tvPrec2_2 = v.findViewById(R.id.tvPrec2_2);
             tvPrec1_3 = v.findViewById(R.id.tvPrec1_3);
             tvPrec2_3 = v.findViewById(R.id.tvPrec2_3);
+
+            ivFoto = v.findViewById(R.id.ivFoto);
+            ivAgregar = v.findViewById(R.id.ivAgregar);
+            ivRestar = v.findViewById(R.id.ivRestar);
+            tvCantidad = v.findViewById(R.id.tvCantidad);
+            btnAgregarCarrito = v.findViewById(R.id.btnAgregarCarrito);
+            tvDescripcion = v.findViewById(R.id.tvDescripcion);
+            tvTipoPedido = v.findViewById(R.id.tvTipoPedido);
         }
     }
 }

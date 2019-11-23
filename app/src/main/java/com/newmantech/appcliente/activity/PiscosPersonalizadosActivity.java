@@ -96,9 +96,9 @@ public class PiscosPersonalizadosActivity extends AppCompatActivity {
 
     public ArrayList<EntityTarifarioProductoPersonalizado> generateList(){
         ArrayList<EntityTarifarioProductoPersonalizado> arrayList = new ArrayList<>();
-        arrayList.add(new EntityTarifarioProductoPersonalizado(1,1,"P. Quebranta",42.00,1,"Unidad",1,4,"50",1,"ml","Pisco Quebranta: Medalla de Oro 2016 - Certificación HACPP",1));
-        arrayList.add(new EntityTarifarioProductoPersonalizado(2,2,"P. Italia/ Totrontel/ Acholado",55.00,1,"Unidad",1,4,"50",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2017",1));
-        arrayList.add(new EntityTarifarioProductoPersonalizado(3,3,"P. Mosto Verde",89.00,1,"Unidad",1,4,"50",1,"ml","Pisco Mosto Verde: Medalla de Plata 2017",1));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(1,1,"P. Quebranta",42.00,1,"Por Unidad",1,4,"50",1,"ml","Pisco Quebranta: Medalla de Oro 2016 - Certificación HACPP",1));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(2,2,"P. Italia/ Totrontel/ Acholado",55.00,1,"Por Unidad",1,4,"50",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2017",1));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(3,3,"P. Mosto Verde",89.00,1,"Por Unidad",1,4,"50",1,"ml","Pisco Mosto Verde: Medalla de Plata 2017",1));
 
         arrayList.add(new EntityTarifarioProductoPersonalizado(4,1,"P. Quebranta",9.00,2,"Por Mayor",25,1,"50",1,"ml","Pisco Quebranta: Medalla de Oro 2016 - Certificación HACPP",2));
         arrayList.add(new EntityTarifarioProductoPersonalizado(5,1,"P. Quebranta",8.00,2,"Por Mayor",50,1,"50",1,"ml","Pisco Quebranta: Medalla de Oro 2016 - Certificación HACPP",2));
@@ -116,21 +116,21 @@ public class PiscosPersonalizadosActivity extends AppCompatActivity {
         arrayList.add(new EntityTarifarioProductoPersonalizado(17,1,"P. Quebranta",30.00,2,"Por Mayor",50,5,"750",1,"ml","Pisco Quebranta: Medalla de Oro 2016 - Certificación HACPP",2));
         arrayList.add(new EntityTarifarioProductoPersonalizado(18,1,"P. Quebranta",25.00,2,"Por Mayor",100,5,"750",1,"ml","Pisco Quebranta: Medalla de Oro 2016 - Certificación HACPP",2));
 
-        arrayList.add(new EntityTarifarioProductoPersonalizado(19,2,"P. Italia/ Totrontel/ Acholado",10.00,2,"Por Mayor",25,1,"50",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2017",3));
-        arrayList.add(new EntityTarifarioProductoPersonalizado(20,2,"P. Italia/ Totrontel/ Acholado",9.00,2,"Por Mayor",50,1,"50",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2018",3));
-        arrayList.add(new EntityTarifarioProductoPersonalizado(21,2,"P. Italia/ Totrontel/ Acholado",8.00,2,"Por Mayor",100,1,"50",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2019",3));
-        arrayList.add(new EntityTarifarioProductoPersonalizado(22,2,"P. Italia/ Totrontel/ Acholado",17.00,2,"Por Mayor",25,2,"187",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2020",3));
-        arrayList.add(new EntityTarifarioProductoPersonalizado(23,2,"P. Italia/ Totrontel/ Acholado",15.00,2,"Por Mayor",50,2,"187",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2021",3));
-        arrayList.add(new EntityTarifarioProductoPersonalizado(24,2,"P. Italia/ Totrontel/ Acholado",13.00,2,"Por Mayor",100,2,"187",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2022",3));
-        arrayList.add(new EntityTarifarioProductoPersonalizado(25,2,"P. Italia/ Totrontel/ Acholado",25.00,2,"Por Mayor",25,3,"375",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2023",3));
-        arrayList.add(new EntityTarifarioProductoPersonalizado(26,2,"P. Italia/ Totrontel/ Acholado",24.00,2,"Por Mayor",50,3,"375",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2024",3));
-        arrayList.add(new EntityTarifarioProductoPersonalizado(27,2,"P. Italia/ Totrontel/ Acholado",20.00,2,"Por Mayor",100,3,"375",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2025",3));
-        arrayList.add(new EntityTarifarioProductoPersonalizado(28,2,"P. Italia/ Totrontel/ Acholado",30.00,2,"Por Mayor",25,4,"500",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2026",3));
-        arrayList.add(new EntityTarifarioProductoPersonalizado(29,2,"P. Italia/ Totrontel/ Acholado",28.00,2,"Por Mayor",50,4,"500",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2027",3));
-        arrayList.add(new EntityTarifarioProductoPersonalizado(30,2,"P. Italia/ Totrontel/ Acholado",25.00,2,"Por Mayor",100,4,"500",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2028",3));
-        arrayList.add(new EntityTarifarioProductoPersonalizado(31,2,"P. Italia/ Totrontel/ Acholado",38.00,2,"Por Mayor",25,5,"750",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2029",3));
-        arrayList.add(new EntityTarifarioProductoPersonalizado(32,2,"P. Italia/ Totrontel/ Acholado",34.00,2,"Por Mayor",50,5,"750",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2030",3));
-        arrayList.add(new EntityTarifarioProductoPersonalizado(33,2,"P. Italia/ Totrontel/ Acholado",30.00,2,"Por Mayor",100,5,"750",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2031",3));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(19,2,"P. Italia/ Totrontel/ Acholado",10.00,2,"Por Mayor",25,1,"50",1,"ml","Pisco Italia: Medalla de Oro 2018 \n Pisco Torontel: Medalla de Oro 2017",3));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(20,2,"P. Italia/ Totrontel/ Acholado",9.00,2,"Por Mayor",50,1,"50",1,"ml","Pisco Italia: Medalla de Oro 2018 \n Pisco Torontel: Medalla de Oro 2018",3));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(21,2,"P. Italia/ Totrontel/ Acholado",8.00,2,"Por Mayor",100,1,"50",1,"ml","Pisco Italia: Medalla de Oro 2018 \n Pisco Torontel: Medalla de Oro 2019",3));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(22,2,"P. Italia/ Totrontel/ Acholado",17.00,2,"Por Mayor",25,2,"187",1,"ml","Pisco Italia: Medalla de Oro 2018 \n Pisco Torontel: Medalla de Oro 2020",3));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(23,2,"P. Italia/ Totrontel/ Acholado",15.00,2,"Por Mayor",50,2,"187",1,"ml","Pisco Italia: Medalla de Oro 2018 \n Pisco Torontel: Medalla de Oro 2021",3));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(24,2,"P. Italia/ Totrontel/ Acholado",13.00,2,"Por Mayor",100,2,"187",1,"ml","Pisco Italia: Medalla de Oro 2018 \n Pisco Torontel: Medalla de Oro 2022",3));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(25,2,"P. Italia/ Totrontel/ Acholado",25.00,2,"Por Mayor",25,3,"375",1,"ml","Pisco Italia: Medalla de Oro 2018 \n Pisco Torontel: Medalla de Oro 2023",3));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(26,2,"P. Italia/ Totrontel/ Acholado",24.00,2,"Por Mayor",50,3,"375",1,"ml","Pisco Italia: Medalla de Oro 2018 \n Pisco Torontel: Medalla de Oro 2024",3));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(27,2,"P. Italia/ Totrontel/ Acholado",20.00,2,"Por Mayor",100,3,"375",1,"ml","Pisco Italia: Medalla de Oro 2018 \n Pisco Torontel: Medalla de Oro 2025",3));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(28,2,"P. Italia/ Totrontel/ Acholado",30.00,2,"Por Mayor",25,4,"500",1,"ml","Pisco Italia: Medalla de Oro 2018 \n Pisco Torontel: Medalla de Oro 2026",3));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(29,2,"P. Italia/ Totrontel/ Acholado",28.00,2,"Por Mayor",50,4,"500",1,"ml","Pisco Italia: Medalla de Oro 2018 \n Pisco Torontel: Medalla de Oro 2027",3));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(30,2,"P. Italia/ Totrontel/ Acholado",25.00,2,"Por Mayor",100,4,"500",1,"ml","Pisco Italia: Medalla de Oro 2018 \n Pisco Torontel: Medalla de Oro 2028",3));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(31,2,"P. Italia/ Totrontel/ Acholado",38.00,2,"Por Mayor",25,5,"750",1,"ml","Pisco Italia: Medalla de Oro 2018 \n Pisco Torontel: Medalla de Oro 2029",3));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(32,2,"P. Italia/ Totrontel/ Acholado",34.00,2,"Por Mayor",50,5,"750",1,"ml","Pisco Italia: Medalla de Oro 2018 \n Pisco Torontel: Medalla de Oro 2030",3));
+        arrayList.add(new EntityTarifarioProductoPersonalizado(33,2,"P. Italia/ Totrontel/ Acholado",30.00,2,"Por Mayor",100,5,"750",1,"ml","Pisco Italia: Medalla de Oro 2018 \n Pisco Torontel: Medalla de Oro 2031",3));
 
         arrayList.add(new EntityTarifarioProductoPersonalizado(34,3,"P. Mosto Verde",11.00,2,"Por Mayor",25,1,"50",1,"ml","Pisco Mosto Verde: Medalla de Plata 2017",4));
         arrayList.add(new EntityTarifarioProductoPersonalizado(35,3,"P. Mosto Verde",10.00,2,"Por Mayor",50,1,"50",1,"ml","Pisco Mosto Verde: Medalla de Plata 2017",4));
