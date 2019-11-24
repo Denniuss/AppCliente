@@ -3,26 +3,29 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+
     <ImageView
-        android:src="@mipmap/vino_grupo"
-        android:layout_marginTop="10sp"
-        android:layout_gravity="center"
-        android:padding="5sp"
+        android:id="@+id/ivFoto"
         android:layout_width="200sp"
-        android:layout_height="250sp" />
+        android:layout_height="250sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10sp"
+        android:padding="5sp"
+        android:src="@mipmap/vino_grupo" />
 
     <TextView
-        android:gravity="center"
+        android:id="@+id/tvTipoPedido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30sp"
         android:layout_marginTop="10sp"
         android:layout_marginEnd="30sp"
-        android:layout_marginStart="30sp"
         android:fontFamily="@font/ameliabasicbold"
-        android:textSize="18sp"
-        android:textColor="@color/negro"
+        android:gravity="center"
         android:text="Pedidos por unidad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textColor="@color/negro"
+        android:textSize="18sp" />
 
     <RelativeLayout
         android:layout_margin="10sp"
@@ -50,31 +53,18 @@
     </RelativeLayout>
 
 
-
-    <LinearLayout
-        android:layout_marginEnd="10sp"
-        android:layout_marginStart="10sp"
-        android:gravity="center"
-        android:orientation="horizontal"
+    <TextView
+        android:maxLines="2"
+        android:id="@+id/tvDescripcion"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:text="Pisco Quebranta: "
-            android:textColor="@color/negro_"
-            android:textSize="16sp"
-            android:fontFamily="@font/ameliabasicbold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_marginStart="5sp"
-            android:text="Medalle de Oro 2016 - Certificación HACPP "
-            android:textColor="@color/negro_"
-            android:textSize="14sp"
-            android:fontFamily="@font/ameliabasic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:layout_marginEnd="10sp"
+        android:fontFamily="@font/ameliabasic"
+        android:gravity="center"
+        android:text="Pisco Quebranta: "
+        android:textColor="@color/negro_"
+        android:textSize="16sp" />
     <LinearLayout
         android:layout_marginTop="10sp"
         android:layout_marginEnd="10sp"
@@ -83,36 +73,42 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:src="@drawable/ic_add_black_35dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_marginStart="20sp"
-            android:text="35"
-            android:textColor="@color/negro"
-            android:textSize="25sp"
-            android:fontFamily="@font/ameliabasicbold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
         <ImageView
-            android:src="@drawable/ic_remove_black_35dp"
-            android:layout_marginStart="20sp"
+            android:id="@+id/ivAgregar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_black_35dp" />
+
+        <TextView
+            android:id="@+id/tvCantidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20sp"
+            android:fontFamily="@font/ameliabasicbold"
+            android:text="35"
+            android:textColor="@color/negro"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:id="@+id/ivRestar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20sp"
+            android:src="@drawable/ic_remove_black_35dp" />
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnAgregarCarrito"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30sp"
         android:layout_marginTop="10sp"
         android:layout_marginEnd="30sp"
-        android:layout_marginStart="30sp"
         android:background="@color/colorPrimaryDark"
         android:fontFamily="@font/ameliabasicbold"
-        android:textSize="18sp"
-        android:textColor="@color/white"
         android:text="AGREGAR CARRITO"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 </LinearLayout>
