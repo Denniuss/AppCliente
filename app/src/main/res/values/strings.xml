@@ -50,7 +50,6 @@
     <string name="tipo_cambio">3.4</string>
 
 
-
     <!-- Donate dialog -->
     <string name="donate_dialog_title">Support me</string>
     <string name="donate_dialog_message">If you like this library project and you are willing to support me, you can donate me via Alipay or PayPal.\n\nAlipay: fythonx\@gmail.com\nPayPal: Click PAYPAL button to open a new tab.</string>
@@ -69,8 +68,10 @@
 
     <string name="toggle_animation_button">Toggle Animation</string>
 
-
-
+    <string name="pedidoPersona">Pedido personalizado</string>
+    <string name="piscosPerson">Piscos Personalizados</string>
+    <string name="piscosElegidos">Piscos Elegidos</string>
+    <string name="elegirModelo">Elegir Modelo</string>
 
 
 </resources>

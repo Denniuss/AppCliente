@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".activity.PersonalizarModeloActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:theme="@style/MyActionBarTheme"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:background="@color/white"
+        app:subtitleTextColor="@color/negro"
+        app:titleTextColor="@color/negro">
+    </android.support.v7.widget.Toolbar>
+
+    <Button
+        android:layout_marginTop="20sp"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:fontFamily="@font/ameliabasicbold"
+        android:textSize="19sp"
+        android:text="Subir imagen"
+        android:ems="10"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/btn_general" />
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_marginTop="20sp"
+        android:layout_gravity="center"
+        android:layout_width="300sp"
+        android:layout_height="400sp" />
+
+    <Button
+        android:layout_marginTop="20sp"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:fontFamily="@font/ameliabasicbold"
+        android:textSize="19sp"
+        android:text="Finalizar"
+        android:ems="10"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/btn_general" />
+
+
+</LinearLayout>

@@ -83,7 +83,7 @@ public class SeguimientoAdapter extends RecyclerView.Adapter<SeguimientoAdapter.
 
         viewHolder.cantidadPedido.setText("Cantidad " +items.get(i).getCantidad());
         viewHolder.estado.setText("Estado " + Utilitario.ESTADO_FLUJO_TRABAJO.getEstadoWorkFlowByID(items.get(i).getFlujo().getEstadoParametro().getCodigo()).getKeyMsg() +"");
-        viewHolder.idVenta.setText("Orden Venta " + items.get(i).getIdPedido());
+        viewHolder.idVenta.setText("Pedido " + items.get(i).getIdPedido());
         viewHolder.fechaPedidoFormat.setText("Fecha Pedido " +items.get(i).getFechaCreacionFormat());
 
         //viewHolder.direccion.setText("Dirección: " + items.get(i).getDireccion());

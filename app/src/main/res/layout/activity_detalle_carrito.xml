@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.newmantech.appcliente.activity.DetalleCarritoActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:theme="@style/MyActionBarTheme"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:background="@color/white"
+        app:subtitleTextColor="@color/negro"
+        app:titleTextColor="@color/negro">
+    </android.support.v7.widget.Toolbar>
+    <ScrollView
+        android:layout_marginTop="?attr/actionBarSize"
+        android:paddingBottom="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_marginTop="10sp"
+        android:layout_gravity="center"
+        android:src="@mipmap/vino_grupo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:textSize="19sp"
+            android:fontFamily="@font/ameliabasicbold"
+            android:textColor="@color/negro_"
+            android:text="Piscos Personalizados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageButton
+            android:layout_marginStart="10sp"
+            android:background="@drawable/fn_transparente"
+            android:src="@drawable/ic_delete_forever_black_35dp"
+            android:layout_width="50sp"
+            android:layout_height="50sp" />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:textSize="17sp"
+        android:fontFamily="@font/ameliabasic"
+        android:textColor="@color/negro"
+        android:text="Pisco Quebranto"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:paddingBottom="20sp"
+        android:paddingTop="20sp"
+        android:background="@mipmap/ticket_"
+        android:paddingStart="50sp"
+        android:paddingEnd="50sp"
+        android:weightSum="2"
+        android:layout_marginEnd="30sp"
+        android:layout_marginStart="30sp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="start"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginTop="5sp"
+                android:textSize="15sp"
+                android:fontFamily="@font/ameliabasic"
+                android:textColor="@color/negro"
+                android:text="Cantidad:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="5sp"
+                android:textSize="15sp"
+                android:fontFamily="@font/ameliabasic"
+                android:textColor="@color/negro"
+                android:text="Precio Unidad:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="5sp"
+                android:textSize="15sp"
+                android:fontFamily="@font/ameliabasic"
+                android:textColor="@color/negro"
+                android:text="Subtotal:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tvCantidad"
+                android:layout_marginTop="5sp"
+                android:textSize="15sp"
+                android:fontFamily="@font/ameliabasic"
+                android:textColor="@color/negro"
+                android:text="25"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvPrecioUnidad"
+                android:layout_marginTop="5sp"
+                android:textSize="15sp"
+                android:fontFamily="@font/ameliabasic"
+                android:textColor="@color/negro"
+                android:text="S/ 10.00"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvSubtotal"
+                android:layout_marginTop="5sp"
+                android:textSize="15sp"
+                android:fontFamily="@font/ameliabasic"
+                android:textColor="@color/negro"
+                android:text="S/ 250.00"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="30sp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnElegirModelo"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="@font/ameliabasicbold"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="ELEGIR MODELO"
+            android:ems="9"
+            android:layout_width="wrap_content"
+            android:layout_height="35sp" />
+        <Button
+            android:id="@+id/btnPagar"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginStart="20sp"
+            android:fontFamily="@font/ameliabasicbold"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="PAGAR"
+            android:ems="9"
+            android:layout_width="wrap_content"
+            android:layout_height="35sp" />
+    </LinearLayout>
+    <Button
+        android:layout_marginTop="10sp"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginStart="20sp"
+        android:fontFamily="@font/ameliabasicbold"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="PERSONALIZAR MODELO"
+        android:ems="10"
+        android:layout_width="wrap_content"
+        android:layout_height="35sp" />
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

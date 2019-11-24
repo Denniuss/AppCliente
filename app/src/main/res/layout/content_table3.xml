@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="10sp"
+    android:background="@drawable/fn_rect_primary"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+    <TableRow
+        android:background="@drawable/fn_cabecera"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <TextView
+            android:id="@+id/tvTitulo3"
+            android:textSize="18sp"
+            android:padding="10sp"
+            android:fontFamily="@font/ameliabasicbold"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Pisco Quebranta"/>
+    </TableRow>
+
+    <TableRow
+        android:paddingEnd="10sp"
+        android:paddingStart="10sp"
+        android:weightSum="3"
+        android:layout_width="0sp"
+        android:layout_height="match_parent" >
+        <TextView
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/ameliabasic"
+            android:textColor="@color/plomo"
+            android:layout_height="wrap_content"
+            android:layout_width="0sp" />
+        <TextView
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_margin="5sp"
+            android:layout_weight="1"
+            android:fontFamily="@font/ameliabasic"
+            android:textColor="@color/negro"
+            android:layout_height="match_parent"
+            android:layout_width="0sp"
+            android:text="50 ml."/>
+        <TextView
+            android:gravity="center"
+            android:layout_margin="5sp"
+            android:layout_weight="1"
+            android:fontFamily="@font/ameliabasic"
+            android:textColor="@color/negro"
+            android:layout_height="wrap_content"
+            android:layout_width="0sp"
+            android:text="187 ml."/>
+        </TableRow>
+
+    <TableRow
+        android:paddingBottom="10sp"
+        android:paddingEnd="10sp"
+        android:paddingStart="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <TextView
+            android:textSize="12sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/ameliabasic"
+            android:textColor="@color/negro"
+            android:layout_height="wrap_content"
+            android:layout_width="0sp"
+            android:text="25 unid."/>
+        <TextView
+            android:textSize="12sp"
+            android:paddingTop="5sp"
+            android:paddingBottom="5sp"
+            android:gravity="center"
+            android:layout_margin="5sp"
+            android:layout_weight="1"
+            android:fontFamily="@font/ameliabasic"
+            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"
+            android:layout_width="0sp"
+            android:text="S/ 42.00"/>
+        <TextView
+            android:textSize="12sp"
+            android:paddingTop="5sp"
+            android:paddingBottom="5sp"
+            android:gravity="center"
+            android:layout_margin="5sp"
+            android:layout_weight="1"
+            android:fontFamily="@font/ameliabasic"
+            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"
+            android:layout_width="0sp"
+            android:text="S/ 55.00"/>
+    </TableRow>
+    <TableRow
+        android:background="@color/primaryTransparent"
+        android:paddingBottom="10sp"
+        android:paddingEnd="10sp"
+        android:paddingStart="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <TextView
+            android:textSize="12sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/ameliabasic"
+            android:textColor="@color/negro"
+            android:layout_height="wrap_content"
+            android:layout_width="0sp"
+            android:text="50 unid."/>
+        <TextView
+            android:textSize="12sp"
+            android:paddingTop="5sp"
+            android:paddingBottom="5sp"
+            android:gravity="center"
+            android:layout_margin="5sp"
+            android:layout_weight="1"
+            android:fontFamily="@font/ameliabasic"
+            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"
+            android:layout_width="0sp"
+            android:text="S/ 42.00"/>
+        <TextView
+            android:textSize="12sp"
+            android:paddingTop="5sp"
+            android:paddingBottom="5sp"
+            android:gravity="center"
+            android:layout_margin="5sp"
+            android:layout_weight="1"
+            android:fontFamily="@font/ameliabasic"
+            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"
+            android:layout_width="0sp"
+            android:text="S/ 55.00"/>
+    </TableRow>
+    <TableRow
+        android:paddingBottom="10sp"
+        android:paddingEnd="10sp"
+        android:paddingStart="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <TextView
+            android:textSize="12sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/ameliabasic"
+            android:textColor="@color/negro"
+            android:layout_height="wrap_content"
+            android:layout_width="0sp"
+            android:text="100 unid."/>
+        <TextView
+            android:textSize="12sp"
+            android:paddingTop="5sp"
+            android:paddingBottom="5sp"
+            android:gravity="center"
+            android:layout_margin="5sp"
+            android:layout_weight="1"
+            android:fontFamily="@font/ameliabasic"
+            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"
+            android:layout_width="0sp"
+            android:text="S/ 42.00"/>
+        <TextView
+            android:textSize="12sp"
+            android:paddingTop="5sp"
+            android:paddingBottom="5sp"
+            android:gravity="center"
+            android:layout_margin="5sp"
+            android:layout_weight="1"
+            android:fontFamily="@font/ameliabasic"
+            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"
+            android:layout_width="0sp"
+            android:text="S/ 55.00"/>
+    </TableRow>
+
+</TableLayout>
