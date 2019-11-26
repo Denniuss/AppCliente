@@ -3,30 +3,18 @@ package com.newmantech.appcliente.utils;
 import android.text.format.Formatter;
 import android.util.Log;
 
-import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.text.DecimalFormat;
-import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-
-import okhttp3.OkHttpClient;
-
 public class Utilitario {
 
-    public static String IP_LOCAL = "http://192.168.1.199";
+    public static String IP_LOCAL = "http://192.168.1.7";
 
     //public static String baseUrl = IP_LOCAL+":8075/";
 
