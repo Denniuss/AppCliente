@@ -98,6 +98,15 @@
             android:src="@drawable/ic_remove_black_35dp" />
 
     </LinearLayout>
+    <Spinner
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/spProducto"
+        style="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar"
+        android:padding="10sp"
+        android:spinnerMode="dropdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></Spinner>
 
     <Button
         android:id="@+id/btnAgregarCarrito"
