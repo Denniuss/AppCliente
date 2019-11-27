@@ -18,18 +18,21 @@
     </android.support.v7.widget.Toolbar>
 
     <Button
-        android:layout_marginTop="20sp"
-        android:layout_gravity="center"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/white"
-        android:fontFamily="@font/ameliabasicbold"
-        android:textSize="19sp"
-        android:text="Subir imagen"
-        android:ems="10"
+        android:id="@+id/btnAgregarImagen"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/btn_general" />
+        android:layout_height="@dimen/btn_general"
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
+        android:background="@color/colorPrimary"
+        android:ems="10"
+        android:fontFamily="@font/ameliabasicbold"
+        android:text="Subir imagen"
+        android:textColor="@color/white"
+        android:textSize="19sp" />
 
     <ImageView
+        android:background="@drawable/fn_imagen"
+        android:padding="10sp"
         android:id="@+id/ivLogo"
         android:layout_marginTop="20sp"
         android:layout_gravity="center"
@@ -37,16 +40,17 @@
         android:layout_height="400sp" />
 
     <Button
-        android:layout_marginTop="20sp"
-        android:layout_gravity="center"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/white"
-        android:fontFamily="@font/ameliabasicbold"
-        android:textSize="19sp"
-        android:text="Finalizar"
-        android:ems="10"
+        android:id="@+id/btnGuardar"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/btn_general" />
+        android:layout_height="@dimen/btn_general"
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
+        android:background="@color/colorPrimary"
+        android:ems="10"
+        android:fontFamily="@font/ameliabasicbold"
+        android:text="guardar"
+        android:textColor="@color/white"
+        android:textSize="19sp" />
 
 
 </LinearLayout>

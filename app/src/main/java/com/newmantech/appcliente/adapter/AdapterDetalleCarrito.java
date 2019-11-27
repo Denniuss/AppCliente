@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.newmantech.appcliente.R;
 import com.newmantech.appcliente.activity.DetalleCarritoActivity;
 import com.newmantech.appcliente.activity.ElegirModeloActivity;
+import com.newmantech.appcliente.activity.PersonalizarModeloActivity;
 import com.newmantech.appcliente.model.EntityDetalleCarrito;
 
 import java.util.ArrayList;
@@ -42,6 +43,13 @@ public class AdapterDetalleCarrito extends RecyclerView.Adapter<AdapterDetalleCa
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context, ElegirModeloActivity.class);
+                context.startActivity(i);
+            }
+        });
+        v.btnPersonalizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, PersonalizarModeloActivity.class);
                 context.startActivity(i);
             }
         });

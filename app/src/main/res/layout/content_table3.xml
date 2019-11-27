@@ -50,7 +50,7 @@
             android:textColor="@color/negro"
             android:layout_height="wrap_content"
             android:layout_width="0sp"
-            android:text="187 ml."/>
+            android:text="500 ml."/>
         </TableRow>
 
     <TableRow

@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,6 +29,10 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
     ArrayList<String[]> aSpinner2;
     ArrayList<String[]> aSpinner3;
     ArrayList<String[]> aSpinner4;
+    int idTamanio;
+    int idDetalleTarifario;
+    double precio;
+    String nombreProducto;
 
 
     public AdapterPiscoPersonalizado(ArrayList<EntityHeader> arrayList, Context ctx) {
@@ -208,18 +213,20 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                 aSpinner1 = new ArrayList<>();
                 v.tvCantidad.setText("1");
                 if(aObjTari.size()>0){
-                    String[] aDatos = new String[3];
+                    String[] aDatos = new String[4];
                     aDatos[0] ="Seleccione producto";
                     aDatos[1] = "0";// id_producto
                     aDatos[2] = "0"; // id_contenido
+                    aDatos[3] = ""; // titulo
                     aSpinner1.add(aDatos);
                     v.tvTitulo1.setText(objTari.getVariedad());
                     for(int j=0; j<aObjTari.size(); j++){
                         objTari = aObjTari.get(j);
-                        String[] aDatos_ = new String[3];
+                        String[] aDatos_ = new String[4];
                         aDatos_[0]=objTari.getVariedad();
                         aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
                         aDatos_[2]= String.valueOf(objTari.getIdTamaño());
+                        aDatos_[3]= String.valueOf(objTari.getVariedad());
                         aSpinner1.add(aDatos_);
                         switch (j){
                             case 0:
@@ -245,10 +252,11 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                 aSpinner2 = new ArrayList<>();
                 v.tvCantidad.setText("25");
                 if(aObjTari.size()>0){
-                    String[] aDatos = new String[3];
+                    String[] aDatos = new String[4];
                     aDatos[0] ="Seleccione producto";
                     aDatos[1] = "0";// id_producto
                     aDatos[2] = "0"; // id_contenido
+                    aDatos[3] = ""; // titulo
                     aSpinner2.add(aDatos);
                     v.tvTitulo2.setText(objTari.getVariedad());
                     for(int j=0; j<aObjTari.size(); j++){
@@ -263,10 +271,11 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                                         v.tvPrecio1_2.setText("S/" +String.valueOf(objTari.getPrecio()));
                                         break;
                                     case 100:
-                                            String[] aDatos_ = new String[3];
+                                            String[] aDatos_ = new String[4];
                                             aDatos_[0]= objTari.getVariedad() + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
                                             aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
                                             aDatos_[2]= String.valueOf(objTari.getIdTamaño());
+                                            aDatos_[3]= String.valueOf(objTari.getVariedad());
                                             aSpinner2.add(aDatos_);
                                         v.tvPrecio1_3.setText("S/" +String.valueOf(objTari.getPrecio()));
                                         break;
@@ -281,11 +290,12 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                                         v.tvPrecio2_2.setText("S/" +String.valueOf(objTari.getPrecio()));
                                         break;
                                     case 100:
-                                            String[] aDatos_ = new String[3];
+                                            String[] aDatos_ = new String[4];
                                             aDatos_[0]= objTari.getVariedad() + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
                                             aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
                                             aDatos_[2]= String.valueOf(objTari.getIdTamaño());
-                                            aSpinner2.add(aDatos_);
+                                        aDatos_[3]= String.valueOf(objTari.getVariedad());
+                                        aSpinner2.add(aDatos_);
 
                                         v.tvPrecio2_3.setText("S/" +String.valueOf(objTari.getPrecio()));
                                         break;
@@ -301,11 +311,12 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                                         break;
                                     case 100:
 
-                                            String[] aDatos_ = new String[3];
+                                            String[] aDatos_ = new String[4];
                                             aDatos_[0]= objTari.getVariedad() + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
                                             aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
                                             aDatos_[2]= String.valueOf(objTari.getIdTamaño());
-                                            aSpinner2.add(aDatos_);
+                                        aDatos_[3]= String.valueOf(objTari.getVariedad());
+                                        aSpinner2.add(aDatos_);
 
                                         v.tvPrecio3_3.setText("S/" +String.valueOf(objTari.getPrecio()));
                                         break;
@@ -321,11 +332,12 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                                         break;
                                     case 100:
 
-                                            String[] aDatos_ = new String[3];
+                                            String[] aDatos_ = new String[4];
                                             aDatos_[0]= objTari.getVariedad() + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
                                             aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
                                             aDatos_[2]= String.valueOf(objTari.getIdTamaño());
-                                            aSpinner2.add(aDatos_);
+                                        aDatos_[3]= String.valueOf(objTari.getVariedad());
+                                        aSpinner2.add(aDatos_);
                                         v.tvPrecio4_3.setText("S/" +String.valueOf(objTari.getPrecio()));
                                         break;
                                 }
@@ -339,11 +351,12 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                                         v.tvPrecio5_2.setText("S/" +String.valueOf(objTari.getPrecio()));
                                         break;
                                     case 100:
-                                            String[] aDatos_ = new String[3];
+                                            String[] aDatos_ = new String[4];
                                             aDatos_[0]= objTari.getVariedad() + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
                                             aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
                                             aDatos_[2]= String.valueOf(objTari.getIdTamaño());
-                                            aSpinner2.add(aDatos_);
+                                        aDatos_[3]= String.valueOf(objTari.getVariedad());
+                                        aSpinner2.add(aDatos_);
                                         v.tvPrecio5_3.setText("S/" +String.valueOf(objTari.getPrecio()));
                                         break;
                                 }
@@ -361,10 +374,11 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                 aSpinner3 = new ArrayList<>();
                 v.tvCantidad.setText("25");
                 if(aObjTari.size()>0){
-                    String[] aDatos = new String[3];
+                    String[] aDatos = new String[4];
                     aDatos[0] ="Seleccione producto";
                     aDatos[1] = "0";// id_producto
                     aDatos[2] = "0"; // id_contenido
+                    aDatos[3] = ""; // titulo
                     aSpinner3.add(aDatos);
                     v.tvTitulo2.setText(objTari.getVariedad());
                     for(int j=0; j<aObjTari.size(); j++){
@@ -382,17 +396,19 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                                         if(objTari.getVariedad().split("/") != null){
                                             String[] a = objTari.getVariedad().split("/");
                                             for(String s: a){
-                                                String[] aDatos_ = new String[3];
+                                                String[] aDatos_ = new String[4];
                                                 aDatos_[0]= s + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
                                                 aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
                                                 aDatos_[2]= String.valueOf(objTari.getIdTamaño());
+                                                aDatos_[3]= s;
                                                 aSpinner3.add(aDatos_);
                                             }
                                         }else{
-                                            String[] aDatos_ = new String[3];
+                                            String[] aDatos_ = new String[4];
                                             aDatos_[0]= objTari.getVariedad() + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
                                             aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
                                             aDatos_[2]= String.valueOf(objTari.getIdTamaño());
+                                            aDatos_[3]= String.valueOf(objTari.getVariedad());
                                             aSpinner3.add(aDatos_);
                                         }
                                         v.tvPrecio1_3.setText("S/" +String.valueOf(objTari.getPrecio()));
@@ -411,17 +427,19 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                                         if(objTari.getVariedad().split("/") != null){
                                             String[] a = objTari.getVariedad().split("/");
                                             for(String s: a){
-                                                String[] aDatos_ = new String[3];
+                                                String[] aDatos_ = new String[4];
                                                 aDatos_[0]= s + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
                                                 aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
                                                 aDatos_[2]= String.valueOf(objTari.getIdTamaño());
+                                                aDatos_[3]= s;
                                                 aSpinner3.add(aDatos_);
                                             }
                                         }else{
-                                            String[] aDatos_ = new String[3];
+                                            String[] aDatos_ = new String[4];
                                             aDatos_[0]= objTari.getVariedad() + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
                                             aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
                                             aDatos_[2]= String.valueOf(objTari.getIdTamaño());
+                                            aDatos_[3]= String.valueOf(objTari.getVariedad());
                                             aSpinner3.add(aDatos_);
                                         }
                                         v.tvPrecio2_3.setText("S/" +String.valueOf(objTari.getPrecio()));
@@ -440,17 +458,19 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                                         if(objTari.getVariedad().split("/") != null){
                                             String[] a = objTari.getVariedad().split("/");
                                             for(String s: a){
-                                                String[] aDatos_ = new String[3];
+                                                String[] aDatos_ = new String[4];
                                                 aDatos_[0]= s + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
                                                 aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
                                                 aDatos_[2]= String.valueOf(objTari.getIdTamaño());
+                                                aDatos_[3]= s;
                                                 aSpinner3.add(aDatos_);
                                             }
                                         }else{
-                                            String[] aDatos_ = new String[3];
+                                            String[] aDatos_ = new String[4];
                                             aDatos_[0]= objTari.getVariedad() + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
                                             aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
                                             aDatos_[2]= String.valueOf(objTari.getIdTamaño());
+                                            aDatos_[3]= String.valueOf(objTari.getVariedad());
                                             aSpinner3.add(aDatos_);
                                         }
                                         v.tvPrecio3_3.setText("S/" +String.valueOf(objTari.getPrecio()));
@@ -469,17 +489,19 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                                         if(objTari.getVariedad().split("/") != null){
                                             String[] a = objTari.getVariedad().split("/");
                                             for(String s: a){
-                                                String[] aDatos_ = new String[3];
+                                                String[] aDatos_ = new String[4];
                                                 aDatos_[0]= s + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
                                                 aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
                                                 aDatos_[2]= String.valueOf(objTari.getIdTamaño());
+                                                aDatos_[3]= s;
                                                 aSpinner3.add(aDatos_);
                                             }
                                         }else{
-                                            String[] aDatos_ = new String[3];
+                                            String[] aDatos_ = new String[4];
                                             aDatos_[0]= objTari.getVariedad() + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
                                             aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
                                             aDatos_[2]= String.valueOf(objTari.getIdTamaño());
+                                            aDatos_[3]= String.valueOf(objTari.getVariedad());
                                             aSpinner3.add(aDatos_);
                                         }
                                         v.tvPrecio4_3.setText("S/" +String.valueOf(objTari.getPrecio()));
@@ -498,17 +520,19 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                                         if(objTari.getVariedad().split("/") != null){
                                             String[] a = objTari.getVariedad().split("/");
                                             for(String s: a){
-                                                String[] aDatos_ = new String[3];
+                                                String[] aDatos_ = new String[4];
                                                 aDatos_[0]= s + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
                                                 aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
                                                 aDatos_[2]= String.valueOf(objTari.getIdTamaño());
+                                                aDatos_[3]= s;
                                                 aSpinner3.add(aDatos_);
                                             }
                                         }else{
-                                            String[] aDatos_ = new String[3];
+                                            String[] aDatos_ = new String[4];
                                             aDatos_[0]= objTari.getVariedad() + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
                                             aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
                                             aDatos_[2]= String.valueOf(objTari.getIdTamaño());
+                                            aDatos_[3]= String.valueOf(objTari.getVariedad());
                                             aSpinner3.add(aDatos_);
                                         }
                                         v.tvPrecio5_3.setText("S/" +String.valueOf(objTari.getPrecio()));
@@ -528,6 +552,12 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                 aSpinner4 = new ArrayList<>();
                 v.tvCantidad.setText("25");
                 if(aObjTari.size()>0){
+                    String[] aDatos = new String[4];
+                    aDatos[0] ="Seleccione producto";
+                    aDatos[1] = "0";// id_producto
+                    aDatos[2] = "0"; // id_contenido
+                    aDatos[3] = ""; // id_contenido
+                    aSpinner4.add(aDatos);
                     v.tvTitulo3.setText(objTari.getVariedad());
                     for(int j=0; j<aObjTari.size(); j++){
                         objTari = aObjTari.get(j);
@@ -541,6 +571,12 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                                         v.tvPrec1_2.setText("S/" +String.valueOf(objTari.getPrecio()));
                                         break;
                                     case 100:
+                                        String[] aDatos_ = new String[4];
+                                        aDatos_[0]= objTari.getVariedad() + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
+                                        aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
+                                        aDatos_[2]= String.valueOf(objTari.getIdTamaño());
+                                        aDatos_[3]= String.valueOf(objTari.getVariedad());
+                                        aSpinner4.add(aDatos_);
                                         v.tvPrec1_3.setText("S/" +String.valueOf(objTari.getPrecio()));
                                         break;
                                 }
@@ -554,17 +590,40 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                                         v.tvPrec2_2.setText("S/" +String.valueOf(objTari.getPrecio()));
                                         break;
                                     case 100:
+                                        String[] aDatos_ = new String[4];
+                                        aDatos_[0]= objTari.getVariedad() + " " + objTari.getTamaño() + " "+ objTari.getUnidadmedida();
+                                        aDatos_[1]= String.valueOf(objTari.getIdDetalleTarifario());
+                                        aDatos_[2]= String.valueOf(objTari.getIdTamaño());
+                                        aDatos_[3]= String.valueOf(objTari.getVariedad());
+                                        aSpinner4.add(aDatos_);
                                         v.tvPrec2_3.setText("S/" +String.valueOf(objTari.getPrecio()));
                                         break;
                                 }
                                 break;
-
                         }
                     }
+                    for(String[] a: aSpinner4){
+                        dataAtapder4.add(a);
+                    }
+                    v.spProducto.setAdapter(dataAtapder4);
                     v.view3.setVisibility(View.VISIBLE);
                 }
                 break;
         }
+        v.spProducto.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String[] a = (String[]) parent.getAdapter().getItem(position);
+                idTamanio = Integer.parseInt(a[2]);
+                idDetalleTarifario = Integer.parseInt(a[1]);
+                nombreProducto = a[3];
+                Toast.makeText(ctx, "nombre = "+nombreProducto+" tamanio = " + String.valueOf(idTamanio) + " idTarifario = "+String.valueOf(idDetalleTarifario), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
         v.ivAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -588,6 +647,12 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                     if(n-25>=0)
                         v.tvCantidad.setText(String.valueOf(n-25));
                 }
+            }
+        });
+        v.btnAgregarCarrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
