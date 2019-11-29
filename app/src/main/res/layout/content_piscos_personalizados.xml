@@ -80,7 +80,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_add_black_35dp" />
 
-        <TextView
+        <EditText
+            android:inputType="number"
             android:id="@+id/tvCantidad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

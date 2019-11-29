@@ -18,11 +18,13 @@
     </android.support.v7.widget.Toolbar>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler"
-        android:layout_marginBottom="40sp"
+        android:layout_marginBottom="50sp"
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <LinearLayout
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
         android:background="@color/white"
         android:gravity="center"
         android:layout_alignParentBottom="true"

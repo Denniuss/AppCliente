@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -681,7 +682,8 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
 
         TextView tvPrec1_1, tvPrec2_1, tvPrec1_2, tvPrec2_2, tvPrec1_3, tvPrec2_3;
         ImageView ivFoto, ivAgregar, ivRestar;
-        TextView tvCantidad, tvDescripcion, tvTipoPedido;
+        TextView tvDescripcion, tvTipoPedido;
+        EditText tvCantidad;
         Button btnAgregarCarrito;
         Spinner spProducto;
 

@@ -1,6 +1,9 @@
 package com.newmantech.appcliente.activity;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -9,6 +12,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -40,6 +44,8 @@ public class PersonalizarModeloActivity extends AppCompatActivity {
     private TemplatePDF templatePDF;
     private static final int FILE_SELECT_CODE1 = 2;
     Image img;
+    private final int RC_PERMISSION_WRITE_EXTERNAL_STORAGE = 100;
+
     Toolbar toolbar;
     private StorageReference mStorageRef;
     public static StorageReference riversRef;
@@ -50,7 +56,8 @@ public class PersonalizarModeloActivity extends AppCompatActivity {
         setContentView(R.layout.activity_personalizar_modelo);
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
-
+        requestWriteExternalStoragePermission();
+        requestReadExternalStoragePermission();
         btnAgregarImagen = findViewById(R.id.btnAgregarImagen);
         ivLogo = findViewById(R.id.ivLogo);
         toolbar = findViewById(R.id.toolbar);
@@ -148,6 +155,41 @@ public class PersonalizarModeloActivity extends AppCompatActivity {
         }catch (android.content.ActivityNotFoundException ex){
         }
 
+    }
+
+    private void requestWriteExternalStoragePermission() {
+        // Should we show an explanation?
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Inform and request")
+                    .setMessage("You need to enable permissions, bla bla bla")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(PersonalizarModeloActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, RC_PERMISSION_WRITE_EXTERNAL_STORAGE);
+                        }
+                    })
+                    .show();
+        } else {
+            ActivityCompat.requestPermissions(PersonalizarModeloActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, RC_PERMISSION_WRITE_EXTERNAL_STORAGE);
+        }
+    }
+
+    public void requestReadExternalStoragePermission(){
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Inform and request")
+                    .setMessage("You need to enable permissions, bla bla bla")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(PersonalizarModeloActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, RC_PERMISSION_WRITE_EXTERNAL_STORAGE);
+                        }
+                    })
+                    .show();
+        } else {
+            ActivityCompat.requestPermissions(PersonalizarModeloActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, RC_PERMISSION_WRITE_EXTERNAL_STORAGE);
+        }
     }
 
     /*@Override

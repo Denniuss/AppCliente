@@ -65,6 +65,13 @@ public class DetalleCarritoActivity extends AppCompatActivity {
         arrayList.add(new EntityDetalleCarrito());
         arrayList.add(new EntityDetalleCarrito());
         adapterDetalleCarrito = new AdapterDetalleCarrito(arrayList, this );
+        adapterDetalleCarrito.setOnclickEvent(new AdapterDetalleCarrito.onClickEvent() {
+            @Override
+            public void onClickDelete(int i, int idProducto) {
+                arrayList.remove(i);
+                adapterDetalleCarrito.notifyDataSetChanged();
+            }
+        });
         recycler.setAdapter(adapterDetalleCarrito);
     }
 

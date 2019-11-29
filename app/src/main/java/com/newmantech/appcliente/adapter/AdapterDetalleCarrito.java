@@ -22,10 +22,19 @@ import java.util.ArrayList;
 public class AdapterDetalleCarrito extends RecyclerView.Adapter<AdapterDetalleCarrito.ViewHolder> {
     ArrayList<EntityDetalleCarrito> arrayList;
     Context context;
+    public onClickEvent onclick;
+
+    public interface onClickEvent{
+        public void onClickDelete(int i, int idProducto);
+    }
 
     public AdapterDetalleCarrito(ArrayList<EntityDetalleCarrito> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
+    }
+
+    public void setOnclickEvent(onClickEvent onclick ){
+        this.onclick = onclick;
     }
 
     @NonNull
@@ -37,7 +46,7 @@ public class AdapterDetalleCarrito extends RecyclerView.Adapter<AdapterDetalleCa
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder v, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder v, final int i) {
 
         v.btnElegirModelo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +60,13 @@ public class AdapterDetalleCarrito extends RecyclerView.Adapter<AdapterDetalleCa
             public void onClick(View v) {
                 Intent i = new Intent(context, PersonalizarModeloActivity.class);
                 context.startActivity(i);
+            }
+        });
+        v.ivDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onclick.onClickDelete(i, 2);
+
             }
         });
     }
