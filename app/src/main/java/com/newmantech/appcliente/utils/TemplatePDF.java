@@ -8,27 +8,19 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.util.Log;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.PdfIsoConformanceException;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPCellEvent;
-import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 
 public class TemplatePDF {
     private Context context;
@@ -55,7 +47,7 @@ public class TemplatePDF {
             folder.mkdir();
 
         String s = String.valueOf(System.currentTimeMillis());
-        pdfFile = new File(folder, "Logo"+s+".pdf");
+        pdfFile = new File(folder, "Logo.pdf");
     }
 
     // cuando se agregan valores al pdf son como metadatos

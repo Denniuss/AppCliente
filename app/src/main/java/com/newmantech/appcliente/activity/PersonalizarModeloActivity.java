@@ -89,7 +89,7 @@ public class PersonalizarModeloActivity extends AppCompatActivity {
         //Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
         Uri file = Uri.fromFile(templatePDF.pdfFile);
         String s = String.valueOf(System.currentTimeMillis());
-        riversRef = mStorageRef.child("PDF/Cliente"+s+".pdf");
+        riversRef = mStorageRef.child("PDF/Logo.pdf");
 
         riversRef.putFile(file)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
