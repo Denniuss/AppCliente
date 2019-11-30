@@ -25,6 +25,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -82,7 +83,7 @@ public class PersonalizarModeloActivity extends AppCompatActivity {
                 templatePDF.openDocument();
                 //templatePDF.addParagraph("Logo elegido");
                 templatePDF.addImage();
-                //templatePDF.closeDocument();
+                templatePDF.closeDocument();
                 pdfView();
                 guardarPdf();
             }
@@ -112,6 +113,7 @@ public class PersonalizarModeloActivity extends AppCompatActivity {
 
                             }
                         });
+                        Toast.makeText(getApplicationContext(), "Se guardó correctamente el módelo", Toast.LENGTH_LONG).show();
                         finish();
 
                     }

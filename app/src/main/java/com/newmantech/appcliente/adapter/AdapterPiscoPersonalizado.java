@@ -34,12 +34,13 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
     int idDetalleTarifario;
     double precio=0, precio1=0, precio2=0, precio3=0;
     String nombreProducto;
+    int idProducto;
 
 
-    public AdapterPiscoPersonalizado(ArrayList<EntityHeader> arrayList, Context ctx) {
+    public AdapterPiscoPersonalizado(ArrayList<EntityHeader> arrayList, Context ctx, int idProducto) {
         this.arrayList = arrayList;
         this.ctx = ctx;
-
+        this.idProducto = idProducto;
     }
 
 

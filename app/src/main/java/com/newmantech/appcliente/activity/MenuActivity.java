@@ -126,7 +126,7 @@ public class MenuActivity extends AppCompatActivity
             startActivity(intent);
             */
         } else if (id == R.id.nav_carritoCompra) {
-            toolbar.setTitle("Pedidos");
+            //toolbar.setTitle("Pedidos");
 
             //fragment = new VolverAlmacenFragment();
             //Intent newActivity = new Intent(MenuActivity.this,CarritoCompraActivity.class);

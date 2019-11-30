@@ -46,7 +46,7 @@ public class AdapterPedidoPersonalizado extends BaseAdapter {
 
     @Override
     public View getView(int position, View v, ViewGroup parent) {
-        EntityProductoPersonalizado obj = arrayList.get(position);
+        final EntityProductoPersonalizado obj = arrayList.get(position);
         if(v == null){
             LayoutInflater layoutInflater = (LayoutInflater) ctx.getSystemService(ctx.LAYOUT_INFLATER_SERVICE);
             v = layoutInflater.inflate(R.layout.content_pedido_personalizado,null);
@@ -68,13 +68,16 @@ public class AdapterPedidoPersonalizado extends BaseAdapter {
                 });
 
         LinearLayout llContent =  v.findViewById(R.id.llContent);
-        TextView tvTitiuno = v.findViewById(R.id.tvTitiuno);
+        final TextView tvTitiuno = v.findViewById(R.id.tvTitiuno);
         tvTitiuno.setText(obj.getDescripcion());
 
         llContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ctx, PiscosPersonalizadosActivity.class);
+                obj.getCodigo();
+                i.putExtra("codigo", obj.getCodigo());
+                i.putExtra("titulo", tvTitiuno.getText().toString());
                 ctx.startActivity(i);
             }
         });

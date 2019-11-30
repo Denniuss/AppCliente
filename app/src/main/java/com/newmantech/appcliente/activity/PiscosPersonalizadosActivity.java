@@ -27,6 +27,7 @@ public class PiscosPersonalizadosActivity extends AppCompatActivity {
     FloatingActionButton fabCar;
     AdapterPiscoPersonalizado adapter;
     private RecyclerView recycler;
+    int idProducto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +38,12 @@ public class PiscosPersonalizadosActivity extends AppCompatActivity {
         fabCar = findViewById(R.id.fabCar);
         fn_LoadRecyclerView();
 
+        idProducto = getIntent().getIntExtra("codigo",0);
+
 
         setupUI(getWindow().getDecorView().getRootView());
-        toolbar.setTitle(R.string.piscosPerson);
+        toolbar.setTitle("");
+        toolbar.setSubtitle(getIntent().getStringExtra("titulo"));
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_35dp);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -90,7 +94,7 @@ public class PiscosPersonalizadosActivity extends AppCompatActivity {
         aHeader.add(new EntityHeader(3, aTabl3));
         aHeader.add(new EntityHeader(4, aTabl4));
 
-        adapter = new AdapterPiscoPersonalizado(aHeader, this);
+        adapter = new AdapterPiscoPersonalizado(aHeader, this, idProducto);
         recycler.setAdapter(adapter);
     }
 

@@ -53,14 +53,14 @@ public class TemplatePDF {
     // cuando se agregan valores al pdf son como metadatos
     public void openDocument(){
         createFile();
-        /*try{
+        try{
             document = new Document(PageSize.A4);// Creamos el documento
             pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(pdfFile));
             // abrimos documento
             document.open();
         }catch (Exception e){
             Log.e("opendocument", e.toString());
-        }*/
+        }
     }
 
     public void closeDocument(){
