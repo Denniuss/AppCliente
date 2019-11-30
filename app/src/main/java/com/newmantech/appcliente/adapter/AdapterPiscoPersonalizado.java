@@ -32,7 +32,7 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
     ArrayList<String[]> aSpinner4;
     int idTamanio;
     int idDetalleTarifario;
-    double precio;
+    double precio=0, precio1=0, precio2=0, precio3=0;
     String nombreProducto;
 
 
@@ -618,7 +618,87 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                 idTamanio = Integer.parseInt(a[2]);
                 idDetalleTarifario = Integer.parseInt(a[1]);
                 nombreProducto = a[3];
-                Toast.makeText(ctx, "nombre = "+nombreProducto+" tamanio = " + String.valueOf(idTamanio) + " idTarifario = "+String.valueOf(idDetalleTarifario), Toast.LENGTH_LONG).show();
+                int cantidad = Integer.parseInt(v.tvCantidad.getText().toString());
+                if(idDetalleTarifario >= 1 && idDetalleTarifario <=3){
+                    switch (idDetalleTarifario){
+                        case 1:precio = 42;break;
+                        case 2:precio = 55;break;
+                        case 3:precio = 89;break;
+                    }
+
+                }else if(idDetalleTarifario >= 4 && idDetalleTarifario <=18){
+                    precio = 0;
+                    switch (idTamanio){
+                        case 1:
+                            switch (idDetalleTarifario){
+                                case 4: case 5: case 6:     precio1=9; precio2=8; precio3=7; break;
+                            }
+                            break;
+                        case 2:
+                            switch (idDetalleTarifario){
+                                case 7: case 8: case 9:     precio1=15; precio2=13; precio3=12;break;
+                            }
+                            break;
+                        case 3:
+                            switch (idDetalleTarifario){
+                                case 10: case 11:   case 12:    precio1=24; precio2=20; precio3=17;break;
+                            }
+                            break;
+                        case 4:
+                            switch (idDetalleTarifario){
+                                case 13: case 14: case 15:    precio1=25; precio2=24; precio3=21;break;
+                            }
+                            break;
+                        case 5:
+                            switch (idDetalleTarifario){
+                                case 16: case 17: case 18:      precio1=34; precio2=30; precio3=25;break;
+                            }
+                            break;
+                    }
+                }else if(idDetalleTarifario >= 19 && idDetalleTarifario <=33){
+                    precio=0;
+                    switch (idTamanio){
+                        case 1:
+                            switch (idDetalleTarifario){
+                                case 19: case 20: case 21:      precio1=10; precio2=9; precio3=8;break;
+                            }
+                            break;
+                        case 2:
+                            switch (idDetalleTarifario){
+                                case 22: case 23: case 24:      precio1=17; precio2=15; precio3=13;break;
+                            }
+                            break;
+                        case 3:
+                            switch (idDetalleTarifario){
+                                case 25: case 26: case 27:      precio1=25; precio2=24; precio3=20;break;
+                            }
+                            break;
+                        case 4:
+                            switch (idDetalleTarifario){
+                                case 28: case 29: case 30:      precio1=30; precio2=28; precio3=25;break;
+                            }
+                            break;
+                        case 5:
+                            switch (idDetalleTarifario){
+                                case 31: case 32: case 33:      precio1=38; precio2=34; precio3=30;break;
+                            }
+                            break;
+                    }
+                }else if(idDetalleTarifario >= 34 && idDetalleTarifario <=39){
+                    precio=0;
+                    switch (idTamanio){
+                        case 1:
+                            switch (idDetalleTarifario){
+                                case 34: case 35: case 36:      precio1=11; precio2=10; precio3=9;break;
+                            }
+                            break;
+                        case 4:
+                            switch (idDetalleTarifario){
+                                case 37: case 38: case 39:      precio1=51; precio2=42; precio3=38;break;
+                            }
+                            break;
+                    }
+                }
             }
 
             @Override
@@ -652,7 +732,32 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
         });
         v.btnAgregarCarrito.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v_) {
+                int cantidad = Integer.parseInt(v.tvCantidad.getText().toString());
+                double precioTotal=0;
+                if(cantidad == 0){
+                    Toast.makeText(ctx, "Cantidad no puede ser 0", Toast.LENGTH_SHORT).show();
+                }else{
+                    if(v.spProducto.getSelectedItemPosition() != 0){
+                        if (precio != 0){
+                            precioTotal = cantidad * precio;
+                        }else{
+                            if(cantidad<50)
+                                precioTotal = cantidad * precio1;
+                            else if(cantidad>=50 && cantidad<=99)
+                                precioTotal = cantidad * precio2;
+                            else if(cantidad>99)
+                                precioTotal = cantidad * precio3;
+                        }
+                        Toast.makeText(ctx, "PRODUCTO: "+nombreProducto +
+                                "\n ID_TAMAÑO: = " + String.valueOf(idTamanio) +
+                                "\n ID_TARIFARIO = "+String.valueOf(idDetalleTarifario)+
+                                "\nPRECIO_TOTAL: = " + String.valueOf(precioTotal), Toast.LENGTH_LONG).show();
+                    }else
+                        Toast.makeText(ctx, "Debe de seleccionar un producto", Toast.LENGTH_SHORT).show();
+
+                }
+
 
             }
         });

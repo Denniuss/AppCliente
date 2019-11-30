@@ -52,6 +52,12 @@ public class AdapterElegirModelo extends BaseAdapter {
         final ImageView ivFoto = v.findViewById(R.id.ivFoto);
         Button btnModelo = v.findViewById(R.id.btnModelo);
         btnModelo.setText(obj.getDescripcion());
+        btnModelo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ctx, " Elegir modelo", Toast.LENGTH_LONG).show();
+            }
+        });
 
         Picasso.with(ctx)
                 .load(obj.getUrl())

@@ -1,6 +1,7 @@
 package com.newmantech.appcliente.activity;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -79,9 +80,9 @@ public class PersonalizarModeloActivity extends AppCompatActivity {
             public void onClick(View v) {
                 templatePDF = new TemplatePDF(getApplicationContext(), img);
                 templatePDF.openDocument();
-                templatePDF.addParagraph("Logo elegido");
+                //templatePDF.addParagraph("Logo elegido");
                 templatePDF.addImage();
-                templatePDF.closeDocument();
+                //templatePDF.closeDocument();
                 pdfView();
                 guardarPdf();
             }
@@ -96,7 +97,7 @@ public class PersonalizarModeloActivity extends AppCompatActivity {
         //Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
         Uri file = Uri.fromFile(templatePDF.pdfFile);
         String s = String.valueOf(System.currentTimeMillis());
-        riversRef = mStorageRef.child("PDF/Logo.pdf");
+        riversRef = mStorageRef.child("PDF/Logo"+s+".pdf");
 
         riversRef.putFile(file)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -202,31 +203,34 @@ public class PersonalizarModeloActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode == FILE_SELECT_CODE1){
-            Uri uri = data.getData();
-            //String ruta = Util.getPath(this, uri);
-            //File file = new File(ruta);
-            Bitmap bitmap = null;//= BitmapFactory.decodeFile(file.getAbsolutePath());// DMA_VALIDAR
+            if(resultCode == Activity.RESULT_OK){
+                Uri uri = data.getData();
+                //String ruta = Util.getPath(this, uri);
+                //File file = new File(ruta);
+                Bitmap bitmap = null;//= BitmapFactory.decodeFile(file.getAbsolutePath());// DMA_VALIDAR
 
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-                //bitmapBajaResolucion = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uriFotoBajeResolucion);
-            } catch (IOException e) {
-                e.printStackTrace();
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                    //bitmapBajaResolucion = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uriFotoBajeResolucion);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                bitmap = redimensionarImagenMaximo(bitmap, 500, 900);
+
+                //Picasso.with(MisFormulasActivity.this).load(file).into(img_photo);
+                //sTitulo = data.getStringExtra("titulo");
+                //sDescripcion = data.getStringExtra("descripcion");
+                //ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                //ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                if(bitmap != null){
+                    //bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                    //imagenFOTO = stream.toByteArray();
+                    ivLogo.setImageBitmap(bitmap);
+                    getImg();
+                }
             }
 
-            bitmap = redimensionarImagenMaximo(bitmap, 500, 900);
-
-            //Picasso.with(MisFormulasActivity.this).load(file).into(img_photo);
-            //sTitulo = data.getStringExtra("titulo");
-            //sDescripcion = data.getStringExtra("descripcion");
-            //ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            //ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            if(bitmap != null){
-                //bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-                //imagenFOTO = stream.toByteArray();
-                ivLogo.setImageBitmap(bitmap);
-                getImg();
-            }
 
         super.onActivityResult(requestCode, resultCode, data);
     }
