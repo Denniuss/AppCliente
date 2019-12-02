@@ -89,7 +89,7 @@ public class PiscosPersonalizadosActivity extends AppCompatActivity {
                     break;
             }
         }
-        aHeader.add(new EntityHeader(1, aTabl1));
+        //aHeader.add(new EntityHeader(1, aTabl1));
         aHeader.add(new EntityHeader(2, aTabl2));
         aHeader.add(new EntityHeader(3, aTabl3));
         aHeader.add(new EntityHeader(4, aTabl4));
@@ -100,10 +100,10 @@ public class PiscosPersonalizadosActivity extends AppCompatActivity {
 
     public ArrayList<EntityTarifarioProductoPersonalizado> generateList(){
         ArrayList<EntityTarifarioProductoPersonalizado> arrayList = new ArrayList<>();
-        arrayList.add(new EntityTarifarioProductoPersonalizado(1,1,"P. Quebranta",42.00,1,"Por Unidad",1,4,"50",1,"ml","Pisco Quebranta: Medalla de Oro 2016 - Certificación HACPP",1));
+        /*arrayList.add(new EntityTarifarioProductoPersonalizado(1,1,"P. Quebranta",42.00,1,"Por Unidad",1,4,"50",1,"ml","Pisco Quebranta: Medalla de Oro 2016 - Certificación HACPP",1));
         arrayList.add(new EntityTarifarioProductoPersonalizado(2,2,"P. Italia/ Totrontel/ Acholado",55.00,1,"Por Unidad",1,4,"50",1,"ml","Pisco Italia: Medalla de Oro 2018 Pisco Torontel: Medalla de Oro 2017",1));
         arrayList.add(new EntityTarifarioProductoPersonalizado(3,3,"P. Mosto Verde",89.00,1,"Por Unidad",1,4,"50",1,"ml","Pisco Mosto Verde: Medalla de Plata 2017",1));
-
+*/
         arrayList.add(new EntityTarifarioProductoPersonalizado(4,1,"P. Quebranta",9.00,2,"Por Mayor",25,1,"50",1,"ml","Pisco Quebranta: Medalla de Oro 2016 - Certificación HACPP",2));
         arrayList.add(new EntityTarifarioProductoPersonalizado(5,1,"P. Quebranta",8.00,2,"Por Mayor",50,1,"50",1,"ml","Pisco Quebranta: Medalla de Oro 2016 - Certificación HACPP",2));
         arrayList.add(new EntityTarifarioProductoPersonalizado(6,1,"P. Quebranta",7.00,2,"Por Mayor",100,1,"50",1,"ml","Pisco Quebranta: Medalla de Oro 2016 - Certificación HACPP",2));

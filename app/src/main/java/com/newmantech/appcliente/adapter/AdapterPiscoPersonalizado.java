@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -212,6 +213,7 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
 
         switch (obj.getGrupo()){
             case 1:
+
                 aSpinner1 = new ArrayList<>();
                 v.tvCantidad.setText("1");
                 if(aObjTari.size()>0){
@@ -792,12 +794,14 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
         EditText tvCantidad;
         Button btnAgregarCarrito;
         Spinner spProducto;
+        LinearLayout llPadre;
 
         public ViewHolder(@NonNull View v) {
             super(v);
              view1 = v.findViewById(R.id.include1);
              view2 = v.findViewById(R.id.include2);
              view3 = v.findViewById(R.id.include3);
+            llPadre = v.findViewById(R.id.llPadre);
 
              tvTitulo1 = v.findViewById(R.id.tvTitulo1);
              tvTitulo2 = v.findViewById(R.id.tvTitulo2);

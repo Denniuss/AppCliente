@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:visibility="visible"
+    android:id="@+id/llPadre"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
@@ -75,10 +77,10 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/ivAgregar"
+            android:id="@+id/ivRestar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_black_35dp" />
+            android:src="@drawable/ic_remove_black_35dp" />
 
         <EditText
             android:inputType="number"
@@ -90,13 +92,13 @@
             android:text="35"
             android:textColor="@color/negro"
             android:textSize="25sp" />
-
         <ImageView
-            android:id="@+id/ivRestar"
+            android:layout_marginStart="20sp"
+            android:id="@+id/ivAgregar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20sp"
-            android:src="@drawable/ic_remove_black_35dp" />
+            android:src="@drawable/ic_add_black_35dp" />
+
 
     </LinearLayout>
     <Spinner
