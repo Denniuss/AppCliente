@@ -12,15 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.newmantech.appcliente.R;
-import com.newmantech.appcliente.activity.DetalleCarritoActivity;
 import com.newmantech.appcliente.activity.ElegirModeloActivity;
 import com.newmantech.appcliente.activity.PersonalizarModeloActivity;
-import com.newmantech.appcliente.model.EntityDetalleCarrito;
+import com.newmantech.appcliente.model.EntityDetalleCarritoPersonalizado;
 
 import java.util.ArrayList;
 
 public class AdapterDetalleCarrito extends RecyclerView.Adapter<AdapterDetalleCarrito.ViewHolder> {
-    ArrayList<EntityDetalleCarrito> arrayList;
+    ArrayList<EntityDetalleCarritoPersonalizado> arrayList;
     Context context;
     public onClickEvent onclick;
 
@@ -28,7 +27,7 @@ public class AdapterDetalleCarrito extends RecyclerView.Adapter<AdapterDetalleCa
         public void onClickDelete(int i, int idProducto);
     }
 
-    public AdapterDetalleCarrito(ArrayList<EntityDetalleCarrito> arrayList, Context context) {
+    public AdapterDetalleCarrito(ArrayList<EntityDetalleCarritoPersonalizado> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -47,6 +46,17 @@ public class AdapterDetalleCarrito extends RecyclerView.Adapter<AdapterDetalleCa
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder v, final int i) {
+
+        EntityDetalleCarritoPersonalizado obj = arrayList.get(i);
+        v.tvTitulo.setText(obj.getTipoPiscoPersonalizado());
+        v.tvTitulo.setTag(String.valueOf(obj.getIdProducto()));
+        v.tvSubtitulo.setText(obj.getVariedad());
+        v.tvSubtitulo.setTag(String.valueOf(obj.getIdDetalleTarifario()));
+
+        v.tvCantidad.setText(String.valueOf(obj.getCantidad()));
+        v.tvTamanio.setText(obj.getTamaño());
+        v.tvPrecioUnidad.setText(String.valueOf(obj.getPrecioUnitario()));
+        v.tvSubtotal.setText(String.valueOf(obj.getSubtotal()));
 
         v.btnElegirModelo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +88,7 @@ public class AdapterDetalleCarrito extends RecyclerView.Adapter<AdapterDetalleCa
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvSubtotal, tvPrecioUnidad, tvCantidad, tvTitulo;
+        TextView tvSubtotal, tvPrecioUnidad, tvCantidad, tvTitulo, tvSubtitulo, tvTamanio;
         ImageView ivDelete, ivFoto;
         Button btnElegirModelo, btnPersonalizar;
         public ViewHolder(@NonNull View v) {
@@ -89,6 +99,8 @@ public class AdapterDetalleCarrito extends RecyclerView.Adapter<AdapterDetalleCa
             tvTitulo = v.findViewById(R.id.tvTitulo);
             ivDelete = v.findViewById(R.id.ivDelete);
             ivFoto = v.findViewById(R.id.ivFoto);
+            tvSubtitulo = v.findViewById(R.id.tvSubtitulo);
+            tvTamanio = v.findViewById(R.id.tvTamanio);
             btnElegirModelo = v.findViewById(R.id.btnElegirModelo);
             btnPersonalizar = v.findViewById(R.id.btnPersonalizar);
         }

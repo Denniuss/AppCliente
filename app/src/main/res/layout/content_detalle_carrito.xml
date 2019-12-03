@@ -19,14 +19,16 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
-                android:layout_gravity="center_vertical"
-                android:textSize="19sp"
-                android:fontFamily="@font/ameliabasicbold"
-                android:textColor="@color/negro_"
-                android:text="Piscos Personalizados"
+                android:id="@+id/tvTitulo"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/ameliabasicbold"
+                android:text="Piscos Personalizados"
+                android:textColor="@color/negro_"
+                android:textSize="19sp" />
 
             <ImageButton
                 android:id="@+id/ivDelete"
@@ -37,15 +39,16 @@
                 android:src="@drawable/ic_delete_forever_black_35dp" />
 
         </LinearLayout>
-        <TextView
-            android:id="@+id/tvTitulo"
-            android:textSize="17sp"
-            android:fontFamily="@font/ameliabasic"
-            android:textColor="@color/negro"
-            android:text="Pisco Quebranto"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvSubtitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/ameliabasic"
+        android:text="Pisco Quebranto"
+        android:textColor="@color/negro"
+        android:textSize="17sp" />
         <LinearLayout
             android:paddingBottom="20sp"
             android:paddingTop="20sp"
@@ -71,6 +74,14 @@
                     android:fontFamily="@font/ameliabasic"
                     android:textColor="@color/negro"
                     android:text="Cantidad:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_marginTop="5sp"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/ameliabasic"
+                    android:textColor="@color/negro"
+                    android:text="Tamaño:"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
@@ -107,6 +118,17 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tvTamanio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5sp"
+                    android:fontFamily="@font/ameliabasic"
+                    android:text="S/ 10.00"
+                    android:textColor="@color/negro"
+                    android:textSize="15sp" />
                 <TextView
                     android:id="@+id/tvPrecioUnidad"
                     android:layout_marginTop="5sp"

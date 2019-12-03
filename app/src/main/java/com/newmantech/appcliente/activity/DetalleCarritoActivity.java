@@ -13,10 +13,11 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.newmantech.appcliente.R;
 import com.newmantech.appcliente.adapter.AdapterDetalleCarrito;
-import com.newmantech.appcliente.model.EntityDetalleCarrito;
+import com.newmantech.appcliente.model.EntityDetalleCarritoPersonalizado;
 
 import java.util.ArrayList;
 
@@ -24,10 +25,11 @@ public class DetalleCarritoActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     private Button btnPagar;
+    private TextView tvTotal;
     private double mSubTotal = 0;
     private RecyclerView recycler;
     AdapterDetalleCarrito adapterDetalleCarrito;
-    ArrayList<EntityDetalleCarrito> arrayList;
+    ArrayList<EntityDetalleCarritoPersonalizado> arrayList;
 
 
     @Override
@@ -38,6 +40,7 @@ public class DetalleCarritoActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         btnPagar = findViewById(R.id.btnPagar);
         recycler = findViewById(R.id.recycler);
+        tvTotal = findViewById(R.id.tvTotal);
 
         setupUI(getWindow().getDecorView().getRootView());
         toolbar.setTitle(R.string.piscosElegidos);
@@ -59,20 +62,30 @@ public class DetalleCarritoActivity extends AppCompatActivity {
 
     public void setRecycler(){
         arrayList = new ArrayList<>();
-        arrayList.add(new EntityDetalleCarrito());
-        arrayList.add(new EntityDetalleCarrito());
-        arrayList.add(new EntityDetalleCarrito());
-        arrayList.add(new EntityDetalleCarrito());
-        arrayList.add(new EntityDetalleCarrito());
+        arrayList.add(new EntityDetalleCarritoPersonalizado(1,"Piscos Etiquetados",7, "P. Quebranta", 25, 10.00, 250.00, "500", "ml"));
+        arrayList.add(new EntityDetalleCarritoPersonalizado(1,"Piscos Etiquetados",26, "P. Italia/ Totrontel/ Acholado", 50, 24.00, 1200.00, "375", "ml"));
+        arrayList.add(new EntityDetalleCarritoPersonalizado(2,"Piscos Seragrifados",10, "P. Quebranta", 25, 25.00, 625.00, "375", "ml"));
+        arrayList.add(new EntityDetalleCarritoPersonalizado(3,"Piscos Grabados",13, "P. Quebranta", 25, 42.00, 1050.00, "500", "ml"));
         adapterDetalleCarrito = new AdapterDetalleCarrito(arrayList, this );
         adapterDetalleCarrito.setOnclickEvent(new AdapterDetalleCarrito.onClickEvent() {
             @Override
             public void onClickDelete(int i, int idProducto) {
                 arrayList.remove(i);
                 adapterDetalleCarrito.notifyDataSetChanged();
+                calcularTotal();
             }
         });
+        calcularTotal();
         recycler.setAdapter(adapterDetalleCarrito);
+    }
+
+    public void calcularTotal(){
+        double precio = 0;
+        for(EntityDetalleCarritoPersonalizado obj: arrayList){
+            precio += obj.getSubtotal();
+        }
+        tvTotal.setText(String.valueOf(precio));
+
     }
 
     public void fn_LoadRecyclerView(){
