@@ -47,7 +47,7 @@ public class AdapterElegirModelo extends BaseAdapter {
             LayoutInflater layoutInflater = (LayoutInflater) ctx.getSystemService(ctx.LAYOUT_INFLATER_SERVICE);
             v = layoutInflater.inflate(R.layout.content_elegir_modelo,null);
         }
-        EntityElegirModelo obj = arrayList.get(position);
+        final EntityElegirModelo obj = arrayList.get(position);
 
         final ImageView ivFoto = v.findViewById(R.id.ivFoto);
         Button btnModelo = v.findViewById(R.id.btnModelo);
@@ -55,7 +55,7 @@ public class AdapterElegirModelo extends BaseAdapter {
         btnModelo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ctx, " Elegir modelo", Toast.LENGTH_LONG).show();
+                Toast.makeText(ctx, " ID_MODELO = " + String.valueOf(obj.getId()), Toast.LENGTH_LONG).show();
             }
         });
 

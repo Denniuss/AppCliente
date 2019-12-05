@@ -65,6 +65,8 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
             v.tvDescripcion.setText(objTari.getDescripcion());
             v.tvTipoPedido.setText("Pedidos " + objTari.getTipoVenta());
         }
+        if(i == 0)
+            v.ivFoto.setVisibility(View.VISIBLE);
 
         ArrayAdapter<String[]> dataAtapder1 = new ArrayAdapter<String[]>(ctx, android.R.layout.simple_list_item_1){
             @Override
