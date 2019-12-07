@@ -63,11 +63,11 @@ public class PedidoPersonalizadoFragment extends Fragment {
 
     public void setProductos(){
         aProductoPersonalizado.add(new EntityProductoPersonalizado(3,"Piscos Personalizados Grabados en bajo relieve",true,
-                "https://i.linio.com/p/940faec658e586eec1bb289889e78a2e-product.jpg","https://i.linio.com/p/940faec658e586eec1bb289889e78a2e-product.jpg"));
+                "https://www.piscospersonalizados.com/wp-content/uploads/2018/07/Piscos-grabados-personalizados-para-baby-shower.jpg","https://www.piscospersonalizados.com/wp-content/uploads/2018/07/Piscos-grabados-personalizados-para-baby-shower.jpg"));
         aProductoPersonalizado.add(new EntityProductoPersonalizado(2,"Piscos Personalizados Pavonados y Serigrafiados",true,
-                "https://i.linio.com/p/940faec658e586eec1bb289889e78a2e-product.jpg","https://i.linio.com/p/940faec658e586eec1bb289889e78a2e-product.jpg"));
+                "https://www.piscospersonalizados.com/wp-content/uploads/2018/07/Piscos-serigrafiados-para-empresas-500x500.jpg","https://www.piscospersonalizados.com/wp-content/uploads/2018/07/Piscos-serigrafiados-para-empresas-500x500.jpg"));
         aProductoPersonalizado.add(new EntityProductoPersonalizado(1,"Piscos Personalizados Etiquetados",true,
-                "https://i.linio.com/p/940faec658e586eec1bb289889e78a2e-product.jpg","https://i.linio.com/p/940faec658e586eec1bb289889e78a2e-product.jpg"));
+                "https://www.piscospersonalizados.com/wp-content/uploads/2019/02/Botellas-de-vidrio-personalizadas-para-matrimonio.jpg","https://www.piscospersonalizados.com/wp-content/uploads/2019/02/Botellas-de-vidrio-personalizadas-para-matrimonio.jpg"));
     }
 
     /**
