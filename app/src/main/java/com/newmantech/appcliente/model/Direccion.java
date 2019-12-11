@@ -3,6 +3,7 @@ package com.newmantech.appcliente.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class Direccion {
@@ -546,12 +547,48 @@ public class Direccion {
         return "Direccion{" +
                 "establecerDireccion=" + establecerDireccion +
                 ", idDireccion=" + idDireccion +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
                 ", direccion='" + direccion + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", email='" + email + '\'' +
+                ", nroCelular='" + nroCelular + '\'' +
+                ", nroCelularAuxiliar='" + nroCelularAuxiliar + '\'' +
                 ", nombreContacto='" + nombreContacto + '\'' +
+                ", emailContacto='" + emailContacto + '\'' +
                 ", telefonoContacto='" + telefonoContacto + '\'' +
                 ", referenciaDireccion='" + referenciaDireccion + '\'' +
+                ", estado=" + estado +
+                ", distrito='" + distrito + '\'' +
+                ", ciudad='" + ciudad + '\'' +
+                ", departamento='" + departamento + '\'' +
+                ", tipoDireccion='" + tipoDireccion + '\'' +
+                ", docIdentidad='" + docIdentidad + '\'' +
+                ", horarioEntrega='" + horarioEntrega + '\'' +
+                ", fechaCanje=" + fechaCanje +
+                ", fechaEntrega=" + fechaEntrega +
+                ", preferenciaEntrega='" + preferenciaEntrega + '\'' +
+                ", direccionNumero='" + direccionNumero + '\'' +
+                ", direccionInterior='" + direccionInterior + '\'' +
+                ", direccionLote='" + direccionLote + '\'' +
+                ", direccionManzana='" + direccionManzana + '\'' +
+                ", tipoEntrega='" + tipoEntrega + '\'' +
+                ", idVenta=" + idVenta +
+                ", urbanizacion='" + urbanizacion + '\'' +
+                ", quienRecibeProducto=" + quienRecibeProducto +
+                ", nombreZonaDelivery='" + nombreZonaDelivery + '\'' +
+                ", arrDistrito=" + Arrays.toString(arrDistrito) +
+                ", arrProvincia=" + Arrays.toString(arrProvincia) +
+                ", arrDepartamento=" + Arrays.toString(arrDepartamento) +
+                ", arrTipoEntrega=" + Arrays.toString(arrTipoEntrega) +
                 ", nombreDireccion='" + nombreDireccion + '\'' +
+                ", diasEntrega=" + diasEntrega +
+                ", codigoDepartamento='" + codigoDepartamento + '\'' +
+                ", codigoProvincia='" + codigoProvincia + '\'' +
+                ", codigoDistrito='" + codigoDistrito + '\'' +
                 ", idUbigeo=" + idUbigeo +
+                ", esFechaProgramada=" + esFechaProgramada +
+                ", fechaEntregaF='" + fechaEntregaF + '\'' +
                 '}';
     }
 }

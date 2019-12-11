@@ -54,9 +54,9 @@ public class AdapterDetalleCarrito extends RecyclerView.Adapter<AdapterDetalleCa
         v.tvSubtitulo.setTag(String.valueOf(obj.getIdDetalleTarifario()));
 
         v.tvCantidad.setText(String.valueOf(obj.getCantidad()));
-        v.tvTamanio.setText(obj.getTamaño());
+        v.tvTamanio.setText(obj.getTamanho());
         v.tvPrecioUnidad.setText(String.valueOf(obj.getPrecioUnitario()));
-        v.tvSubtotal.setText(String.valueOf(obj.getSubtotal()));
+        v.tvSubtotal.setText(String.valueOf(obj.getSubTotal()));
 
         v.btnElegirModelo.setOnClickListener(new View.OnClickListener() {
             @Override

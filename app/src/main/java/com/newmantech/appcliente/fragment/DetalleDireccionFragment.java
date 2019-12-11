@@ -493,9 +493,24 @@ public class DetalleDireccionFragment extends Fragment {
         }
         Cliente cliente = new Cliente();
         cliente.setIdCliente(Utilitario.idCliente);
-        cliente.setDireccionDelivery(direccionTemp);
 
         Log.i("onResponse ", "Guardar Direccion " + direccionTemp);
+
+        Ubigeo existeDepartamento = departamentoMap.get(iddepartamento.getText()+"");
+        Ubigeo existeProvincia = provinciaMap.get(idprovincia.getText()+"");
+        Ubigeo existeDistrito = distitoMap.get(iddistrito.getText()+"");
+
+        if(null!=existeDepartamento) {
+            direccionTemp.setDepartamento(existeDepartamento.getNombreUbigeo());
+        }
+        if(null!=existeProvincia) {
+            direccionTemp.setCiudad(existeProvincia.getNombreUbigeo());
+        }
+        if(null!=existeDistrito) {
+            direccionTemp.setDistrito(existeDistrito.getNombreUbigeo());
+        }
+
+        cliente.setDireccionDelivery(direccionTemp);
 
         Call<BResult> resultado = direccionService.registrarDireccion(cliente);
 

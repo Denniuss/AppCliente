@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +19,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.newmantech.appcliente.R;
+import com.newmantech.appcliente.model.BResult;
 import com.newmantech.appcliente.model.EntityHeader;
 import com.newmantech.appcliente.model.EntityTarifarioProductoPersonalizado;
+import com.newmantech.appcliente.service.ProductoService;
+import com.newmantech.appcliente.utils.PersistentCookieStore;
+import com.newmantech.appcliente.utils.Utilitario;
 
+import java.net.CookieHandler;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
 import java.util.ArrayList;
+
+import okhttp3.JavaNetCookieJar;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPiscoPersonalizado.ViewHolder>  {
     ArrayList<EntityHeader> arrayList;
@@ -2733,6 +2750,91 @@ public class AdapterPiscoPersonalizado extends RecyclerView.Adapter<AdapterPisco
                             else if(cantidad>99)
                                 precioTotal = cantidad * precio3;
                         }
+
+                        /*Inicio Llamada del servicio*/
+
+                        CookieManager cookieManager = new CookieManager();
+                        CookieHandler.setDefault(cookieManager);
+                        cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
+
+                        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+                        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+                        CookieHandler cookieHandler = new CookieManager(new PersistentCookieStore(ctx), CookiePolicy.ACCEPT_ALL);
+
+                        //CookieHandler cookieHandler = new CookieManager();
+                        OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor)
+                                .cookieJar(new JavaNetCookieJar(cookieHandler))
+                                .build();
+                        Log.i("AdapterPiscoPersonalizado", "body: client " + client.toString());
+
+                        Retrofit retrofit = new Retrofit.Builder().baseUrl(Utilitario.baseUrlSWeb)
+                                .client(client)
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .build();
+
+                        ProductoService productoService = retrofit.create(ProductoService.class);
+
+                        Log.i("btnAgregarCarrito", "body: client " + cantidad);
+                        Log.i("btnAgregarCarrito", "body: client " + idDetalleTarifario);
+                        Log.i("btnAgregarCarrito", "body: client " + idProducto);
+
+                        Call<BResult> lista = productoService.agregarCarritoComprasPersonalizado(idDetalleTarifario,idProducto,cantidad);
+                        lista.enqueue(new Callback<BResult>() {
+                            @Override
+                            public void onResponse(Call<BResult> call, Response<BResult> response) {
+                                Log.e("DetalleActivity ", "onResponse " + response.isSuccessful());
+
+                                if(response.isSuccessful()) {
+
+
+                                    Log.i("Direccion", "onResponse: " + response.body());
+
+                                    //finish();
+
+                                    BResult respuesta = response.body();
+
+                                    if(respuesta!=null) {
+                                        //Intent intent = new Intent(DetalleActivity.this, DireccionActivity.class);
+                                        //startActivity(intent);
+                                        if(respuesta.getEstado()==0){
+                                            //Toast.makeText(ctx,"Se guardo la dirección correctamente", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            //Toast.makeText(this,,Toast.LENGTH_SHORT).show();
+                                            //Toast.makeText(ctx,"Error al guardar la dirección vuelva a intentar", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
+
+                    /*Intent iconIntent = new Intent(view.getContext(), DetalleDireccionActivity.class);
+                    iconIntent.putExtras(bundle);
+                    view.getContext().startActivity(iconIntent);*/
+                    /* Obtener el Recycler
+                    recycler = (RecyclerView) findViewById(R.id.reciclador);
+                    recycler.setHasFixedSize(true);
+
+                    // Usar un administrador para LinearLayout
+                    lManager = new LinearLayoutManager(contexto);
+                    recycler.setLayoutManager(lManager);
+
+                    adapter = new CatalogoProductoAdapter(items);
+                    recycler.setAdapter(adapter);
+                    */
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<BResult> call, Throwable t) {
+                                Log.e("DetalleActivity ", "onFailure "+t.getMessage());
+                            }
+                        });
+
+
+
+
+                        /*Fin Llamada del servicio*/
                         Toast.makeText(ctx, "PRODUCTO: "+nombreProducto +
                                 "\n ID_TAMAÑO: = " + String.valueOf(idTamanio) +
                                 "\n ID_TARIFARIO = "+String.valueOf(idDetalleTarifario)+

@@ -14,7 +14,10 @@ import java.util.regex.Pattern;
 
 public class Utilitario {
 
-    public static String IP_LOCAL = "http://192.168.1.7";
+    //public static String IP_LOCAL = "http://192.168.1.7";
+
+    public static String IP_LOCAL = "http://192.168.1.62";
+    //public static String IP_LOCAL = "http://10.21.148.35";
 
     //public static String baseUrl = IP_LOCAL+":8075/";
 
@@ -131,7 +134,10 @@ public class Utilitario {
         INCIO_ENTREGA_FLUJO (107,"INICIO ENTREGA FLUJO","Pedido enviado"),
         INCIDENCIA_FLUJO (108,"INCIDENCIA FLUJO","Se ha registrado una incidencia en la entrega"),
 
-        FIN_ENTREGA_FLUJO (109,"FIN ENTREGA FLUJO","Pedido entregado");
+        FIN_ENTREGA_FLUJO (109,"FIN ENTREGA FLUJO","Pedido entregado"),
+
+        INCIO_ENTREGA_FLUJO_POST_INCIDENCIA (110,"ENTREGA","Pedido entregado"),
+        FIN_ENTREGA_FLUJO_POST_INCIDENCIA (111,"ENTREGA","Pedido entregado ");
 
         private final int codigo;
         private final String  texto;

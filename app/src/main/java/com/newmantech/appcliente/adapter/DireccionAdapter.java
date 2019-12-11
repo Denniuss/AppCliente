@@ -78,8 +78,8 @@ public class DireccionAdapter extends RecyclerView.Adapter<DireccionAdapter.Dire
         //Picasso.with(viewHolder.imagen.getContext())
                // .load(items.get(i).getImagenurl()).into(viewHolder.imagen);
 
-        Log.i("onResponse Adapter", "Response ubigeo: " + items.get(i));
 
+        Log.i("onResponse Adapter", "Response ubigeo: " + items.get(i));
         viewHolder.nombreDireccion.setText(items.get(i).getNombreDireccion());
         viewHolder.nombreContacto.setText(items.get(i).getNombreContacto());
         viewHolder.direccion.setText(items.get(i).getDireccion());

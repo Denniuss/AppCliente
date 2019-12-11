@@ -1,6 +1,7 @@
 package com.newmantech.appcliente.service;
 
 import com.newmantech.appcliente.model.BResult;
+import com.newmantech.appcliente.model.EntityDetalleCarritoPersonalizado;
 import com.newmantech.appcliente.model.PedidoPost;
 import com.newmantech.appcliente.model.CarritoCompra;
 import com.newmantech.appcliente.model.CatalogoProducto;
@@ -57,4 +58,17 @@ public interface ProductoService {
 
     @GET("pedido/obtenerFlujoPorIdPedido/{idPedido}")
     Call<WorkFlow> obtenerEstadoPorIdPedido(@Path("idPedido") Long idPedido);
+
+
+    @Headers( {
+            "Cache-Control: max-age=3600"
+    })
+    @GET("carritoProducto/agregarCarritoPersonalizado/{idDetalleTarifario}/{idProducto}/{cantidad}")
+    Call<BResult> agregarCarritoComprasPersonalizado(@Path("idDetalleTarifario") Integer idDetalleTarifario,
+                                                     @Path("idProducto") Integer idProducto,
+                                                     @Path("cantidad") Integer cantidad);
+
+    @GET("carritoProducto/obtenerCarritoCompraPersonalizado")
+    Call<List<EntityDetalleCarritoPersonalizado>> obtenerCarritoCompraPersonalizado();
+
 }
