@@ -93,7 +93,7 @@ public class DetalleCarritoActivity extends AppCompatActivity {
         adapterDetalleCarrito = new AdapterDetalleCarrito(arrayList, this );
         //recycler.setAdapter(adapterDetalleCarrito);
         /*Inicio llamada servicio obtenerCarritoPersonalizado*/
-/*
+
         CookieManager cookieManager = new CookieManager();
         CookieHandler.setDefault(cookieManager);
         cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
@@ -124,7 +124,7 @@ public class DetalleCarritoActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     Log.i("DetalleCarritoActivity", "onResponse: " + response.body());
 
-                    finish();
+                    //finish();
 
                     List<EntityDetalleCarritoPersonalizado> respuesta = response.body();
 
@@ -148,6 +148,10 @@ public class DetalleCarritoActivity extends AppCompatActivity {
 
                             //calcularTotal();
                             //recycler.setAdapter(adapterDetalleCarrito);
+                            adapterDetalleCarrito = new AdapterDetalleCarrito(arrayList, contexto );
+
+                            calcularTotal();
+                            recycler.setAdapter(adapterDetalleCarrito);
 
                             //Toast.makeText(this,,Toast.LENGTH_SHORT).show();
                             //Toast.makeText(getApplicationContext(), "Datos cargados correctamente", Toast.LENGTH_SHORT).show();
@@ -162,7 +166,7 @@ public class DetalleCarritoActivity extends AppCompatActivity {
             public void onFailure(Call<List<EntityDetalleCarritoPersonalizado>> call, Throwable t) {
                 Log.e("DetalleActivity ", "onFailure "+t.getMessage());
             }
-        });*/
+        });
 
         adapterDetalleCarrito.setOnclickEvent(new AdapterDetalleCarrito.onClickEvent() {
             @Override
@@ -172,8 +176,8 @@ public class DetalleCarritoActivity extends AppCompatActivity {
                 calcularTotal();
             }
         });
-        calcularTotal();
-        recycler.setAdapter(adapterDetalleCarrito);
+        //calcularTotal();
+        //recycler.setAdapter(adapterDetalleCarrito);
     }
 
     public void calcularTotal(){
