@@ -89,7 +89,7 @@ public class DetalleCarritoActivity extends AppCompatActivity {
 
 
 */
-        arrayList.add(new EntityDetalleCarritoPersonalizado(3,"Piscos Grabados",13, "P. Quebranta", 25, 42.00, 1050.00, "500", "ml"));
+        //arrayList.add(new EntityDetalleCarritoPersonalizado(3,"Piscos Grabados",13, "P. Quebranta", 25, 42.00, 1050.00, "500", "ml"));
         adapterDetalleCarrito = new AdapterDetalleCarrito(arrayList, this );
         //recycler.setAdapter(adapterDetalleCarrito);
         /*Inicio llamada servicio obtenerCarritoPersonalizado*/
@@ -137,8 +137,8 @@ public class DetalleCarritoActivity extends AppCompatActivity {
                         } else {
 
                             //arrayList = respuesta;
-                            //ArrayList<EntityDetalleCarritoPersonalizado> arrayListTemp = new ArrayList<>(respuesta);
-                            //arrayList = arrayListTemp;
+                            ArrayList<EntityDetalleCarritoPersonalizado> arrayListTemp = new ArrayList<>(respuesta);
+                            arrayList = arrayListTemp;
 
                             //Log.i("DetalleCarritoActivity", "arrayListTemp: " + arrayListTemp.size());
                             Log.i("DetalleCarritoActivity", "arrayList: " + arrayList.size());
@@ -150,7 +150,7 @@ public class DetalleCarritoActivity extends AppCompatActivity {
                             //recycler.setAdapter(adapterDetalleCarrito);
                             adapterDetalleCarrito = new AdapterDetalleCarrito(arrayList, contexto );
 
-                            calcularTotal();
+                            calcularTotal(arrayList);
                             recycler.setAdapter(adapterDetalleCarrito);
 
                             //Toast.makeText(this,,Toast.LENGTH_SHORT).show();
@@ -173,14 +173,14 @@ public class DetalleCarritoActivity extends AppCompatActivity {
             public void onClickDelete(int i, int idProducto) {
                 arrayList.remove(i);
                 adapterDetalleCarrito.notifyDataSetChanged();
-                calcularTotal();
+                //calcularTotal();
             }
         });
         //calcularTotal();
         //recycler.setAdapter(adapterDetalleCarrito);
     }
 
-    public void calcularTotal(){
+    public void calcularTotal(ArrayList<EntityDetalleCarritoPersonalizado> arrayList){
         double precio = 0;
         for(EntityDetalleCarritoPersonalizado obj: arrayList){
             Log.i("EntityDetalleCarritoPer", "precio: " + obj.getSubTotal());
