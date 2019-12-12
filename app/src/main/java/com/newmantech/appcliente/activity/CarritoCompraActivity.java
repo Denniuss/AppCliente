@@ -1,34 +1,31 @@
 package com.newmantech.appcliente.activity;
 
 import android.content.Context;
-
-import java.util.List;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import android.util.Log;
-import android.widget.Toast;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.newmantech.appcliente.adapter.ItemCarritoCompraAdapter;
-import com.newmantech.appcliente.utils.PersistentCookieStore;
 import com.newmantech.appcliente.R;
+import com.newmantech.appcliente.adapter.ItemCarritoCompraAdapter;
 import com.newmantech.appcliente.model.CarritoCompra;
 import com.newmantech.appcliente.model.CarritoDetalle;
 import com.newmantech.appcliente.model.ItemCarritoCompra;
 import com.newmantech.appcliente.service.ProductoService;
+import com.newmantech.appcliente.utils.PersistentCookieStore;
 import com.newmantech.appcliente.utils.Utilitario;
 
 import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.JavaNetCookieJar;
 import okhttp3.OkHttpClient;
@@ -98,6 +95,7 @@ public class CarritoCompraActivity extends AppCompatActivity {
             }
         });
 
+        fn_LoadRecyclerView();
 
         Button btnComprar = (Button)findViewById(R.id.btnComprar);
         assert btnComprar != null;
@@ -109,7 +107,16 @@ public class CarritoCompraActivity extends AppCompatActivity {
             }
         });
 
+
     }
+
+    public void fn_LoadRecyclerView(){
+        recycler = (RecyclerView) findViewById(R.id.recycler);
+        recycler.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recycler.setLayoutManager(layoutManager);
+    }
+
     private void FillItemCarritoCompra() {
 
         CookieManager cookieManager = new CookieManager();
